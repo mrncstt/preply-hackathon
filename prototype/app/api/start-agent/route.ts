@@ -100,22 +100,20 @@ function buildTtsConfig(vendor: string, key: string, voiceId: string) {
 }
 
 export async function POST(req: NextRequest) {
-  const appId = process.env.APP_ID;
-  const appCertificate = process.env.APP_CERTIFICATE;
-  const llmApiKey = process.env.LLM_API_KEY;
+  const appId = process.env.APP_ID || process.env.AGORA_ID;
+  const appCertificate = process.env.APP_CERTIFICATE || process.env.AGORA_APP_CERTIFICATE;
+  const openAiKey = process.env.OPEN_AI_API_KEY || process.env.OPENAI_API_KEY;
+  const llmApiKey = process.env.LLM_API_KEY || openAiKey;
   const llmModel = process.env.LLM_MODEL || "gpt-4o-mini";
   const llmUrl = process.env.LLM_URL || "https://api.openai.com/v1/chat/completions";
-  const ttsVendor = process.env.TTS_VENDOR;
-  const ttsKey = process.env.TTS_KEY;
-  const ttsVoiceId = process.env.TTS_VOICE_ID;
+  const ttsVendor = process.env.TTS_VENDOR || "openai";
+  const ttsKey = process.env.TTS_KEY || openAiKey;
+  const ttsVoiceId = process.env.TTS_VOICE_ID || "alloy";
 
   const missing = [];
-  if (!appId) missing.push("APP_ID");
-  if (!appCertificate) missing.push("APP_CERTIFICATE");
-  if (!llmApiKey) missing.push("LLM_API_KEY");
-  if (!ttsVendor) missing.push("TTS_VENDOR");
-  if (!ttsKey) missing.push("TTS_KEY");
-  if (!ttsVoiceId) missing.push("TTS_VOICE_ID");
+  if (!appId) missing.push("AGORA_ID");
+  if (!appCertificate) missing.push("AGORA_APP_CERTIFICATE");
+  if (!llmApiKey) missing.push("OPEN_AI_API_KEY");
 
   if (missing.length > 0) {
     return NextResponse.json({ error: `Missing environment variables: ${missing.join(", ")}` }, { status: 500 });

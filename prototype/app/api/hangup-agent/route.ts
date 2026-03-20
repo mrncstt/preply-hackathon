@@ -68,8 +68,8 @@ async function buildAuthHeader(appId: string, appCertificate: string): Promise<s
 }
 
 export async function POST(req: NextRequest) {
-  const appId = process.env.APP_ID;
-  const appCertificate = process.env.APP_CERTIFICATE;
+  const appId = process.env.APP_ID || process.env.AGORA_ID;
+  const appCertificate = process.env.APP_CERTIFICATE || process.env.AGORA_APP_CERTIFICATE;
 
   if (!appId || !appCertificate) {
     return NextResponse.json({ error: "Missing APP_ID or APP_CERTIFICATE" }, { status: 500 });

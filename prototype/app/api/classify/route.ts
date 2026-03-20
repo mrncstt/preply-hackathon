@@ -3,9 +3,9 @@ import OpenAI from "openai";
 import { CLASSIFIER_PROMPT } from "@/lib/prompts";
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.OPENAI_API_KEY || process.env.LLM_API_KEY;
+  const apiKey = process.env.OPEN_AI_API_KEY || process.env.OPENAI_API_KEY || process.env.LLM_API_KEY;
   if (!apiKey) {
-    return NextResponse.json({ error: "Missing OPENAI_API_KEY" }, { status: 500 });
+    return NextResponse.json({ error: "Missing OPEN_AI_API_KEY" }, { status: 500 });
   }
 
   const body = await req.json().catch(() => ({}));
