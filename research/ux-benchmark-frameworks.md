@@ -1,207 +1,207 @@
-# Frameworks de Benchmark UX/UI/Tecnico para Competitive Analysis
+# UX/UI/Technical Benchmark Frameworks for Competitive Analysis
 
-Frameworks pesquisados para montar a analise competitiva do hackathon com foco em UX, UI e capacidades tecnicas de IA.
+Frameworks researched to build the hackathon competitive analysis with a focus on UX, UI, and AI technical capabilities.
 
 ---
 
-## 1. UX Honeycomb de Peter Morville
+## 1. Peter Morville's UX Honeycomb
 
-Avalia concorrentes em 7 facetas com metricas especificas:
+Evaluates competitors across 7 facets with specific metrics:
 
-| Faceta | O que mede | Metrica |
+| Facet | What it measures | Metric |
 |---|---|---|
-| Useful | Features resolvem o problema? | Taxa de adocao de feature |
-| Usable | Facil de usar? | Tempo na tarefa, taxa de erro, SUS score |
-| Desirable | Agradavel? | NPS, satisfacao |
-| Findable | Navegacao funciona? | Taxa de falha na busca, bounce rate |
-| Accessible | WCAG compliance? | Score de acessibilidade |
-| Credible | Confiavel? | Tickets de suporte, trust score |
-| Valuable | Gera valor? | Retencao, conversao |
+| Useful | Do features solve the problem? | Feature adoption rate |
+| Usable | Easy to use? | Time on task, error rate, SUS score |
+| Desirable | Pleasant? | NPS, satisfaction |
+| Findable | Does navigation work? | Search failure rate, bounce rate |
+| Accessible | WCAG compliance? | Accessibility score |
+| Credible | Trustworthy? | Support tickets, trust score |
+| Valuable | Generates value? | Retention, conversion |
 
-**Tipos de benchmarking:**
-- Interno (versao vs. versao)
-- Competitivo (vs. concorrentes diretos)
-- Normativo (vs. padroes da industria)
+**Types of benchmarking:**
+- Internal (version vs. version)
+- Competitive (vs. direct competitors)
+- Normative (vs. industry standards)
 
-**Processo em 7 passos:**
-1. Definir escopo e demograficos
-2. Selecionar metricas quantitativas e qualitativas
-3. Criar cenarios de tarefas consistentes (5-10 tarefas principais)
-4. Coletar dados baseline via usability testing
-5. Replicar testes entre concorrentes com metodologia identica
-6. Analisar tendencias (quanti + quali)
-7. Iterar ciclos de teste
+**7-step process:**
+1. Define scope and demographics
+2. Select quantitative and qualitative metrics
+3. Create consistent task scenarios (5-10 main tasks)
+4. Collect baseline data via usability testing
+5. Replicate tests across competitors with identical methodology
+6. Analyze trends (quantitative + qualitative)
+7. Iterate test cycles
 
-**Fonte:** https://www.parallelhq.com/blog/ux-benchmarking
+**Source:** https://www.parallelhq.com/blog/ux-benchmarking
 
 ---
 
 ## 2. Screen-by-Screen Interface Comparison (LogRocket)
 
-Compara tela a tela os fluxos criticos entre concorrentes:
+Compares critical flows screen by screen across competitors:
 
-**Fluxos a comparar (para language learning):**
-- **Onboarding**: quantos passos, friccao, tempo ate primeiro valor
-- **Core loop**: como o usuario executa a tarefa principal (aula, pratica)
-- **Feature discovery**: como features de IA sao apresentadas
-- **Feedback loops**: como o app comunica progresso
-- **Error correction**: como erros sao tratados na UX
+**Flows to compare (for language learning):**
+- **Onboarding**: how many steps, friction, time to first value
+- **Core loop**: how the user performs the main task (lesson, practice)
+- **Feature discovery**: how AI features are presented
+- **Feedback loops**: how the app communicates progress
+- **Error correction**: how errors are handled in the UX
 
-**Entregavel:** Screenshots lado a lado com anotacoes de UX
+**Deliverable:** Side-by-side screenshots with UX annotations
 
-**4 templates do framework:**
+**4 framework templates:**
 1. Competitive Matrix (spreadsheet)
 2. Screen-by-Screen Interface Comparisons
 3. Feature/Functionality Checklist
-4. SWOT Analysis focado em UX
+4. UX-focused SWOT Analysis
 
-**Fonte:** https://blog.logrocket.com/ux-design/competitive-analysis-ux/
+**Source:** https://blog.logrocket.com/ux-design/competitive-analysis-ux/
 
 ---
 
 ## 3. Heuristic Evaluation Matrix (Nielsen's 10 Heuristics)
 
-Avalia cada concorrente contra as 10 heuristicas de usabilidade com severity rating 0-4:
+Evaluates each competitor against the 10 usability heuristics with severity rating 0-4:
 
-**Escala de severidade:**
-- 0 = Nao e problema de usabilidade
-- 1 = Problema cosmetico
-- 2 = Problema menor de usabilidade
-- 3 = Problema maior de usabilidade
-- 4 = Catastrofe de usabilidade (deve corrigir antes de lancar)
+**Severity scale:**
+- 0 = Not a usability problem
+- 1 = Cosmetic problem
+- 2 = Minor usability problem
+- 3 = Major usability problem
+- 4 = Usability catastrophe (must fix before launch)
 
-**Matriz exemplo para language learning apps:**
+**Example matrix for language learning apps:**
 
-| Heuristica | Duolingo | Praktika | ELSA | Speak | Preply |
+| Heuristic | Duolingo | Praktika | ELSA | Speak | Preply |
 |---|---|---|---|---|---|
-| 1. Visibilidade do status do sistema | ? | ? | ? | ? | ? |
-| 2. Correspondencia com o mundo real | ? | ? | ? | ? | ? |
-| 3. Controle e liberdade do usuario | ? | ? | ? | ? | ? |
-| 4. Consistencia e padroes | ? | ? | ? | ? | ? |
-| 5. Prevencao de erros | ? | ? | ? | ? | ? |
-| 6. Reconhecimento em vez de memorizacao | ? | ? | ? | ? | ? |
-| 7. Flexibilidade e eficiencia de uso | ? | ? | ? | ? | ? |
-| 8. Estetica e design minimalista | ? | ? | ? | ? | ? |
-| 9. Ajudar usuarios a reconhecer/diagnosticar/recuperar erros | ? | ? | ? | ? | ? |
-| 10. Ajuda e documentacao | ? | ? | ? | ? | ? |
+| 1. Visibility of system status | ? | ? | ? | ? | ? |
+| 2. Match between system and the real world | ? | ? | ? | ? | ? |
+| 3. User control and freedom | ? | ? | ? | ? | ? |
+| 4. Consistency and standards | ? | ? | ? | ? | ? |
+| 5. Error prevention | ? | ? | ? | ? | ? |
+| 6. Recognition rather than recall | ? | ? | ? | ? | ? |
+| 7. Flexibility and efficiency of use | ? | ? | ? | ? | ? |
+| 8. Aesthetic and minimalist design | ? | ? | ? | ? | ? |
+| 9. Help users recognize, diagnose, and recover from errors | ? | ? | ? | ? | ? |
+| 10. Help and documentation | ? | ? | ? | ? | ? |
 
-**Exemplo real encontrado (Duolingo - Team Shrimp, projeto academico):**
-- Problema encontrado: excesso de graficos confusos que violam heuristica 8 (estetica minimalista) - 7 telas diferentes quando usuario tenta sair de uma licao
-- Conteudo pago confuso: mostra "$0.00" para trial sem deixar claro que vira assinatura (viola heuristicas 4 e 7)
-- Configuracoes escondidas no perfil em vez de navegacao principal (viola heuristicas 1 e 7)
+**Real example found (Duolingo - Team Shrimp, academic project):**
+- Problem found: excessive confusing graphics violating heuristic 8 (minimalist aesthetics) - 7 different screens when user tries to exit a lesson
+- Confusing paid content: shows "$0.00" for trial without making it clear it will become a subscription (violates heuristics 4 and 7)
+- Settings hidden in profile instead of main navigation (violates heuristics 1 and 7)
 
-**PDF da avaliacao:** https://nilabanerjee.github.io/NilaB_HeuristicEval.pdf
-**Figma template (heuristic evaluation):** link original quebrado
+**Evaluation PDF:** https://nilabanerjee.github.io/NilaB_HeuristicEval.pdf
+**Figma template (heuristic evaluation):** original link broken
 
 ---
 
 ## 4. Feature x AI Capability Matrix
 
-Matriz cruzando features do produto com capacidades tecnicas de IA dos concorrentes:
+Matrix crossing product features with AI technical capabilities across competitors:
 
-**Exemplo para as 3 tracks do hackathon:**
+**Example for the 3 hackathon tracks:**
 
 ### Track 1: Visualizing Learning Progress
 
 | Feature | Duolingo | Praktika | ELSA | Speak | Preply | Gap? |
 |---|---|---|---|---|---|---|
-| Dashboard de progresso | XP/streaks (raso) | Basico | Scores pronuncia | Fluency score | Lesson Insights | Parcial |
-| Metricas de confianca | Nao | Nao | Nao | Nao | Nao | SIM |
-| Progresso por situacao | Nao | Nao | Nao | Nao | Nao | SIM |
-| Deteccao de plateau | Nao | Nao | Nao | Nao | Nao | SIM |
-| Narrativa de progresso (AI) | Nao | Nao | Nao | Nao | Nao | SIM |
-| Biomarkers de voz | Nao | Nao | Nao | Nao | Nao | SIM |
+| Progress dashboard | XP/streaks (shallow) | Basic | Pronunciation scores | Fluency score | Lesson Insights | Partial |
+| Confidence metrics | No | No | No | No | No | YES |
+| Progress by situation | No | No | No | No | No | YES |
+| Plateau detection | No | No | No | No | No | YES |
+| Progress narrative (AI) | No | No | No | No | No | YES |
+| Voice biomarkers | No | No | No | No | No | YES |
 
 ### Track 2: Accelerating Learning with Agents
 
 | Feature | Duolingo | Praktika | ELSA | Speak | Preply | Gap? |
 |---|---|---|---|---|---|---|
-| Multi-agent architecture | Nao | Sim (GPT-5.2) | Nao | Parcial | Nao | Parcial |
-| Tutor humano + AI juntos | Nao | Nao | Nao | Nao | Parcial | SIM |
-| Avatar realista | Lily (2D) | Sim (3D) | Nao | Nao | Nao | Parcial |
-| Adaptacao emocional real-time | Nao | Nao | Nao | Nao | Nao | SIM |
-| Correcao sem interromper | Nao | Parcial | Nao | Sim | Nao | Parcial |
-| Memoria persistente | Nao | Sim | Nao | Nao | Nao | Parcial |
+| Multi-agent architecture | No | Yes (GPT-5.2) | No | Partial | No | Partial |
+| Human tutor + AI together | No | No | No | No | Partial | YES |
+| Realistic avatar | Lily (2D) | Yes (3D) | No | No | No | Partial |
+| Real-time emotional adaptation | No | No | No | No | No | YES |
+| Correction without interrupting | No | Partial | No | Yes | No | Partial |
+| Persistent memory | No | Yes | No | No | No | Partial |
 
 ### Track 3: Live Learning & Real-Time Context
 
 | Feature | Duolingo | Praktika | ELSA | Speak | Preply | Gap? |
 |---|---|---|---|---|---|---|
-| AI copilot durante aula ao vivo | Nao | Nao | Nao | Nao | Nao | SIM |
-| Vocabulario contextual real-time | Nao | Nao | Nao | Nao | Nao | SIM |
-| Painel para o tutor | N/A | N/A | N/A | N/A | Basico | SIM |
-| Debrief pos-aula automatico | Nao | Nao | Nao | Nao | Lesson Insights | Parcial |
-| Flashcards contextuais | Nao | Nao | Nao | Nao | Nao | SIM |
-| Indicador de confianca em tempo real | Nao | Nao | Nao | Nao | Nao | SIM |
+| AI copilot during live lesson | No | No | No | No | No | YES |
+| Real-time contextual vocabulary | No | No | No | No | No | YES |
+| Tutor panel | N/A | N/A | N/A | N/A | Basic | YES |
+| Automatic post-lesson debrief | No | No | No | No | Lesson Insights | Partial |
+| Contextual flashcards | No | No | No | No | No | YES |
+| Real-time confidence indicator | No | No | No | No | No | YES |
 
 ---
 
 ## 5. SWOT + Feature Checklist + User Flow (UXtweak)
 
-Framework em 3 camadas:
+3-layer framework:
 
-### Camada 1: Feature Checklist
+### Layer 1: Feature Checklist
 
-Lista de features com checkmark por concorrente (como modelo 4 acima).
+Feature list with checkmarks per competitor (like model 4 above).
 
-### Camada 2: User Flow Mapping
+### Layer 2: User Flow Mapping
 
-Mapeamento dos fluxos criticos para language learning:
+Mapping of critical flows for language learning:
 
 ```
-Signup -> Placement Test -> Primeira Aula/Pratica -> Feedback -> Retencao
+Signup -> Placement Test -> First Lesson/Practice -> Feedback -> Retention
 ```
 
-Para cada fluxo, avaliar:
-- Numero de passos
-- Friccao (onde o usuario desiste?)
-- Tempo ate primeiro valor
-- Personalizacao
+For each flow, evaluate:
+- Number of steps
+- Friction (where does the user drop off?)
+- Time to first value
+- Personalization
 
-### Camada 3: SWOT por concorrente
+### Layer 3: SWOT per competitor
 
 **Duolingo:**
-- S: Gamificacao, base massiva, GPT-4 integrado, 73% gross margins
-- W: Raso para intermediarios, sem interacao humana, pronuncia basica
-- O: Video Call com Lily mostra ambicao conversacional
-- T: Plateau de avancados, dependencia de gamificacao
+- S: Gamification, massive user base, GPT-4 integrated, 73% gross margins
+- W: Shallow for intermediates, no human interaction, basic pronunciation
+- O: Video Call with Lily shows conversational ambition
+- T: Advanced learners plateau, gamification dependency
 
 **Praktika:**
-- S: Melhor arquitetura multi-agent, memoria persistente, 9 idiomas
-- W: Base pequena, sem tutores humanos, $8/mes pode limitar revenue
-- O: Multi-modal (fotos, audio, video, documentos)
-- T: Dependencia total de OpenAI
+- S: Best multi-agent architecture, persistent memory, 9 languages
+- W: Small user base, no human tutors, $8/month may limit revenue
+- O: Multi-modal (photos, audio, video, documents)
+- T: Total dependency on OpenAI
 
 **ELSA:**
-- S: Melhor feedback de pronuncia do mercado, nivel fonetico
-- W: So ingles, foco estreito em pronuncia
-- O: Tutor bilingue (comeca na L1, transiciona para L2)
-- T: Escopo limitado vs. players mais amplos
+- S: Best pronunciation feedback on the market, phoneme-level
+- W: English only, narrow pronunciation focus
+- O: Bilingual tutor (starts in L1, transitions to L2)
+- T: Limited scope vs. broader players
 
 **Speak:**
-- S: Melhor speech recognition para non-native, 25M+ licoes
-- W: 6 idiomas, sem tutor humano, sem contexto cultural
-- O: Avaliacao de $1B mostra confianca do mercado
-- T: Concorrencia com Duolingo e Praktika em conversacao
+- S: Best speech recognition for non-native speakers, 25M+ lessons
+- W: 6 languages, no human tutor, no cultural context
+- O: $1B valuation shows market confidence
+- T: Competition with Duolingo and Praktika in conversation
 
 **Preply:**
-- S: Tutores humanos reais, marketplace global, EBITDA-positivo, $1.2B
-- W: AI ainda nascente, dependente de tutores individuais
-- O: Combinar humano + AI e unico posicionamento
-- T: AI pura pode reduzir demanda por tutores humanos
+- S: Real human tutors, global marketplace, EBITDA-positive, $1.2B
+- W: AI still nascent, dependent on individual tutors
+- O: Combining human + AI is a unique positioning
+- T: Pure AI may reduce demand for human tutors
 
-**Fonte:** https://blog.uxtweak.com/competitive-analysis-in-ux-research/
+**Source:** https://blog.uxtweak.com/competitive-analysis-in-ux-research/
 
 ---
 
-## Comparacao dos Frameworks
+## Framework Comparison
 
-| Framework | Complexidade | Tempo | Melhor para | Ferramentas |
+| Framework | Complexity | Time | Best for | Tools |
 |---|---|---|---|---|
-| UX Honeycomb | Alta | 2-3 dias | Benchmark completo | Planilha + testes |
-| Screen-by-Screen | Media | 4-6h | Visual para pitch | Screenshots + anotacoes |
-| Heuristic Evaluation | Media | 3-4h | Encontrar problemas de UX | Planilha com scores |
-| Feature x AI Matrix | Baixa | 1-2h | Identificar gaps tecnicos | Planilha simples |
-| SWOT + Checklist | Media | 2-3h | Visao estrategica completa | Planilha + quadro |
+| UX Honeycomb | High | 2-3 days | Complete benchmark | Spreadsheet + tests |
+| Screen-by-Screen | Medium | 4-6h | Visual for pitch | Screenshots + annotations |
+| Heuristic Evaluation | Medium | 3-4h | Finding UX problems | Spreadsheet with scores |
+| Feature x AI Matrix | Low | 1-2h | Identifying technical gaps | Simple spreadsheet |
+| SWOT + Checklist | Medium | 2-3h | Complete strategic view | Spreadsheet + board |
 
-**Para o hackathon (tempo limitado):** usar Feature x AI Matrix (modelo 4) + SWOT simplificado (modelo 5). Pode ser feito em 2-3h e cabe no pitch.
+**For the hackathon (limited time):** use Feature x AI Matrix (model 4) + simplified SWOT (model 5). Can be done in 2-3h and fits in the pitch.

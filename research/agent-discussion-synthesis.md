@@ -1,156 +1,156 @@
-# Sintese da Discussao dos Agentes (20 perspectivas)
+# Agent Discussion Synthesis (20 perspectives)
 
-10 agentes com papeis distintos analisaram todo o material do repo. Aqui esta a sintese consolidada.
+10 agents with distinct roles analyzed all repo material. Here is the consolidated synthesis.
 
 ---
 
-## CONSENSO: RANKING DAS PROPOSTAS
+## CONSENSUS: PROPOSAL RANKING
 
-| Agente | 1o lugar | 2o lugar | 3o lugar |
+| Agent | 1st place | 2nd place | 3rd place |
 |---|---|---|---|
 | Hackathon Judge | LiveLens (C3) | TutorBridge (C2) | LinguaMap (C1) |
 | Product Manager | TutorBridge (C2) | LiveLens (C3) | LinguaMap (C1) |
-| AI/ML Engineer | LinguaMap (C1) feasivel, TutorBridge (C2) recomendado | LiveLens (C3) | LinguaMap (C1) |
+| AI/ML Engineer | LinguaMap (C1) feasible, TutorBridge (C2) recommended | LiveLens (C3) | LinguaMap (C1) |
 | Pitch Coach | LiveLens (C3) | TutorBridge (C2) | LinguaMap (C1) |
-| Devil's Advocate | TutorBridge (C2) com cortes | LiveLens (C3) | LinguaMap (C1) |
-| Synthesis Expert | **Hibrido (C2+C3)** | - | - |
-| Team Formation | LinguaMap (C1) para Mariana | TutorBridge (C2) | LiveLens (C3) |
-| Frontend Dev | LiveLens (C3) impacto, LinguaMap (C1) feasivel | TutorBridge (C2) | - |
+| Devil's Advocate | TutorBridge (C2) with cuts | LiveLens (C3) | LinguaMap (C1) |
+| Synthesis Expert | **Hybrid (C2+C3)** | - | - |
+| Team Formation | LinguaMap (C1) for Mariana | TutorBridge (C2) | LiveLens (C3) |
+| Frontend Dev | LiveLens (C3) impact, LinguaMap (C1) feasible | TutorBridge (C2) | - |
 | UX Researcher | LiveLens (C3) | TutorBridge (C2) | LinguaMap (C1) |
-| Voice AI Specialist | TutorBridge (C2) ou LiveLens (C3) | - | LinguaMap (C1) |
+| Voice AI Specialist | TutorBridge (C2) or LiveLens (C3) | - | LinguaMap (C1) |
 
-**Resultado:** LiveLens e TutorBridge empatam. LinguaMap e unanimemente 3o lugar. A proposta hibrida (FluentLoop) do Synthesis Expert combina os melhores elementos.
-
----
-
-## TOP 10 INSIGHTS MAIS IMPORTANTES
-
-### 1. "Pare de pesquisar. Comece a construir." (Hackathon Judge)
-> "Sua pesquisa e melhor que 95% dos times de hackathon. Isso e forca e risco - voce gastou tempo significativo em analise que poderia ter ido para construcao. A fase de pesquisa acabou."
-
-### 2. "Dashboards nao vencem hackathons." (Hackathon Judge + Frontend Dev)
-> "Vi centenas de dashboards em hackathons. A visualizacao e o output, nao a inovacao. Jurados vao pensar 'graficos legais' mas nao 'isso muda como pessoas aprendem.'"
-
-### 3. "O time com a melhor demo vence." (Hackathon Judge + Pitch Coach)
-> "Uma demo bugada ao vivo vence um slide deck perfeito toda vez. Nao a melhor pesquisa. Nao o melhor diagrama de arquitetura. A melhor demo."
-
-### 4. "Thymia e toxico como dependencia." (Devil's Advocate + Voice AI)
-> "Thymia foi construido para avaliacao clinica de saude mental, nao para medir confianca em aprendizado de idiomas. Se um juiz perguntar o que o score significa, voce estara mostrando dados de risco de depressao como 'confianca linguistica'. Use como sinal binario (estressado/relaxado), nunca como score numerico preciso."
-
-### 5. "Corte 7 agentes para 2." (AI/ML Engineer + Devil's Advocate)
-> "Voce nao tem um sistema multi-agente. Voce tem um prompt OpenAI com system messages diferentes. Chame de 'agentes' na apresentacao. Ninguem vai auditar seu codigo."
-
-### 6. "TutorBridge e a estrategia de plataforma da Preply." (Product Manager)
-> "Todo concorrente esta correndo para IA pura. Preply nao pode vencer essa corrida. O moat da Preply sao 40,000+ tutores humanos. TutorBridge faz disso uma vantagem composta - a IA melhora porque o tutor da estrategia, o tutor melhora porque a IA da dados."
-
-### 7. "LiveLens se explica sozinho." (Frontend Dev + Pitch Coach)
-> "Se um juiz pode entender seu produto assistindo a demo por 10 segundos com o som desligado, voce vence. LiveLens passa nesse teste. Uma video call split-screen com sidebars iluminando em tempo real e instantaneamente legivel."
-
-### 8. "Foque nos Tier 1 metrics, nao em Thymia." (Voice AI Specialist)
-> "Speech rate, Mean Length of Run, filled pauses, response latency - todos extraiveis do Whisper sem API extra. Tem decadas de pesquisa SLA por tras. Sao visualmente impactantes. Sao defensaveis."
-
-### 9. "Remova o indicador de confianca do aluno." (UX Researcher)
-> "Mostrar ao aluno sua ansiedade em tempo real amplifica a ansiedade. Loop de biofeedback documentado. Mostre so para o tutor e no debrief pos-aula."
-
-### 10. "Recrute Gleb, Beatriz e Amir." (Team Formation)
-> "Gleb Sokolovski (AI/ML + backend, Co-Founder Uni-Chat), Beatriz Ribeiro (Frontend + design, Elisava), Amir Narimani (PhD Learning Analytics + full-stack). Time de 4 com cobertura perfeita."
+**Result:** LiveLens and TutorBridge tied. LinguaMap unanimously 3rd place. The hybrid proposal (FluentLoop) from the Synthesis Expert combines the best elements.
 
 ---
 
-## DECISOES CRITICAS A TOMAR AGORA
+## TOP 10 MOST IMPORTANT INSIGHTS
 
-### Opcao A: LiveLens (MVP cortado)
-- **Pro:** Demo mais impressionante, gap de mercado total, pitch se vende sozinho
-- **Contra:** 26h estimadas (estoura 24h), real-time pipeline arriscado, dual UI
-- **MVP:** So sidebar do aluno + debrief Anam. Painel do tutor e mockup.
-- **Defensores:** Hackathon Judge, Pitch Coach, Frontend Dev, UX Researcher
+### 1. "Stop researching. Start building." (Hackathon Judge)
+> "Your research is better than 95% of hackathon teams. That's a strength and a risk - you spent significant time on analysis that could have gone to building. The research phase is over."
 
-### Opcao B: TutorBridge (MVP cortado)
-- **Pro:** Melhor product-market fit, estrategia de plataforma, monetizavel
-- **Contra:** Multi-agent e overscoped, Anam + Agora + OpenAI simultaneos
-- **MVP:** Tutor define goal -> conversa com avatar -> relatorio pos-sessao. 2 features, nao 7.
-- **Defensores:** Product Manager, AI/ML Engineer, Devil's Advocate
+### 2. "Dashboards don't win hackathons." (Hackathon Judge + Frontend Dev)
+> "I've seen hundreds of dashboards at hackathons. Visualization is the output, not the innovation. Judges will think 'cool charts' but not 'this changes how people learn.'"
 
-### Opcao C: FluentLoop (Hibrido C2+C3)
-- **Pro:** Cobre 2 tracks, pipeline compartilhado, historia mais completa
-- **Contra:** Mais complexo, risco de nao entregar nada bem
-- **MVP:** Copilot na aula + 1 cenario de pratica com avatar + debrief
-- **Defensores:** Synthesis Expert
+### 3. "The team with the best demo wins." (Hackathon Judge + Pitch Coach)
+> "A buggy live demo beats a perfect slide deck every time. Not the best research. Not the best architecture diagram. The best demo."
 
-### Opcao D: LinguaMap (seguro)
-- **Pro:** Mais feasivel em 24h, melhor match com skills da Mariana
-- **Contra:** "Dashboard nao vence hackathon", unanimemente 3o lugar
-- **Defensores:** Team Formation (por skills match)
+### 4. "Thymia is toxic as a dependency." (Devil's Advocate + Voice AI)
+> "Thymia was built for clinical mental health assessment, not to measure confidence in language learning. If a judge asks what the score means, you'll be showing depression risk data as 'linguistic confidence'. Use as a binary signal (stressed/relaxed), never as a precise numeric score."
+
+### 5. "Cut 7 agents to 2." (AI/ML Engineer + Devil's Advocate)
+> "You don't have a multi-agent system. You have an OpenAI prompt with different system messages. Call them 'agents' in the presentation. Nobody will audit your code."
+
+### 6. "TutorBridge is Preply's platform strategy." (Product Manager)
+> "Every competitor is racing toward pure AI. Preply can't win that race. Preply's moat is 40,000+ human tutors. TutorBridge makes that a compounding advantage - AI improves because the tutor provides strategy, the tutor improves because AI provides data."
+
+### 7. "LiveLens explains itself." (Frontend Dev + Pitch Coach)
+> "If a judge can understand your product by watching the demo for 10 seconds with the sound off, you win. LiveLens passes this test. A split-screen video call with sidebars lighting up in real time is instantly readable."
+
+### 8. "Focus on Tier 1 metrics, not Thymia." (Voice AI Specialist)
+> "Speech rate, Mean Length of Run, filled pauses, response latency - all extractable from Whisper without extra API. Decades of SLA research behind them. Visually impactful. Defensible."
+
+### 9. "Remove the student confidence indicator." (UX Researcher)
+> "Showing students their anxiety in real time amplifies anxiety. Documented biofeedback loop. Show only to the tutor and in the post-lesson debrief."
+
+### 10. "Recruit Gleb, Beatriz and Amir." (Team Formation)
+> "Gleb Sokolovski (AI/ML + backend, Co-Founder Uni-Chat), Beatriz Ribeiro (Frontend + design, Elisava), Amir Narimani (PhD Learning Analytics + full-stack). Team of 4 with perfect coverage."
 
 ---
 
-## O QUE FAKING E ACEITAVEL (consenso AI/ML + Devil's Advocate)
+## CRITICAL DECISIONS TO MAKE NOW
 
-| REAL (obrigatorio) | FAKE (sem culpa) |
+### Option A: LiveLens (cut MVP)
+- **Pro:** Most impressive demo, total market gap, pitch sells itself
+- **Con:** 26h estimated (exceeds 24h), real-time pipeline risky, dual UI
+- **MVP:** Only student sidebar + Anam debrief. Tutor panel is a mockup.
+- **Advocates:** Hackathon Judge, Pitch Coach, Frontend Dev, UX Researcher
+
+### Option B: TutorBridge (cut MVP)
+- **Pro:** Best product-market fit, platform strategy, monetizable
+- **Con:** Multi-agent is overscoped, Anam + Agora + OpenAI simultaneously
+- **MVP:** Tutor sets goal -> conversation with avatar -> post-session report. 2 features, not 7.
+- **Advocates:** Product Manager, AI/ML Engineer, Devil's Advocate
+
+### Option C: FluentLoop (Hybrid C2+C3)
+- **Pro:** Covers 2 tracks, shared pipeline, more complete story
+- **Con:** More complex, risk of delivering nothing well
+- **MVP:** Copilot in lesson + 1 practice scenario with avatar + debrief
+- **Advocates:** Synthesis Expert
+
+### Option D: LinguaMap (safe)
+- **Pro:** Most feasible in 24h, best match with Mariana's skills
+- **Con:** "Dashboards don't win hackathons", unanimously 3rd place
+- **Advocates:** Team Formation (by skills match)
+
+---
+
+## WHAT FAKING IS ACCEPTABLE (AI/ML + Devil's Advocate consensus)
+
+| REAL (mandatory) | FAKE (guilt-free) |
 |---|---|
-| Conversa por voz com IA (OpenAI Realtime) | "Multi-agent orchestration" (sao prompts diferentes) |
-| Transcricao e deteccao de erros | Adaptacao emocional em tempo real (hardcode momentos) |
-| Goal do tutor -> cenario | Thymia dados se API falhar (gere scores plausiveis) |
-| | Dados historicos (seed 5-10 sessoes fake) |
-| | Exercicios gerados (hardcode 3-4 para o cenario demo) |
-| | Notificacoes proativas (mockup UI) |
+| Voice conversation with AI (OpenAI Realtime) | "Multi-agent orchestration" (just different prompts) |
+| Transcription and error detection | Real-time emotional adaptation (hardcode moments) |
+| Tutor goal -> scenario | Thymia data if API fails (generate plausible scores) |
+| | Historical data (seed 5-10 fake sessions) |
+| | Generated exercises (hardcode 3-4 for the demo scenario) |
+| | Proactive notifications (UI mockup) |
 
 ---
 
-## PITCH SCRIPT (Pitch Coach - para LiveLens)
+## PITCH SCRIPT (Pitch Coach - for LiveLens)
 
 **0:00-0:30 HOOK:**
-> "Voce esta numa aula de espanhol. Quer dizer 'perdi meu voo de conexao' mas congela. Nao sabe a palavra. Seu tutor espera. O silencio e doloroso. Agora imagine: 'vuelo de conexion' aparece discretamente na sua sidebar. Voce olha. Voce fala. A conversa nunca para."
+> "You're in a Spanish lesson. You want to say 'I missed my connecting flight' but you freeze. You don't know the word. Your tutor waits. The silence is painful. Now imagine: 'vuelo de conexion' appears discreetly on your sidebar. You look. You speak. The conversation never stops."
 
-**0:30-0:45 SOLUCAO:**
-> "LiveLens e um copiloto IA invisivel dentro de cada aula Preply."
+**0:30-0:45 SOLUTION:**
+> "LiveLens is an invisible AI copilot inside every Preply lesson."
 
-**0:45-3:00 DEMO AO VIVO:**
-- Agora video call entre 2 membros do time
-- Aluno hesita -> sidebar mostra vocabulario correto
-- Painel do tutor mostra alertas + confianca
-- Aula termina -> Avatar Anam faz debrief de 20 segundos
+**0:45-3:00 LIVE DEMO:**
+- Agora video call between 2 team members
+- Student hesitates -> sidebar shows correct vocabulary
+- Tutor panel shows alerts + confidence
+- Lesson ends -> Anam Avatar does 20-second debrief
 
-**3:00-3:30 ESTRATEGIA:**
-> "Nao construimos outro tutor IA. Demos superpoderes ao tutor humano."
+**3:00-3:30 STRATEGY:**
+> "We didn't build another AI tutor. We gave the human tutor superpowers."
 
-**3:30-3:45 FUTURO:**
-> "Hoje e copiloto para aulas. Amanha, os dados alimentam pratica personalizada entre aulas."
+**3:30-3:45 FUTURE:**
+> "Today it's a copilot for lessons. Tomorrow, the data feeds personalized practice between lessons."
 
-**3:45-4:00 FECHAMENTO:**
-> "LiveLens. Superpoderes para cada aula."
+**3:45-4:00 CLOSE:**
+> "LiveLens. Superpowers for every lesson."
 
 ---
 
-## EQUIPE RECOMENDADA (para qualquer proposta)
+## RECOMMENDED TEAM (for any proposal)
 
-| Prioridade | Nome | Papel | Abordagem |
+| Priority | Name | Role | Approach |
 |---|---|---|---|
-| 1 | **Gleb Sokolovski** | AI/ML + Backend | "Vi que voce esta construindo Uni-Chat - ja vive no espaco de IA conversacional..." |
-| 2 | **Beatriz Ribeiro** | Frontend + Design | "Preciso de alguem que faz dados ficarem bonitos. Dashboard com heatmaps, radar charts..." |
-| 3 | **Amir Narimani** | Domain Expert + Full-stack | "Seu PhD em Learning Analytics e a peca que falta. Faz o produto academicamente credivel..." |
-| Backup | Junfan Zhu (se Gleb indisponivel), Guido Turnes (se Beatriz), Janne Rotter (se Amir) |
+| 1 | **Gleb Sokolovski** | AI/ML + Backend | "I see you're building Uni-Chat - you already live in the conversational AI space..." |
+| 2 | **Beatriz Ribeiro** | Frontend + Design | "I need someone who makes data look beautiful. Dashboards with heatmaps, radar charts..." |
+| 3 | **Amir Narimani** | Domain Expert + Full-stack | "Your PhD in Learning Analytics is the missing piece. Makes the product academically credible..." |
+| Backup | Junfan Zhu (if Gleb unavailable), Guido Turnes (if Beatriz), Janne Rotter (if Amir) |
 
-**Dark horses:** Nataliia Pimankova (Python forte, subestimada), Oleguer Gabernet (Data + EdTech), PHAN/ChronosWorlds (vencedor de hackathon)
+**Dark horses:** Nataliia Pimankova (strong Python, underestimated), Oleguer Gabernet (Data + EdTech), PHAN/ChronosWorlds (hackathon winner)
 
-**Evitar em time pequeno:** Alessandro Vecchi (CPO, nao coda), Glib Gorchannikov (PM, nao coda), devs .NET (Adrian, Artem, Vladyslav Y.)
-
----
-
-## ALERTAS DO DEVIL'S ADVOCATE
-
-1. **Thymia mede depressao, nao confianca linguistica.** Se um juiz perguntar, voce estara mostrando dados clinicos como metrica de aprendizado.
-2. **"Usa todas as 5 tecnologias" nao e diferencial.** Jurados veem atraves disso. Use as que importam.
-3. **Sem plano de fallback.** Nenhuma proposta menciona o que acontece quando API cai. TENHA um video pre-gravado da demo.
-4. **Estimativas de tempo sao fantasia.** Multiplique por 3. WiFi de hackathon + APIs desconhecidas = dor.
-5. **Privacidade/GDPR.** LiveLens escuta toda a conversa e manda para OpenAI/Thymia. Em Barcelona (EU), isso e um problema. Adicione tela de consentimento.
+**Avoid in small team:** Alessandro Vecchi (CPO, doesn't code), Glib Gorchannikov (PM, doesn't code), .NET devs (Adrian, Artem, Vladyslav Y.)
 
 ---
 
-## PROXIMOS PASSOS IMEDIATOS
+## DEVIL'S ADVOCATE ALERTS
 
-1. **Escolher proposta** (LiveLens, TutorBridge, ou Hibrido)
-2. **Recrutar equipe** (prioridade: Gleb, Beatriz, Amir)
-3. **Testar APIs** nos primeiros 30 min (Agora + OpenAI Realtime = prioridade critica)
-4. **Gravar video backup** da demo no final
-5. **Ensaiar pitch** 3x minimo antes de apresentar
+1. **Thymia measures depression, not linguistic confidence.** If a judge asks, you'll be showing clinical data as a learning metric.
+2. **"Uses all 5 technologies" is not a differentiator.** Judges see through it. Use the ones that matter.
+3. **No fallback plan.** No proposal mentions what happens when the API goes down. HAVE a pre-recorded demo video.
+4. **Time estimates are fantasy.** Multiply by 3. Hackathon WiFi + unknown APIs = pain.
+5. **Privacy/GDPR.** LiveLens listens to the entire conversation and sends it to OpenAI/Thymia. In Barcelona (EU), that's a problem. Add a consent screen.
+
+---
+
+## IMMEDIATE NEXT STEPS
+
+1. **Choose proposal** (LiveLens, TutorBridge, or Hybrid)
+2. **Recruit team** (priority: Gleb, Beatriz, Amir)
+3. **Test APIs** in the first 30 min (Agora + OpenAI Realtime = critical priority)
+4. **Record backup video** of the demo at the end
+5. **Rehearse pitch** minimum 3x before presenting

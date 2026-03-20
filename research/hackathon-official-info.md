@@ -1,23 +1,23 @@
-# Informacoes Oficiais do Hackathon (do repo oficial)
+# Official Hackathon Information (from the official repo)
 
-Fonte: https://github.com/AgoraIO-Conversational-AI/hackathon-2026-03-20-agora-preply
+Source: https://github.com/AgoraIO-Conversational-AI/hackathon-2026-03-20-agora-preply
 
 ---
 
 ## Agenda
 
-### Sexta 20/03
+### Friday 03/20
 
-| Hora | Atividade |
-|------|-----------|
-| 17:00-17:30 | Registro (lobby) |
+| Time | Activity |
+|------|----------|
+| 17:00-17:30 | Registration (lobby) |
 | 17:30-18:30 | Keynote (Max/OpenAI, Ben/Agora, Preply) |
-| 18:30-20:00 | Pitch de projetos, formacao de times, mentoria |
-| 20:00-20:30 | Encerramento do dia |
+| 18:30-20:00 | Project pitches, team formation, mentorship |
+| 20:00-20:30 | Day closing |
 
-**Salas de mentoria (so sexta):**
+**Mentorship rooms (Friday only):**
 
-| Sala | Mentor |
+| Room | Mentor |
 |------|--------|
 | Power People's Progress A | Agora (Ben Weekes) |
 | Power People's Progress B | OpenAI (Max Hudlberger) |
@@ -26,134 +26,134 @@ Fonte: https://github.com/AgoraIO-Conversational-AI/hackathon-2026-03-20-agora-p
 | Catalan | AWS (Borys Pratsiuk) |
 | Spanish & Ukrainian | Preply (Borys Pratsiuk) |
 
-### Sabado 21/03
+### Saturday 03/21
 
-| Hora | Atividade |
-|------|-----------|
-| 09:00-10:00 | Cafe da manha |
-| 10:00 | Agenda do dia |
+| Time | Activity |
+|------|----------|
+| 09:00-10:00 | Breakfast |
+| 10:00 | Day agenda |
 | 10:00-13:00 | Coding (3h) |
-| 13:00-14:00 | Almoco |
+| 13:00-14:00 | Lunch |
 | 14:00-16:00 | Coding + submissions (2h) |
-| 16:00-17:00 | Apresentacoes |
-| 17:00 | Premiacao |
-| 17:00-18:00 | Networking e encerramento |
+| 16:00-17:00 | Presentations |
+| 17:00 | Awards |
+| 17:00-18:00 | Networking and closing |
 
-**ATENCAO: Sao apenas ~5-6 horas de coding efetivo no sabado!**
+**WARNING: There are only ~5-6 hours of effective coding on Saturday!**
 
 ---
 
-## Criterios de Avaliacao (cada categoria 1-5, peso igual 20%)
+## Evaluation Criteria (each category 1-5, equal weight 20%)
 
-| Categoria | 1 (baixo) | 5 (alto) |
-|-----------|-----------|----------|
-| **Technology Use** | Uma unica tecnologia/provedor | Multiplas tecnologias combinadas (STT, TTS, LLMs, Avatars) |
-| **Relevancy** | Nao relevante para Preply ou aprendizado | Poderia ser adicionado ao produto amanha |
-| **Product Scope** | Resolve problema de nicho | Resolve problema global afetando milhoes |
-| **Presentation & Demo** | Submeteu e apresentou mas sem demo ao vivo | Demo ao vivo, pitch pronto para YCombinator |
-| **Quality** | Mal funcionando, UX ruim | UX bem pensada, sem bugs, boa qualidade. Inclui AI Craftsmanship (HOW_WE_BUILT.md) |
+| Category | 1 (low) | 5 (high) |
+|----------|---------|----------|
+| **Technology Use** | A single technology/provider | Multiple technologies combined (STT, TTS, LLMs, Avatars) |
+| **Relevancy** | Not relevant to Preply or learning | Could be added to the product tomorrow |
+| **Product Scope** | Solves a niche problem | Solves a global problem affecting millions |
+| **Presentation & Demo** | Submitted and presented but no live demo | Live demo, YCombinator-ready pitch |
+| **Quality** | Poorly functioning, bad UX | Well-thought-out UX, no bugs, good quality. Includes AI Craftsmanship (HOW_WE_BUILT.md) |
 
-**Bonus: Agora ConvoAI Integration** - ate +1 ponto extra
+**Bonus: Agora ConvoAI Integration** - up to +1 extra point
 
-**Score maximo: 6** (5 base + 1 bonus Agora)
+**Maximum score: 6** (5 base + 1 Agora bonus)
 
-### Juizes
+### Judges
 - **Petro Loboda** - Preply (Sr Director of Engineering)
 - **Ben Weekes** - Agora (Sr Architect)
 - **Max Hudlberger** - OpenAI (Applied AI / Solutions Architect)
 
 ---
 
-## Submissao
+## Submission
 
-1. Fork do repo oficial
-2. Criar pasta em `submissions/team-name/`
-3. Incluir: README.md, HOW_WE_BUILT.md, demo.mp4, src/, docs/
-4. PR para o repo original
+1. Fork the official repo
+2. Create a folder at `submissions/team-name/`
+3. Include: README.md, HOW_WE_BUILT.md, demo.mp4, src/, docs/
+4. PR to the original repo
 
-### HOW_WE_BUILT.md (importante para score de Quality)
+### HOW_WE_BUILT.md (important for Quality score)
 
-Documentar:
-- Como usou IA para planejar arquitetura
-- Quais modelos/ferramentas de dev (Claude Code, Codex CLI, etc)
-- Estrategias de prompting que funcionaram
-- Como testou codigo gerado por IA
-- Desafios e pivots
+Document:
+- How you used AI to plan architecture
+- Which dev models/tools (Claude Code, Codex CLI, etc)
+- Prompting strategies that worked
+- How you tested AI-generated code
+- Challenges and pivots
 
 ---
 
-## Stack Oficial e Bonus Points
+## Official Stack and Bonus Points
 
-### Produtos Agora disponiveis
+### Available Agora Products
 
-| Tecnologia | Descricao | Docs |
-|------------|-----------|------|
-| **Agora Conversational AI** | Voice AI agents com pipeline STT -> LLM -> TTS | [Docs](https://docs.agora.io/en/conversational-ai/overview/product-overview) |
-| **Agora RTC SDK** | Audio/video calling em tempo real | [Docs](https://docs.agora.io/en/video-calling/overview/product-overview) |
-| **Agora RTM (Signaling)** | Messaging em tempo real, presence, data channels | [Docs](https://docs.agora.io/en/signaling/overview/product-overview) |
+| Technology | Description | Docs |
+|------------|-------------|------|
+| **Agora Conversational AI** | Voice AI agents with STT -> LLM -> TTS pipeline | [Docs](https://docs.agora.io/en/conversational-ai/overview/product-overview) |
+| **Agora RTC SDK** | Real-time audio/video calling | [Docs](https://docs.agora.io/en/video-calling/overview/product-overview) |
+| **Agora RTM (Signaling)** | Real-time messaging, presence, data channels | [Docs](https://docs.agora.io/en/signaling/overview/product-overview) |
 | **Agora App Builder** | No-code video calling | [App Builder](https://appbuilder.agora.io/) |
-| **Agora Cloud Recording** | Gravacao de calls na cloud | [Docs](https://docs.agora.io/en/cloud-recording/overview/product-overview) |
+| **Agora Cloud Recording** | Cloud call recording | [Docs](https://docs.agora.io/en/cloud-recording/overview/product-overview) |
 
 ### Tech Partners
 
-| Partner | O que faz | Bonus? |
-|---------|-----------|--------|
-| **Agora ConvoAI** | Pipeline completo de voz: STT -> LLM -> TTS | **SIM (+1 ponto)** |
-| **OpenAI** | LLM (GPT), TTS | Nao separado |
-| **AWS** | Bedrock, Transcribe, Translate, Polly | Nao separado |
-| **Anam** | Video avatars fotorrealistas (180ms latencia) | Nao separado, mas fortalece score |
-| **Thymia** | Voice biomarkers: stress, burnout, fadiga, emocoes | Nao separado, mas fortalece score |
-| **Shen.AI** | Vitais via camera: frequencia cardiaca, HRV, stress, respiracao, pressao | Nao separado, mas fortalece score |
+| Partner | What it does | Bonus? |
+|---------|-------------|--------|
+| **Agora ConvoAI** | Complete voice pipeline: STT -> LLM -> TTS | **YES (+1 point)** |
+| **OpenAI** | LLM (GPT), TTS | Not separate |
+| **AWS** | Bedrock, Transcribe, Translate, Polly | Not separate |
+| **Anam** | Photorealistic video avatars (180ms latency) | Not separate, but strengthens score |
+| **Thymia** | Voice biomarkers: stress, burnout, fatigue, emotions | Not separate, but strengthens score |
+| **Shen.AI** | Camera-based vitals: heart rate, HRV, stress, breathing, blood pressure | Not separate, but strengthens score |
 
-**IMPORTANTE: Shen.AI e um novo tech partner nao mencionado antes!**
+**IMPORTANT: Shen.AI is a new tech partner not mentioned before!**
 
 ---
 
-## Repos Oficiais de Starter Code
+## Official Starter Code Repos
 
-| Repo | Descricao |
-|------|-----------|
-| [agent-samples](https://github.com/AgoraIO-Conversational-AI/agent-samples) | Full-stack voice/video AI agent com Python backend e React frontends |
-| [vibe-coding-lovable](https://github.com/AgoraIO-Conversational-AI/vibe-coding-lovable) | Starter para Lovable (browser, zero local setup) |
-| [vibe-coding-v0](https://github.com/AgoraIO-Conversational-AI/vibe-coding-v0) | Starter para v0 (Vercel) |
-| [server-custom-llm](https://github.com/AgoraIO-Conversational-AI/server-custom-llm) | Middleware Custom LLM para RAG, tool calling, Thymia, memoria |
+| Repo | Description |
+|------|-------------|
+| [agent-samples](https://github.com/AgoraIO-Conversational-AI/agent-samples) | Full-stack voice/video AI agent with Python backend and React frontends |
+| [vibe-coding-lovable](https://github.com/AgoraIO-Conversational-AI/vibe-coding-lovable) | Starter for Lovable (browser, zero local setup) |
+| [vibe-coding-v0](https://github.com/AgoraIO-Conversational-AI/vibe-coding-v0) | Starter for v0 (Vercel) |
+| [server-custom-llm](https://github.com/AgoraIO-Conversational-AI/server-custom-llm) | Custom LLM Middleware for RAG, tool calling, Thymia, memory |
 
-### Agora Skill para Claude Code
+### Agora Skill for Claude Code
 
 ```bash
 npx skills add github:AgoraIO-Conversational-AI/agora-skills
 ```
 
-### Demo ao vivo para testar
+### Live Demo to Test
 
 https://convoai-demo.agora.io/
 
 ---
 
-## Thought Starters Oficiais
+## Official Thought Starters
 
-1. **Language Anxiety Wellness Coach** - Avatar Anam + Thymia biomarkers, detecta stress e adapta pace
-2. **Pronunciation Practice with Voice Biomarkers** - Thymia para ir alem de speech recognition
-3. **AI Avatar Language Tutor** - Avatar Anam face-to-face, expressoes faciais, multiplos idiomas
-4. **Mock Interview Prep in Any Language** - Thymia para stress/confianca em entrevistas
-5. **Immersive Cultural Conversation Partner** - Cenarios reais (restaurante, direcoes, mercado)
-6. **Learning Progress Dashboard with AI Analytics** - Transcripts + Thymia data ao longo do tempo
-7. **Group Language Exchange Facilitator** - Agora RTC multi-party, moderacao por IA
+1. **Language Anxiety Wellness Coach** - Anam Avatar + Thymia biomarkers, detects stress and adapts pace
+2. **Pronunciation Practice with Voice Biomarkers** - Thymia to go beyond speech recognition
+3. **AI Avatar Language Tutor** - Anam Avatar face-to-face, facial expressions, multiple languages
+4. **Mock Interview Prep in Any Language** - Thymia for stress/confidence in interviews
+5. **Immersive Cultural Conversation Partner** - Real-world scenarios (restaurant, directions, market)
+6. **Learning Progress Dashboard with AI Analytics** - Transcripts + Thymia data over time
+7. **Group Language Exchange Facilitator** - Agora RTC multi-party, AI moderation
 
 ---
 
-## Arquitetura Base (Agora ConvoAI)
+## Base Architecture (Agora ConvoAI)
 
 ```
 Browser (React client)
     | audio/video via Agora SD-RTN
-AI Agent Instance (cloud, gerenciado pelo Agora)
+AI Agent Instance (cloud, managed by Agora)
     | STT -> LLM -> TTS pipeline
 Backend (Python, local)
-    -> chama Agora REST API para start/stop agents
+    -> calls Agora REST API to start/stop agents
 ```
 
-### Pipeline Mode (caminho mais rapido, 3 variaveis)
+### Pipeline Mode (fastest path, 3 variables)
 
 ```bash
 APP_ID=your_agora_app_id
@@ -161,9 +161,9 @@ APP_CERTIFICATE=your_agora_app_certificate
 PIPELINE_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Se tiver pipeline configurado no Agora Agent Builder, nao precisa de chave OpenAI nem config de TTS.
+If a pipeline is configured in Agora Agent Builder, no OpenAI key or TTS config is needed.
 
-### Inline Config (controle total)
+### Inline Config (full control)
 
 ```bash
 APP_ID=your_agora_app_id
@@ -174,18 +174,18 @@ TTS_KEY=your_tts_api_key
 TTS_VOICE_ID=astra
 ```
 
-### Integracao Thymia (via Custom LLM Server)
+### Thymia Integration (via Custom LLM Server)
 
 ```
 react-video-client-avatar -> simple-backend -> Agora ConvoAI -> server-custom-llm
-                                                                  |-- go-audio-subscriber (captura audio RTC)
+                                                                  |-- go-audio-subscriber (captures RTC audio)
                                                                   |-- Thymia module -> Thymia Sentinel API
-                                                                  |-- RTM -> Client (scores ao vivo)
+                                                                  |-- RTM -> Client (live scores)
 ```
 
-Biomarkers aparecem em 30-60s de fala. O agente pode referenciar os dados na conversa.
+Biomarkers appear after 30-60s of speech. The agent can reference the data in conversation.
 
-### Integracao Shen.AI (client-side, WASM)
+### Shen.AI Integration (client-side, WASM)
 
 ```
 react-video-client-avatar -> simple-backend -> Agora ConvoAI -> server-custom-llm
@@ -196,30 +196,30 @@ react-video-client-avatar -> simple-backend -> Agora ConvoAI -> server-custom-ll
               |-- RTM publish (vitals) -> server
 ```
 
-Roda no browser. Vitais publicados via RTM a cada 2 segundos.
+Runs in the browser. Vitals published via RTM every 2 seconds.
 
 ---
 
-## Implicacoes para Nossas Propostas
+## Implications for Our Proposals
 
-### O que muda com 6h de coding (nao 24h)
+### What changes with 6h of coding (not 24h)
 
-1. **Escopo precisa ser DRASTICAMENTE menor** - todas as estimativas anteriores de 22-26h sao impossiveis
-2. **Agora ConvoAI e obrigatorio** - unico bonus point disponivel
-3. **HOW_WE_BUILT.md e diferencial** - documentar processo com Claude Code
-4. **Demo ao vivo > tudo** - 20% do score e apresentacao/demo
-5. **Relevancy para Preply** - 20% do score, precisa ser algo que Preply adicionaria ao produto
-6. **Usar starter code** - nao reinventar a roda, comecar do agent-samples
+1. **Scope needs to be DRASTICALLY smaller** - all previous estimates of 22-26h are impossible
+2. **Agora ConvoAI is mandatory** - only bonus point available
+3. **HOW_WE_BUILT.md is a differentiator** - document the process with Claude Code
+4. **Live demo > everything** - 20% of the score is presentation/demo
+5. **Relevancy to Preply** - 20% of the score, needs to be something Preply would add to the product
+6. **Use starter code** - don't reinvent the wheel, start from agent-samples
 
-### Proposta viavel para 6h
+### Viable proposal for 6h
 
-Usar o agent-samples como base. Customizar o prompt do LLM para language learning. Adicionar Anam avatar. Adicionar Thymia. Focar na demo e no pitch. O Custom LLM server ja tem suporte a Thymia e Shen.AI built-in.
+Use agent-samples as a base. Customize the LLM prompt for language learning. Add Anam avatar. Add Thymia. Focus on the demo and the pitch. The Custom LLM server already has built-in Thymia and Shen.AI support.
 
-### Prioridade de integracao
+### Integration priority
 
-1. Agora ConvoAI (bonus point, base do projeto)
-2. OpenAI (LLM, ja integrado no ConvoAI)
-3. Anam (avatar, ja tem starter code)
-4. Thymia (biomarkers, ja tem recipe pronta)
-5. Shen.AI (vitais por camera, recipe pronta)
-6. AWS (se sobrar tempo)
+1. Agora ConvoAI (bonus point, project base)
+2. OpenAI (LLM, already integrated in ConvoAI)
+3. Anam (avatar, starter code already available)
+4. Thymia (biomarkers, ready-made recipe)
+5. Shen.AI (camera-based vitals, ready-made recipe)
+6. AWS (if time allows)

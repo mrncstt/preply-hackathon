@@ -1,24 +1,24 @@
 # Tech Partners - Hackathon
 
-Fonte oficial: https://github.com/AgoraIO-Conversational-AI/hackathon-2026-03-20-agora-preply
+Official source: https://github.com/AgoraIO-Conversational-AI/hackathon-2026-03-20-agora-preply
 
 ## Agora - Real-Time Audio/Video + Conversational AI (BONUS POINT)
 
-**Integrar Agora ConvoAI da ate +1 ponto bonus. Unico bonus disponivel.**
+**Integrating Agora ConvoAI gives up to +1 bonus point. Only available bonus.**
 
-- **Conversational AI Engine**: Pipeline completo STT -> LLM -> TTS gerenciado na cloud
-  - Integra com qualquer LLM + qualquer TTS/ASR
-  - Ultra-low latency para voice AI
-  - Interrupcao natural (modelo pausa quando usuario interrompe)
+- **Conversational AI Engine**: Complete STT -> LLM -> TTS pipeline managed in the cloud
+  - Integrates with any LLM + any TTS/ASR
+  - Ultra-low latency for voice AI
+  - Natural interruption (model pauses when user interrupts)
   - AI echo cancellation + noise suppression
-  - Pipeline Mode: so 3 variaveis de ambiente (APP_ID, APP_CERTIFICATE, PIPELINE_ID)
-- **Agora RTC SDK**: Audio/video calling em tempo real
-- **Agora RTM (Signaling)**: Messaging em tempo real, presence, data channels
+  - Pipeline Mode: only 3 environment variables (APP_ID, APP_CERTIFICATE, PIPELINE_ID)
+- **Agora RTC SDK**: Real-time audio/video calling
+- **Agora RTM (Signaling)**: Real-time messaging, presence, data channels
 - **Agora App Builder**: No-code video calling
-- **Agora Cloud Recording**: Gravacao de calls na cloud
-- **Agora + OpenAI**: Integracao direta com OpenAI Realtime API
-- **Agora Skill para Claude Code**: `npx skills add github:AgoraIO-Conversational-AI/agora-skills`
-- **Demo ao vivo**: https://convoai-demo.agora.io/
+- **Agora Cloud Recording**: Cloud call recording
+- **Agora + OpenAI**: Direct integration with OpenAI Realtime API
+- **Agora Skill for Claude Code**: `npx skills add github:AgoraIO-Conversational-AI/agora-skills`
+- **Live demo**: https://convoai-demo.agora.io/
 - **Starter repos**:
   - agent-samples: https://github.com/AgoraIO-Conversational-AI/agent-samples
   - vibe-coding-lovable: https://github.com/AgoraIO-Conversational-AI/vibe-coding-lovable
@@ -29,71 +29,71 @@ Fonte oficial: https://github.com/AgoraIO-Conversational-AI/hackathon-2026-03-20
 
 - **gpt-realtime** (GA Aug 2025):
   - Streaming audio in/out
-  - Interruption handling com voice activity detection
-  - Background function calling enquanto modelo fala
+  - Interruption handling with voice activity detection
+  - Background function calling while model speaks
   - Instruction following: 82.8%
   - Pricing: $32/1M audio input tokens, $64/1M output tokens
 - **Realtime API**: WebSocket, multimodal (audio + text + function calling)
-- **Transcription API**: Funciona com fala fragmentada, sotaque, non-native
-- **Ja integrado no Agora ConvoAI** como LLM provider padrao
+- **Transcription API**: Works with fragmented speech, accents, non-native speakers
+- **Already integrated in Agora ConvoAI** as the default LLM provider
 
-## AWS - Servicos AI/ML
+## AWS - AI/ML Services
 
-- **Amazon Bedrock**: Acesso gerenciado a foundation models com RAG, agents, guardrails
-- **Amazon Transcribe**: Speech-to-text em tempo real, multi-idioma
-- **Amazon Translate**: Traducao em tempo real
-- **Amazon Polly**: TTS com vozes generativas
-- **Pipeline combinado**: Transcribe -> Translate -> Polly = near-real-time speech-to-speech
-- **Prioridade menor**: Agora ConvoAI ja cobre STT/TTS. AWS e complementar
+- **Amazon Bedrock**: Managed access to foundation models with RAG, agents, guardrails
+- **Amazon Transcribe**: Real-time speech-to-text, multi-language
+- **Amazon Translate**: Real-time translation
+- **Amazon Polly**: TTS with generative voices
+- **Combined pipeline**: Transcribe -> Translate -> Polly = near-real-time speech-to-speech
+- **Lower priority**: Agora ConvoAI already covers STT/TTS. AWS is complementary
 
-## Anam - Video Avatars Fotorrealistas
+## Anam - Photorealistic Video Avatars
 
-- **CARA-3**: Geracao fotorrealista de avatars
-  - Espectro completo de emocoes via expressoes faciais
-  - Lip-sync perfeito
-  - Movimentos contextuais de olhos e corpo
-  - **180ms de latencia**
-  - #1 em todas as metricas no Avatar Benchmark 2025
-- 70+ idiomas, vozes nativas, streaming WebRTC
-- **Integracao**: Ja suportado no agent-samples (react-video-client-avatar)
+- **CARA-3**: Photorealistic avatar generation
+  - Full spectrum of emotions via facial expressions
+  - Perfect lip-sync
+  - Contextual eye and body movements
+  - **180ms latency**
+  - #1 in all metrics on the Avatar Benchmark 2025
+- 70+ languages, native voices, WebRTC streaming
+- **Integration**: Already supported in agent-samples (react-video-client-avatar)
 - **Config**: VIDEO_AVATAR_VENDOR=anam, VIDEO_AVATAR_API_KEY, VIDEO_AVATAR_ID
 
 ## Thymia - Voice Biomarkers
 
-- **Core**: Analise de biomarkers vocais em tempo real via Sentinel API
-- Detecta sinais de saude a partir de **15 segundos de fala**
-- Avalia **30+ estados clinicos e wellness** com 85%+ precisao
-- Scores: stress, burnout, fadiga, emocoes
-- **Helios API**: Vocal biomarker analysis para wellness
+- **Core**: Real-time vocal biomarker analysis via Sentinel API
+- Detects health signals from **15 seconds of speech**
+- Evaluates **30+ clinical and wellness states** with 85%+ accuracy
+- Scores: stress, burnout, fatigue, emotions
+- **Helios API**: Vocal biomarker analysis for wellness
 - **Apollo API**: Clinical biomarker analysis
-- **Integracao no hackathon**: Via Custom LLM Server (server-custom-llm)
-  - go-audio-subscriber captura audio RTC
-  - Modulo Thymia processa via Sentinel API
-  - Scores publicados via RTM para o client
-  - Scores injetados no system prompt do LLM
-- **Recipe pronta**: https://github.com/AgoraIO-Conversational-AI/agent-samples/blob/main/recipes/thymia.md
-- **ATENCAO**: Thymia foi construido para saude mental, nao para confianca linguistica. Usar com cuidado
+- **Hackathon integration**: Via Custom LLM Server (server-custom-llm)
+  - go-audio-subscriber captures RTC audio
+  - Thymia module processes via Sentinel API
+  - Scores published via RTM to the client
+  - Scores injected into the LLM system prompt
+- **Ready recipe**: https://github.com/AgoraIO-Conversational-AI/agent-samples/blob/main/recipes/thymia.md
+- **WARNING**: Thymia was built for mental health, not for linguistic confidence. Use with caution
 
-## Shen.AI - Camera Vitals (NOVO)
+## Shen.AI - Camera Vitals (NEW)
 
-**Tech partner nao listado na pesquisa original!**
+**Tech partner not listed in the original research!**
 
-- **Core**: Medicao fisiologica em tempo real via camera do laptop/celular
-- **Metricas**: Frequencia cardiaca, HRV, indice de stress, frequencia respiratoria, pressao arterial
-- **Funciona sem hardware adicional** - so a webcam
-- **SDK WASM**: Roda no browser (~35MB)
-- **Fluxo**: Camera capture -> face detection -> vitais publicados via RTM a cada 2s -> servidor -> LLM prompt
-- **Integracao**: NEXT_PUBLIC_ENABLE_SHEN=true + NEXT_PUBLIC_SHEN_API_KEY no client
-- **Recipe pronta**: https://github.com/AgoraIO-Conversational-AI/agent-samples/blob/main/recipes/shen.md
-- **Combina com Thymia**: Voz mede estado emocional/psicologico, camera mede estado fisiologico
+- **Core**: Real-time physiological measurement via laptop/phone camera
+- **Metrics**: Heart rate, HRV, stress index, respiratory rate, blood pressure
+- **Works without additional hardware** - just the webcam
+- **WASM SDK**: Runs in the browser (~35MB)
+- **Flow**: Camera capture -> face detection -> vitals published via RTM every 2s -> server -> LLM prompt
+- **Integration**: NEXT_PUBLIC_ENABLE_SHEN=true + NEXT_PUBLIC_SHEN_API_KEY on the client
+- **Ready recipe**: https://github.com/AgoraIO-Conversational-AI/agent-samples/blob/main/recipes/shen.md
+- **Combines with Thymia**: Voice measures emotional/psychological state, camera measures physiological state
 
-## Comparacao Rapida
+## Quick Comparison
 
-| Partner | Tipo | Integracao | Tempo estimado | Bonus? |
-|---------|------|------------|----------------|--------|
-| Agora ConvoAI | Infra de voz | Starter code pronto | 30min-1h | SIM (+1) |
-| OpenAI | LLM | Ja no ConvoAI | 0 (incluido) | Nao |
-| Anam | Avatar | Starter code pronto | 1-2h | Nao (fortalece score) |
-| Thymia | Voice biomarkers | Recipe pronta | 2-3h | Nao (fortalece score) |
-| Shen.AI | Camera vitals | Recipe pronta | 1-2h | Nao (fortalece score) |
-| AWS | Cloud services | Manual | 2-4h | Nao |
+| Partner | Type | Integration | Estimated time | Bonus? |
+|---------|------|-------------|----------------|--------|
+| Agora ConvoAI | Voice infra | Starter code ready | 30min-1h | YES (+1) |
+| OpenAI | LLM | Already in ConvoAI | 0 (included) | No |
+| Anam | Avatar | Starter code ready | 1-2h | No (strengthens score) |
+| Thymia | Voice biomarkers | Ready recipe | 2-3h | No (strengthens score) |
+| Shen.AI | Camera vitals | Ready recipe | 1-2h | No (strengthens score) |
+| AWS | Cloud services | Manual | 2-4h | No |
