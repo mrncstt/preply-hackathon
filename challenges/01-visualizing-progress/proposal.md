@@ -1,24 +1,24 @@
-# Desafio 1: Visualizing Learning Progress
+# Challenge 1: Visualizing Learning Progress
 
-## Contexto
+## Context
 
-Preply tem Lesson Insights (resumo pos-aula). Duolingo tem streaks/XP (raso).
-Ninguem resolve: progresso invisivel no nivel intermediario, confianca ao falar, skill decay, narrativa de aprendizado.
+Preply has Lesson Insights (post-lesson summary). Duolingo has streaks/XP (shallow).
+Nobody solves: invisible progress at the intermediate level, speaking confidence, skill decay, learning narrative.
 
 ---
 
-## Proposta: "LinguaMap" - Mapa Vivo de Competencia Linguistica
+## Proposal: "LinguaMap" - A Living Map of Language Competence
 
-### Conceito
-Um dashboard interativo que transforma cada interacao (aula, exercicio, conversa AI) em um mapa visual de competencia multi-dimensional. Nao so "quanto vocabulario voce sabe", mas "quao confiante voce esta para pedir um cafe em Madrid".
+### Concept
+An interactive dashboard that transforms every interaction (lesson, exercise, AI conversation) into a visual map of multi-dimensional competence. Not just "how much vocabulary you know", but "how confident you are ordering a coffee in Madrid".
 
-### Diferenciais vs. mercado
-1. **Confianca como metrica**: Usando Thymia para medir stress/confianca pela voz ao longo do tempo
-2. **Mapa de competencia situacional**: Nao "nivel B1" generico, mas "B2 para pedir comida, A2 para discutir politica"
-3. **Progresso invisivel tornado visivel**: Micro-melhorias (velocidade de resposta, menos hesitacao, pronuncia) capturadas e visualizadas
-4. **Narrativa temporal**: "Sua jornada" - timeline visual conectando aulas, praticas e momentos de breakthrough
+### Differentiators vs. Market
+1. **Confidence as a metric**: Using Thymia to measure stress/confidence through voice over time
+2. **Situational competence map**: Not a generic "B1 level", but "B2 for ordering food, A2 for discussing politics"
+3. **Invisible progress made visible**: Micro-improvements (response speed, less hesitation, pronunciation) captured and visualized
+4. **Temporal narrative**: "Your journey" - a visual timeline connecting lessons, practice sessions, and breakthrough moments
 
-### Arquitetura Tecnica
+### Technical Architecture
 
 ```
 [Agora Real-Time Audio] --> [OpenAI Transcription + Analysis]
@@ -32,57 +32,57 @@ Um dashboard interativo que transforma cada interacao (aula, exercicio, conversa
                     [React Dashboard + D3.js Visualizations]
 ```
 
-### Tech Stack Utilizado
-- **Agora**: Captura audio real-time das sessoes
-- **OpenAI**: Transcricao, analise de gramatica/vocabulario, geracao de insights narrativos
-- **Thymia Helios API**: Biomarcadores vocais para confianca, stress, engajamento
-- **AWS**: Lambda para pipeline, DynamoDB para time-series, S3 para assets
-- **Frontend**: React + D3.js para visualizacoes interativas
+### Tech Stack Used
+- **Agora**: Real-time audio capture from sessions
+- **OpenAI**: Transcription, grammar/vocabulary analysis, narrative insight generation
+- **Thymia Helios API**: Vocal biomarkers for confidence, stress, engagement
+- **AWS**: Lambda for pipeline, DynamoDB for time-series, S3 for assets
+- **Frontend**: React + D3.js for interactive visualizations
 
-### Features Core (MVP para o hackathon)
+### Core Features (MVP for the Hackathon)
 
 1. **Confidence Heatmap**
-   - Grid visual: eixo X = situacoes (restaurante, trabalho, viagem, social), eixo Y = skills (speaking, listening, vocabulary, grammar)
-   - Cores baseadas em dados reais de Thymia (confianca) + OpenAI (acuracia)
-   - Atualiza apos cada sessao
+   - Visual grid: X-axis = situations (restaurant, work, travel, social), Y-axis = skills (speaking, listening, vocabulary, grammar)
+   - Colors based on real data from Thymia (confidence) + OpenAI (accuracy)
+   - Updates after each session
 
 2. **Progress Pulse**
-   - Visualizacao tipo "GitHub contributions" mas para aprendizado
-   - Cada celula = uma sessao/pratica, cor = intensidade de melhoria
-   - Mostra consistencia e momentum
+   - "GitHub contributions"-style visualization but for learning
+   - Each cell = a session/practice, color = improvement intensity
+   - Shows consistency and momentum
 
 3. **Skill Radar**
-   - Grafico radar mostrando pronuncia, fluencia, vocabulario, gramatica, confianca, velocidade
-   - Overlay do mes anterior para comparacao
-   - Baseado em metricas extraidas por OpenAI + Thymia
+   - Radar chart showing pronunciation, fluency, vocabulary, grammar, confidence, speed
+   - Previous month overlay for comparison
+   - Based on metrics extracted by OpenAI + Thymia
 
 4. **AI Narrative Summary**
-   - OpenAI gera resumo semanal em linguagem natural
-   - "Esta semana voce melhorou significativamente sua fluencia ao falar sobre hobbies. Sua hesitacao caiu 30% e a Thymia detectou menos stress. Proximo foco sugerido: vocabulario de trabalho."
+   - OpenAI generates a weekly summary in natural language
+   - "This week you significantly improved your fluency when talking about hobbies. Your hesitation dropped 30% and Thymia detected less stress. Suggested next focus: work vocabulary."
 
-### Demo Flow (para apresentacao)
+### Demo Flow (for Presentation)
 
-1. Simular 3 sessoes de pratica com Agora audio
-2. Pipeline processa e gera metricas
-3. Dashboard mostra evolucao visual em tempo real
-4. AI gera insight narrativo
+1. Simulate 3 practice sessions with Agora audio
+2. Pipeline processes and generates metrics
+3. Dashboard shows visual evolution in real time
+4. AI generates narrative insight
 
-### Estimativa de Esforco (24h hackathon)
+### Effort Estimate (24h Hackathon)
 
-| Task | Horas | Quem |
-|------|-------|------|
+| Task | Hours | Who |
+|------|-------|-----|
 | Setup pipeline Agora -> OpenAI -> AWS | 4h | Backend |
-| Integracao Thymia API | 3h | Backend |
-| Score engine e data model | 3h | Backend |
-| Dashboard React + D3.js | 6h | Frontend |
+| Thymia API integration | 3h | Backend |
+| Score engine and data model | 3h | Backend |
+| React + D3.js dashboard | 6h | Frontend |
 | AI narrative generation | 2h | Full-stack |
-| Polish e demo prep | 4h | Todos |
-| **Total** | **22h** | **3-4 pessoas** |
+| Polish and demo prep | 4h | Everyone |
+| **Total** | **22h** | **3-4 people** |
 
-### Por que Ganha
+### Why This Wins
 
-- Alinhado com a estrategia Preply: "human-led, AI-enhanced" - ferramentas para tutor E aluno
-- Usa todas as 5 tecnologias dos partners
-- Resolve o problema #1 que learners enfrentam: "nao sei se estou progredindo"
-- Visualmente impactante para demo
-- Thymia como diferencial unico (ninguem mais mede confianca pela voz)
+- Aligned with Preply's strategy: "human-led, AI-enhanced" - tools for both tutor AND student
+- Uses all 5 partner technologies
+- Solves the #1 problem learners face: "I don't know if I'm making progress"
+- Visually impactful for demo
+- Thymia as a unique differentiator (nobody else measures confidence through voice)

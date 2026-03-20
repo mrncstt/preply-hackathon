@@ -1,27 +1,27 @@
-# Desafio 3: Live Learning & Real-Time Context
+# Challenge 3: Live Learning & Real-Time Context
 
-## Contexto
+## Context
 
-Preply faz tutoria video 1-on-1. Agora tem Conversational AI Engine. OpenAI tem Realtime API.
-Ninguem resolve: AI copilot durante aula ao vivo, vocabulario contextual em tempo real, scaffolding adaptativo, debrief imediato pos-conversa.
+Preply does 1-on-1 video tutoring. Now it has a Conversational AI Engine. OpenAI has a Realtime API.
+Nobody solves: AI copilot during live lessons, contextual vocabulary in real time, adaptive scaffolding, immediate post-conversation debrief.
 
 ---
 
-## Proposta: "LiveLens" - AI Copilot para Aulas ao Vivo
+## Proposal: "LiveLens" - AI Copilot for Live Lessons
 
-### Conceito
-Um assistente AI que opera como "terceiro participante invisivel" durante aulas ao vivo entre tutor e aluno. Ele escuta em tempo real, fornece suporte contextual para ambos (tutor e aluno), e gera um debrief imediato pos-sessao.
+### Concept
+An AI assistant that operates as an "invisible third participant" during live lessons between tutor and student. It listens in real time, provides contextual support for both (tutor and student), and generates an immediate post-session debrief.
 
-### Diferenciais vs. mercado
-1. **Copilot bilateral**: Ajuda tanto o tutor quanto o aluno, em tempo real
-2. **Context-aware**: Usa o topico da conversa para surfar vocabulario e sugestoes relevantes
-3. **Nao-intrusivo**: Informacoes aparecem em sidebar, nao interrompem a conversa
-4. **Debrief instantaneo**: Analise completa disponivel segundos apos a aula terminar
+### Differentiators vs. Market
+1. **Bilateral copilot**: Helps both the tutor and the student in real time
+2. **Context-aware**: Uses the conversation topic to surface relevant vocabulary and suggestions
+3. **Non-intrusive**: Information appears in a sidebar, does not interrupt the conversation
+4. **Instant debrief**: Full analysis available seconds after the lesson ends
 
-### Arquitetura
+### Architecture
 
 ```
-[Agora Video Call - Tutor + Aluno]
+[Agora Video Call - Tutor + Student]
             |
     [Real-Time Audio Stream]
             |
@@ -29,91 +29,91 @@ Um assistente AI que opera como "terceiro participante invisivel" durante aulas 
             |
     +-------+-------+
     |               |
-[Aluno View]   [Tutor View]
+[Student View]  [Tutor View]
     |               |
-    |           [Sugestoes de exercicio]
-    |           [Notas sobre erros do aluno]
-    |           [Vocabulario avancado para introduzir]
+    |           [Exercise suggestions]
+    |           [Notes on student errors]
+    |           [Advanced vocabulary to introduce]
     |
-    [Traducao contextual L1]
-    [Definicao de palavras dificeis]
-    [Exemplos de uso]
-    [Indicador de confianca Thymia]
+    [Contextual L1 translation]
+    [Definitions of difficult words]
+    [Usage examples]
+    [Thymia confidence indicator]
             |
     [Anam Avatar Debrief]
-    "Aqui esta o resumo da sua aula..."
+    "Here is the summary of your lesson..."
 ```
 
-### Tech Stack Utilizado
-- **Agora**: Video call real-time + audio stream para processamento
-- **OpenAI Realtime API**: Transcricao streaming, analise de contexto, geracao de sugestoes
-- **Thymia Helios**: Monitoramento de confianca/stress do aluno em tempo real
-- **Anam CARA-3**: Avatar que entrega o debrief pos-aula de forma pessoal
-- **AWS**: Lambda para processamento, DynamoDB para session data
+### Tech Stack Used
+- **Agora**: Real-time video call + audio stream for processing
+- **OpenAI Realtime API**: Streaming transcription, context analysis, suggestion generation
+- **Thymia Helios**: Real-time monitoring of student confidence/stress
+- **Anam CARA-3**: Avatar that delivers the post-lesson debrief in a personal way
+- **AWS**: Lambda for processing, DynamoDB for session data
 
-### Features Core (MVP para o hackathon)
+### Core Features (MVP for the hackathon)
 
-1. **Real-Time Vocabulary Assist (Aluno View)**
-   - Sidebar mostra definicao + traducao quando aluno hesita ou usa palavra errada
-   - OpenAI detecta topico da conversa e pre-carrega vocabulario relevante
-   - Exemplo: conversa sobre viagens -> "boarding pass", "layover", "customs" prontos
-   - Click para ouvir pronuncia correta
+1. **Real-Time Vocabulary Assist (Student View)**
+   - Sidebar shows definition + translation when the student hesitates or uses a wrong word
+   - OpenAI detects the conversation topic and pre-loads relevant vocabulary
+   - Example: conversation about travel -> "boarding pass", "layover", "customs" ready
+   - Click to hear correct pronunciation
 
 2. **Tutor Intelligence Panel (Tutor View)**
-   - Alerta quando aluno comete erro recorrente (sem que aluno veja)
-   - Sugere exercicio rapido para o tutor aplicar no momento
-   - Mostra nivel de confianca do aluno (Thymia) em tempo real
-   - "Aluno esta ficando ansioso - considere mudar de topico ou simplificar"
+   - Alerts when the student makes a recurring error (without the student seeing)
+   - Suggests a quick exercise for the tutor to apply on the spot
+   - Shows the student's confidence level (Thymia) in real time
+   - "Student is getting anxious - consider changing topic or simplifying"
 
 3. **Confidence Indicator**
-   - Barra lateral sutil mostrando nivel de confianca do aluno (Thymia)
-   - Verde = confortavel, Amarelo = hesitante, Vermelho = ansioso
-   - Historico da sessao: "Confianca caiu quando topico mudou para gramatica formal"
+   - Subtle sidebar bar showing the student's confidence level (Thymia)
+   - Green = comfortable, Yellow = hesitant, Red = anxious
+   - Session history: "Confidence dropped when the topic changed to formal grammar"
 
-4. **Instant Debrief (pos-aula)**
-   - Anam avatar aparece e entrega resumo personalizado em 60 segundos:
-     - "Voce praticou vocabulario de viagens por 25 minutos"
-     - "3 novos phrasal verbs usados corretamente: check in, take off, get through"
-     - "Erro recorrente: 'I have been to travel' - correto: 'I have traveled'"
-     - "Sua confianca melhorou 40% quando falou sobre experiencias pessoais"
-     - "Exercicio sugerido antes da proxima aula: [link]"
-   - Debrief tambem enviado para o tutor com notas para proxima aula
+4. **Instant Debrief (post-lesson)**
+   - Anam avatar appears and delivers a personalized summary in 60 seconds:
+     - "You practiced travel vocabulary for 25 minutes"
+     - "3 new phrasal verbs used correctly: check in, take off, get through"
+     - "Recurring error: 'I have been to travel' - correct: 'I have traveled'"
+     - "Your confidence improved 40% when talking about personal experiences"
+     - "Suggested exercise before the next lesson: [link]"
+   - Debrief also sent to the tutor with notes for the next lesson
 
 5. **Contextual Flashcards**
-   - Automaticamente gerados a partir de vocabulario novo da sessao
-   - Incluem a frase exata do contexto onde apareceu
-   - Spaced repetition ativado automaticamente
+   - Automatically generated from new vocabulary in the session
+   - Include the exact sentence from the context where it appeared
+   - Spaced repetition activated automatically
 
-### Demo Flow (para apresentacao)
+### Demo Flow (for presentation)
 
-1. Abrir video call Agora entre "tutor" e "aluno"
-2. Conversa sobre topico (ex: viagem de negocios)
-3. Mostrar sidebar do aluno com vocabulario contextual em tempo real
-4. Mostrar painel do tutor com alertas e sugestoes
-5. Indicador Thymia muda de cor quando aluno fica ansioso
-6. Encerrar aula -> Avatar Anam entrega debrief em 30 segundos
-7. Mostrar flashcards gerados automaticamente
+1. Open Agora video call between "tutor" and "student"
+2. Conversation about a topic (e.g., business travel)
+3. Show the student sidebar with contextual vocabulary in real time
+4. Show the tutor panel with alerts and suggestions
+5. Thymia indicator changes color when the student becomes anxious
+6. End the lesson -> Anam avatar delivers debrief in 30 seconds
+7. Show automatically generated flashcards
 
-### Estimativa de Esforco (24h hackathon)
+### Effort Estimate (24h hackathon)
 
-| Task | Horas | Quem |
-|------|-------|------|
+| Task | Hours | Who |
+|------|-------|-----|
 | Agora video call setup + audio stream | 3h | Backend |
 | OpenAI Realtime transcription + analysis | 4h | Backend |
-| Aluno sidebar UI (vocabulary assist) | 4h | Frontend |
+| Student sidebar UI (vocabulary assist) | 4h | Frontend |
 | Tutor panel UI (intelligence dashboard) | 4h | Frontend |
 | Thymia confidence indicator | 2h | Full-stack |
 | Anam avatar debrief | 3h | Full-stack |
 | Flashcard generation | 2h | Backend |
-| Polish e demo prep | 4h | Todos |
-| **Total** | **26h** | **4-5 pessoas** |
+| Polish and demo prep | 4h | Everyone |
+| **Total** | **26h** | **4-5 people** |
 
-### Por que Ganha
+### Why It Wins
 
-- **Aprimora o produto core da Preply**: Melhora a aula ao vivo que ja existe
-- Nao substitui o tutor - da superpoderes para ele
-- Demo extremamente visual e tangivel (video call com overlays em tempo real)
-- Usa todas as 5 tecnologias de forma natural e justificada
-- O debrief com avatar Anam e um "wow moment" para a apresentacao
-- Flashcards contextuais resolvem o problema de "o que praticar entre aulas"
-- Thymia como diferencial que nenhum concorrente tem
+- **Enhances Preply's core product**: Improves the live lesson that already exists
+- Does not replace the tutor - gives them superpowers
+- Extremely visual and tangible demo (video call with real-time overlays)
+- Uses all 5 technologies in a natural and justified way
+- The debrief with Anam avatar is a "wow moment" for the presentation
+- Contextual flashcards solve the problem of "what to practice between lessons"
+- Thymia as a differentiator that no competitor has

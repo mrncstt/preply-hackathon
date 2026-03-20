@@ -1,99 +1,99 @@
-# Pesquisa de Mercado - AI Language Learning
+# Market Research - AI Language Learning
 
-## Preply - Estado Atual
+## Preply - Current State
 
-- Marketplace two-sided conectando learners com tutores humanos (1-on-1 video)
-- Fundada na Ucrania (2012), HQ nos EUA, escritorio em Barcelona
-- **Valuation: $1.2B** (Series D $150M, Jan 2026, liderada por WestCap). EBITDA-positivo
-- Posicionamento: **"anti-Duolingo"** - tutores humanos sao o core, AI suplementa
+- Two-sided marketplace connecting learners with human tutors (1-on-1 video)
+- Founded in Ukraine (2012), HQ in the US, office in Barcelona
+- **Valuation: $1.2B** (Series D $150M, Jan 2026, led by WestCap). EBITDA-positive
+- Positioning: **"anti-Duolingo"** - human tutors are the core, AI supplements
 
-### AI Features (lancadas Ago 2025)
-- **Lesson Insights**: Resumo pos-aula com feedback de gramatica, vocabulario, metricas de fala
-- **Daily Exercises**: Exercicios entre sessoes conectados ao conteudo da aula
-- **Scenario Practice**: Simulacoes de conversas do dia-a-dia (pedir cafe, pedir direcoes)
+### AI Features (launched Aug 2025)
+- **Lesson Insights**: Post-lesson summary with grammar feedback, vocabulary, speech metrics
+- **Daily Exercises**: Between-session exercises connected to lesson content
+- **Scenario Practice**: Daily conversation simulations (ordering coffee, asking for directions)
 
 ### Tech Stack
 - Backend: Python/Django
 - Frontend: React (legacy Backbone.js, jQuery)
 - Infra: Amazon CloudFront, NGINX, Webpack
-- Video: Anteriormente Zoom (provavelmente migrando para Agora)
+- Video: Previously Zoom (likely migrating to Agora)
 - Monitoring: New Relic
-- Tech Radar publico: tech-radar.preply.com
+- Public Tech Radar: tech-radar.preply.com
 
-### Desafios de Engineering Conhecidos
-- Complexidade de marketplace two-sided (matching, scheduling, pagamentos)
-- Video real-time em escala (200+ paises)
-- Integracao AI em arquitetura Django monolith/servicos
-- Personalizacao em escala
-- Pipeline de dados: converter conversas nao-estruturadas em analytics
+### Known Engineering Challenges
+- Two-sided marketplace complexity (matching, scheduling, payments)
+- Real-time video at scale (200+ countries)
+- AI integration in Django monolith/services architecture
+- Personalization at scale
+- Data pipeline: converting unstructured conversations into analytics
 
 ---
 
-## Concorrentes
+## Competitors
 
-### Duolingo (lider em self-study, publico)
-- Parceria profunda com OpenAI. GPT-4 alimenta Duolingo Max
-- **Video Call with Lily**: Conversas por voz com personagens AI
-- **Roleplay**: Pratica conversacional com personagens AI
-- **Explain My Answer**: Feedback contextual GPT-4
-- 148 novos cursos com AI (levou 12 anos para os primeiros 100)
-- **Funciona**: Gamificacao + AI = engagement massivo. 73% gross margins
-- **Nao funciona**: Ainda primariamente texto/multipla escolha. Sem interacao humana real. Pronunciation basico. Learners avancados estagnam
+### Duolingo (self-study leader, public)
+- Deep partnership with OpenAI. GPT-4 powers Duolingo Max
+- **Video Call with Lily**: Voice conversations with AI characters
+- **Roleplay**: Conversational practice with AI characters
+- **Explain My Answer**: GPT-4 contextual feedback
+- 148 new courses with AI (took 12 years for the first 100)
+- **What works**: Gamification + AI = massive engagement. 73% gross margins
+- **What doesn't work**: Still primarily text/multiple choice. No real human interaction. Basic pronunciation. Advanced learners plateau
 
 ### Speak ($1B valuation, Series C $78M)
-- Construido do zero sobre OpenAI. Speech-first
-- **Speak Tutor**: Tutor AI 24/7 para pratica conversacional
-- Speech recognition customizado para sotaques nao-nativos
-- 25M+ aulas personalizadas, 1B+ sentencas faladas
-- **Funciona**: Melhor speech recognition para learners
-- **Nao funciona**: Sem tutor humano. Limitado a 6 idiomas. Falta contexto cultural
+- Built from scratch on OpenAI. Speech-first
+- **Speak Tutor**: 24/7 AI tutor for conversational practice
+- Custom speech recognition for non-native accents
+- 25M+ personalized lessons, 1B+ spoken sentences
+- **What works**: Best speech recognition for learners
+- **What doesn't work**: No human tutor. Limited to 6 languages. Lacks cultural context
 
 ### Praktika (rising competitor, heavy OpenAI user)
-- Arquitetura multi-agent com GPT-5.2
-  - GPT-5.2 para conversacao principal
-  - GPT-5.2 Pro para supervisao
-  - GPT-5 mini para tracking de progresso
-- **Persistent memory layer** (historico, erros, preferencias)
-- **Multimodal**: Upload de fotos, audio, videos, documentos
-- 1000+ aulas incluindo IELTS/TOEFL
-- **Funciona**: Arquitetura multi-agent mais avancada. Personalizacao com memoria
-- **Nao funciona**: Sem tutores humanos. Base de usuarios pequena
+- Multi-agent architecture with GPT-5.2
+  - GPT-5.2 for main conversation
+  - GPT-5.2 Pro for supervision
+  - GPT-5 mini for progress tracking
+- **Persistent memory layer** (history, errors, preferences)
+- **Multimodal**: Upload photos, audio, videos, documents
+- 1000+ lessons including IELTS/TOEFL
+- **What works**: Most advanced multi-agent architecture. Personalization with memory
+- **What doesn't work**: No human tutors. Small user base
 
 ### ELSA Speak
-- AI de pronuncia a nivel de fonema
-- Tutor AI bilingue (comeca em lingua nativa, transiciona para ingles)
-- 7 variantes de sotaque, 8000+ aulas
-- **Funciona**: Melhor feedback de pronuncia do mercado
-- **Nao funciona**: So ingles. Foco em pronuncia limita profundidade
+- Phoneme-level pronunciation AI
+- Bilingual AI tutor (starts in native language, transitions to English)
+- 7 accent variants, 8000+ lessons
+- **What works**: Best pronunciation feedback on the market
+- **What doesn't work**: English only. Pronunciation focus limits depth
 
 ### Babbel
-- **Babbel Speak**: Speaking trainer guiado por AI
-- AI Conversation Partner (espanhol, frances, alemao, italiano)
+- **Babbel Speak**: AI-guided speaking trainer
+- AI Conversation Partner (Spanish, French, German, Italian)
 - Spaced repetition
 
 ### Busuu
-- Teste de nivelamento AI, aulas adaptativas
-- **Busuu Conversations**: Conversas AI em tempo real
-- Feedback de falantes nativos da comunidade (hibrido unico)
+- AI placement test, adaptive lessons
+- **Busuu Conversations**: Real-time AI conversations
+- Native speaker community feedback (unique hybrid)
 
 ---
 
-## Problemas Nao Resolvidos no Mercado
+## Unsolved Problems in the Market
 
-1. **Speaking confidence gap**: Learners passam em testes mas congelam em conversas reais
-2. **Competencia cultural/pragmatica**: AI ensina gramatica mas nao nuance cultural, registros de polidez, humor, girias regionais
-3. **Plato intermediario (B1-C1)**: Maioria dos apps otimiza para iniciantes. A transicao B1->B2 e B2->C1 e mal servida
-4. **Motivacao de longo prazo**: Gamificacao funciona a curto prazo mas drop-off permanece massivo
-5. **Correcao de erro durante conversa ao vivo**: Dar feedback sem interromper fluxo natural e tecnicamente e pedagogicamente dificil
-6. **Medir competencia comunicativa real**: Learner funciona de verdade no ambiente da lingua-alvo? Nenhuma medida automatizada boa existe
-7. **Adaptacao afetiva/emocional**: Detectar e responder a frustracao, tedio ou ansiedade do learner em tempo real
-8. **Alucinacao no ensino de linguas**: LLMs ensinando regras gramaticais incorretas com confianca
+1. **Speaking confidence gap**: Learners pass tests but freeze in real conversations
+2. **Cultural/pragmatic competence**: AI teaches grammar but not cultural nuance, politeness registers, humor, regional slang
+3. **Intermediate plateau (B1-C1)**: Most apps optimize for beginners. The B1->B2 and B2->C1 transition is poorly served
+4. **Long-term motivation**: Gamification works short-term but massive drop-off persists
+5. **Error correction during live conversation**: Giving feedback without interrupting natural flow is technically and pedagogically difficult
+6. **Measuring real communicative competence**: Does the learner actually function in the target language environment? No good automated measure exists
+7. **Affective/emotional adaptation**: Detecting and responding to learner frustration, boredom, or anxiety in real time
+8. **Hallucination in language teaching**: LLMs teaching incorrect grammar rules with confidence
 
-## O que Learners Realmente Enfrentam
+## What Learners Actually Face
 
-- Medo de falar (especialmente com nativos)
-- Traduzir conhecimento passivo (leitura/escuta) para producao ativa (fala/escrita)
-- Manter consistencia entre sessoes com tutor
-- Nao saber o que praticar ou quais sao suas fraquezas
-- Sensacao de nao estar progredindo (o "plato")
-- Aplicar aprendizado do app/aula a situacoes reais
+- Fear of speaking (especially with native speakers)
+- Translating passive knowledge (reading/listening) into active production (speaking/writing)
+- Maintaining consistency between tutor sessions
+- Not knowing what to practice or what their weaknesses are
+- Feeling of not progressing (the "plateau")
+- Applying app/lesson learning to real-world situations

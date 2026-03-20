@@ -1,31 +1,31 @@
 # Preply x Agora Hackathon: AI Agents for NextGen Language Learning
 
-**Data:** 20-21 Marco 2025
-**Local:** Carrer de Badajoz, 97 - Barcelona
-**Premio:** EUR 17,500 total (1st: EUR 10,000 + fast-track Preply interview)
+**Date:** March 20-21, 2025
+**Location:** Carrer de Badajoz, 97 - Barcelona
+**Prize:** EUR 17,500 total (1st: EUR 10,000 + fast-track Preply interview)
 
-## Estrutura
+## Structure
 
 ```
-research/          - Pesquisa de mercado, concorrentes, tech partners
-participants/      - Perfis dos participantes
-challenges/        - Propostas para cada desafio
+research/          - Market research, competitors, tech partners, benchmark frameworks
+participants/      - Participant profiles
+challenges/        - Proposals for each challenge
   01-visualizing-progress/
   02-accelerating-learning-agents/
   03-live-learning-realtime/
-prototypes/        - Codigo durante o hackathon
+prototypes/        - Code during the hackathon
 ```
 
-## Desafios
+## Challenges
 
-1. **Visualizing Learning Progress** - Tornar o progresso mensuravel
-2. **Accelerating Learning with Agents** - Pratica personalizada com feedback inteligente
-3. **Live Learning & Real-Time Context** - Sistemas que aprendem de conversas ao vivo
+1. **Visualizing Learning Progress** - Make progress measurable
+2. **Accelerating Learning with Agents** - Personalized practice with intelligent feedback
+3. **Live Learning & Real-Time Context** - Systems that learn from live conversations
 
-## Tech Stack Disponivel
+## Available Tech Stack
 
 - **Agora** - Real-time audio/video streaming + Conversational AI Engine
 - **OpenAI** - GPT Realtime API, Codex, speech-to-speech
 - **AWS** - Bedrock, Transcribe, Translate, Polly
-- **Anam** - Avatares AI fotorrealistas (180ms latencia)
-- **Thymia** - Biomarcadores de voz, estado emocional
+- **Anam** - Photorealistic AI avatars (180ms latency)
+- **Thymia** - Voice biomarkers, emotional state
