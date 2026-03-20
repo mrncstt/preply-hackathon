@@ -122,21 +122,6 @@
 
 ---
 
-## RECOMMENDED TEAM (for any proposal)
-
-| Priority | Name | Role | Approach |
-|---|---|---|---|
-| 1 | **Gleb Sokolovski** | AI/ML + Backend | "I see you're building Uni-Chat - you already live in the conversational AI space..." |
-| 2 | **Beatriz Ribeiro** | Frontend + Design | "I need someone who makes data look beautiful. Dashboards with heatmaps, radar charts..." |
-| 3 | **Amir Narimani** | Domain Expert + Full-stack | "Your PhD in Learning Analytics is the missing piece. Makes the product academically credible..." |
-| Backup | Junfan Zhu (if Gleb unavailable), Guido Turnes (if Beatriz), Janne Rotter (if Amir) |
-
-**Dark horses:** Nataliia Pimankova (strong Python, underestimated), Oleguer Gabernet (Data + EdTech), PHAN/ChronosWorlds (hackathon winner)
-
-**Avoid in small team:** Alessandro Vecchi (CPO, doesn't code), Glib Gorchannikov (PM, doesn't code), .NET devs (Adrian, Artem, Vladyslav Y.)
-
----
-
 ## DEVIL'S ADVOCATE ALERTS
 
 1. **Thymia measures depression, not linguistic confidence.** If a judge asks, you'll be showing clinical data as a learning metric.
@@ -150,7 +135,6 @@
 ## IMMEDIATE NEXT STEPS
 
 1. **Choose proposal** (LiveLens, TutorBridge, or Hybrid)
-2. **Recruit team** (priority: Gleb, Beatriz, Amir)
-3. **Test APIs** in the first 30 min (Agora + OpenAI Realtime = critical priority)
-4. **Record backup video** of the demo at the end
-5. **Rehearse pitch** minimum 3x before presenting
+2. **Test APIs** in the first 30 min (Agora + OpenAI Realtime = critical priority)
+3. **Record backup video** of the demo at the end
+4. **Rehearse pitch** minimum 3x before presenting
