@@ -43,6 +43,13 @@ An agent orchestrator that works as a bridge between the human tutor and the stu
       +---> [Report Agent] - Compiles progress and sends to tutor
 ```
 
+
+### Vercel Integration (execution layer)
+- **Next.js on Vercel** hosts onboarding, live session UI, and tutor report pages
+- **Vercel API routes** orchestrate Agora session tokens, OpenAI calls, and Thymia score ingestion
+- **Session output contract**: every practice run stores `LIKES`, `NEEDS`, and `USEFUL_NOW` objects for tutor review
+- **Demo scenario**: lawyer needs business English but is highly engaged by cooking topics; orchestrator creates role-play that bridges both
+
 ### Tech Stack Used
 - **Agora Conversational AI Engine**: Real-time audio for practice sessions
 - **OpenAI GPT-5.2 / Realtime API**: Brain of the agents, speech-to-speech conversation
