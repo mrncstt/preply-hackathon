@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAgoraAgent } from "@/components/voice-agent/useAgoraAgent";
 import { INTERVIEWER_SYSTEM_PROMPT, INTERVIEWER_GREETING } from "@/lib/prompts";
 import { InterviewOrb } from "./InterviewOrb";
@@ -29,6 +29,7 @@ export function InterviewModal({ onInterviewEnd }: InterviewModalProps) {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasStarted = useRef(false);
+  const [isEnding, setIsEnding] = useState(false);
 
   useEffect(() => {
     if (!hasStarted.current) {
@@ -42,6 +43,8 @@ export function InterviewModal({ onInterviewEnd }: InterviewModalProps) {
   }, [messages]);
 
   const handleEndInterview = () => {
+    if (isEnding) return;
+    setIsEnding(true);
     const captured = [...messages];
     handleDisconnect();
     onInterviewEnd(captured);

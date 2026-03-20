@@ -239,6 +239,7 @@ export function useAgoraAgent() {
       audioTrackRef.current = null;
     }
     if (clientRef.current) {
+      clientRef.current.removeAllListeners();
       try { await clientRef.current.leave(); } catch {}
       clientRef.current = null;
     }

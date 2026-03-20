@@ -1,14 +1,15 @@
 "use client";
 
-import { Target, Heart, Lightbulb, AlertTriangle, Clock, Brain } from "lucide-react";
+import { Target, Heart, Lightbulb, AlertTriangle, Clock, Brain, Globe } from "lucide-react";
 import type { InterviewProfile } from "@/components/voice-agent/types";
 
 interface ProfileCardProps {
   profile: InterviewProfile;
   onViewPlan: () => void;
+  onStartOver?: () => void;
 }
 
-export function ProfileCard({ profile, onViewPlan }: ProfileCardProps) {
+export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardProps) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
       <div className="max-w-2xl w-full">
@@ -21,6 +22,13 @@ export function ProfileCard({ profile, onViewPlan }: ProfileCardProps) {
             {profile.learner_name ? `${profile.learner_name}'s` : "Your"} Learning Profile
           </h1>
           <p className="text-muted-foreground">Based on your discovery interview</p>
+          {profile.target_language && profile.target_language !== "Unknown" && (
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mt-2"
+              style={{ background: 'rgba(27,20,100,0.08)', color: 'var(--preply-navy)' }}>
+              <Globe className="w-4 h-4" />
+              {profile.target_language} - {profile.current_level}
+            </div>
+          )}
         </div>
 
         <div className="grid gap-4">
@@ -105,7 +113,7 @@ export function ProfileCard({ profile, onViewPlan }: ProfileCardProps) {
           </div>
         </div>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 flex flex-col items-center gap-3">
           <button
             onClick={onViewPlan}
             className="px-8 py-4 rounded-2xl text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
@@ -113,6 +121,14 @@ export function ProfileCard({ profile, onViewPlan }: ProfileCardProps) {
           >
             See your learning plan &rarr;
           </button>
+          {onStartOver && (
+            <button
+              onClick={onStartOver}
+              className="text-sm text-muted-foreground hover:underline cursor-pointer"
+            >
+              Start over
+            </button>
+          )}
         </div>
       </div>
     </div>

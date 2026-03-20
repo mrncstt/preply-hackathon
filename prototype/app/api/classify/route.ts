@@ -23,21 +23,31 @@ export async function POST(req: NextRequest) {
 
   const openai = new OpenAI({ apiKey });
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    response_format: { type: "json_object" },
-    messages: [
-      { role: "system", content: CLASSIFIER_PROMPT },
-      { role: "user", content: `Here is the interview transcript:\n\n${conversationText}` },
-    ],
-    temperature: 0.3,
-  });
+  let completion;
+  try {
+    completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      response_format: { type: "json_object" },
+      messages: [
+        { role: "system", content: CLASSIFIER_PROMPT },
+        { role: "user", content: `Here is the interview transcript:\n\n${conversationText}` },
+      ],
+      temperature: 0.3,
+    });
+  } catch (err: any) {
+    return NextResponse.json({ error: `Classifier API error: ${err.message}` }, { status: 502 });
+  }
 
   const content = completion.choices[0]?.message?.content;
   if (!content) {
     return NextResponse.json({ error: "Empty response from classifier" }, { status: 500 });
   }
 
-  const profile = JSON.parse(content);
+  let profile;
+  try {
+    profile = JSON.parse(content);
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON from classifier" }, { status: 502 });
+  }
   return NextResponse.json({ profile });
 }

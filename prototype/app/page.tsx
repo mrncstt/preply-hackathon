@@ -70,10 +70,10 @@ export default function Home() {
         motivation_type: "mixed",
         recommendation: "Please try the interview again for a personalized recommendation.",
         weekly_plan: [
-          { week: 1, theme: "Getting Started", activity: "Basic introductions", passion_link: "TBD" },
-          { week: 2, theme: "Building Blocks", activity: "Core grammar", passion_link: "TBD" },
-          { week: 3, theme: "Conversations", activity: "Daily situations", passion_link: "TBD" },
-          { week: 4, theme: "Real World", activity: "Practice sessions", passion_link: "TBD" },
+          { week: 1, theme: "Getting Started", activity: "Basic introductions", passion_link: "Explore your interests" },
+          { week: 2, theme: "Building Blocks", activity: "Core grammar", passion_link: "Apply to daily life" },
+          { week: 3, theme: "Conversations", activity: "Daily situations", passion_link: "Real-world practice" },
+          { week: 4, theme: "Real World", activity: "Practice sessions", passion_link: "Build confidence" },
         ],
       });
     }
@@ -81,6 +81,12 @@ export default function Home() {
 
   const handleViewPlan = useCallback(() => {
     setScreen("bridge");
+  }, []);
+
+  const handleStartOver = useCallback(() => {
+    setScreen("landing");
+    setProfile(null);
+    setClassifyError(null);
   }, []);
 
   return (
@@ -100,10 +106,10 @@ export default function Home() {
       )}
 
       {screen === "profile" && profile && (
-        <ProfileCard profile={profile} onViewPlan={handleViewPlan} />
+        <ProfileCard profile={profile} onViewPlan={handleViewPlan} onStartOver={handleStartOver} />
       )}
 
-      {screen === "bridge" && profile && <LearningBridge profile={profile} />}
+      {screen === "bridge" && profile && <LearningBridge profile={profile} onStartOver={handleStartOver} />}
 
       {classifyError && screen === "profile" && (
         <div className="fixed bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-red-50 text-red-600 text-sm border border-red-200">

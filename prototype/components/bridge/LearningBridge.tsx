@@ -5,9 +5,10 @@ import type { InterviewProfile } from "@/components/voice-agent/types";
 
 interface LearningBridgeProps {
   profile: InterviewProfile;
+  onStartOver?: () => void;
 }
 
-export function LearningBridge({ profile }: LearningBridgeProps) {
+export function LearningBridge({ profile, onStartOver }: LearningBridgeProps) {
   return (
     <div className="min-h-screen flex flex-col items-center px-6 py-12">
       <div className="max-w-2xl w-full">
@@ -35,7 +36,7 @@ export function LearningBridge({ profile }: LearningBridgeProps) {
                 <div
                   className="absolute left-3 top-4 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold z-10"
                   style={{
-                    background: i === 0 ? 'var(--preply-coral)' : i === 3 ? 'var(--preply-green)' : 'var(--preply-navy)',
+                    background: i === 0 ? 'var(--preply-coral)' : i === profile.weekly_plan.length - 1 ? 'var(--preply-green)' : 'var(--preply-navy)',
                   }}
                 >
                   {week.week}
@@ -70,14 +71,28 @@ export function LearningBridge({ profile }: LearningBridgeProps) {
             Connect with a Preply tutor who specializes in {profile.target_language}
             and shares your passion for {profile.real_interest}.
           </p>
-          <button
+          <a
+            href="https://preply.com/en/online/english-tutors"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer inline-flex items-center gap-2"
             style={{ background: 'var(--preply-coral)', color: 'white' }}
           >
             Connect with a tutor
             <ExternalLink className="w-5 h-5" />
-          </button>
+          </a>
         </div>
+
+        {onStartOver && (
+          <div className="text-center mt-6">
+            <button
+              onClick={onStartOver}
+              className="text-sm text-muted-foreground hover:underline cursor-pointer"
+            >
+              Start over
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
