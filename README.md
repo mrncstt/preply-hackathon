@@ -1,31 +1,62 @@
-# Preply x Agora Hackathon: AI Agents for NextGen Language Learning
+# Preply x Agora Hackathon: Passion-Led Learning Agent
 
-**Date:** March 20-21, 2025
+**Date:** March 20-21, 2026
 **Location:** Carrer de Badajoz, 97 - Barcelona
-**Prize:** EUR 17,500 total (1st: EUR 10,000 + fast-track Preply interview)
 
-## Structure
+## What it does
+
+An AI Discovery Coach interviews learners via voice to find what they **need** to learn vs what they **love**, then generates a personalized "learning bridge" -- a plan that connects passion to skill.
+
+**Flow:** Landing page -> 5-min voice interview (Agora ConvoAI) -> AI classification (OpenAI) -> Learner profile -> 4-week personalized plan
+
+## Running locally
+
+```bash
+cd prototype
+npm install --legacy-peer-deps
+cp .env.example .env.local   # fill in your keys
+npm run dev                  # http://localhost:3000
+```
+
+### Required environment variables
+
+See `prototype/.env.example` for the full list. Core keys:
+
+- `APP_ID` / `APP_CERTIFICATE` -- Agora Console
+- `LLM_API_KEY` -- OpenAI key (for the voice agent)
+- `TTS_KEY` -- TTS provider key
+- `OPENAI_API_KEY` -- OpenAI key (for the classifier, can reuse LLM_API_KEY)
+
+## Tech stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **Agora ConvoAI** (RTC + RTM) -- real-time voice AI interview
+- **OpenAI gpt-4o-mini** -- structured learner classification
+- **Tailwind CSS 4** -- Preply-branded UI
+- **Vercel** -- deployment
+
+## Project structure
 
 ```
-research/          - Market research, competitors, tech partners, benchmark frameworks
-participants/      - Participant profiles
-challenges/        - Proposals for each challenge
-  01-visualizing-progress/
-  02-accelerating-learning-agents/
-  03-live-learning-realtime/
-prototypes/        - Code during the hackathon
+prototype/           # Next.js app (Vercel root directory)
+  app/
+    page.tsx         # SPA state machine (landing|interview|classifying|profile|bridge)
+    api/             # start-agent, hangup-agent, classify, check-env
+  components/
+    landing/         # Hero page
+    interview/       # Modal, chat, orb, controls, progress
+    profile/         # Learner profile card
+    bridge/          # 4-week learning plan
+    thymia/          # Cognitive signals sidebar (mock)
+    voice-agent/     # Agora hook + types
+  lib/               # Prompts + utils
+research/            # Market research, benchmarks, tech partner notes
+challenges/          # Original hackathon challenge proposals
 ```
 
-## Challenges
+## Deploy
 
-1. **Visualizing Learning Progress** - Make progress measurable
-2. **Accelerating Learning with Agents** - Personalized practice with intelligent feedback
-3. **Live Learning & Real-Time Context** - Systems that learn from live conversations
-
-## Available Tech Stack
-
-- **Agora** - Real-time audio/video streaming + Conversational AI Engine
-- **OpenAI** - GPT Realtime API, Codex, speech-to-speech
-- **AWS** - Bedrock, Transcribe, Translate, Polly
-- **Anam** - Photorealistic AI avatars (180ms latency)
-- **Thymia** - Voice biomarkers, emotional state
+Vercel project settings:
+- **Framework:** Next.js
+- **Root Directory:** `prototype`
+- **Environment Variables:** add all keys from `.env.example`
