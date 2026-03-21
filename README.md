@@ -12,7 +12,7 @@
 |------|-------------|
 | **1. Landing** | Learner arrives and meets the AI Discovery Coach |
 | **2. Voice Interview** | 5-minute real-time voice conversation explores interests, goals, and hidden passions |
-| **3. AI Classification** | GPT-4o analyzes the conversation into a structured learner profile |
+| **3. AI Classification** | GPT-5.4 analyzes the conversation into a structured learner profile |
 | **4. Learning Bridge** | A personalized 4-week plan connects what they *love* to what they *need* to learn |
 
 ---
@@ -29,7 +29,7 @@ Most language learners quit because lessons feel disconnected from their lives. 
 |-----------|------|
 | **Next.js 16** | App Router + Turbopack for fast, modern frontend |
 | **Agora ConvoAI** | Real-time voice AI interview via RTC + RTM |
-| **OpenAI GPT-4o** | Learner classification and learning plan generation |
+| **OpenAI GPT-5.4** | Learner classification and learning plan generation |
 | **Thymia** | Cognitive signal analysis during voice interaction |
 | **Vercel** | One-click deployment and edge hosting |
 

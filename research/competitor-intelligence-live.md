@@ -168,7 +168,7 @@ Zero PRs on either the upstream or forked repo.
 | **Frontend** | Next.js 16, polished UI | Vue.js boilerplate |
 | **Agora ConvoAI** | YES (core of product) | NO (uses STT only) |
 | **ConvoAI Bonus** | Up to +1 | +0 |
-| **LLM** | GPT-4o | GPT-5 |
+| **LLM** | GPT-5.4 | GPT-5 |
 | **Thymia** | Pipeline built (pluggable) | Not present |
 | **Anam Avatars** | Not integrated | Not integrated |
 | **Backend Depth** | Lightweight (API routes) | Deep (6 system modules, 3 generator models, services layer) |
