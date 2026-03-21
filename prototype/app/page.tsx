@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { Hero } from "@/components/landing/Hero";
+import { HeroPreply as Hero } from "@/components/landing/HeroPreply";
 import { ProfileCard } from "@/components/profile/ProfileCard";
 import { LearningBridge } from "@/components/bridge/LearningBridge";
 import type { Message, InterviewProfile } from "@/components/voice-agent/types";
