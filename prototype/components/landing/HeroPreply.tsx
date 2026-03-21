@@ -54,10 +54,10 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
         <div className="max-w-7xl mx-auto px-6 py-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left - text */}
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] mb-6" style={{ color: '#fff', fontFamily: 'Figtree, sans-serif' }}>
-              Learn faster with the best{' '}
-              <span style={{ color: '#121117' }}>language tutor</span>{' '}
-              for you
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] mb-6" style={{ color: '#121117', fontFamily: 'Figtree, sans-serif' }}>
+              Learn faster<br className="hidden lg:block" />
+              {' '}with your best<br className="hidden lg:block" />
+              {' '}language tutor.
             </h1>
 
             <p className="text-lg mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>
