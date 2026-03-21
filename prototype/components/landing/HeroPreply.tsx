@@ -13,7 +13,7 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
       <div style={{ background: '#F5F5F7', borderBottom: '1px solid #E5E5E5' }}>
         <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-center gap-2 text-xs" style={{ color: '#384047' }}>
           <span>Proven progress with 1-on-1 tutoring</span>
-          <span style={{ color: '#FF79AC', fontWeight: 600 }}>Learn more</span>
+          <span style={{ color: '#018058', fontWeight: 600 }}>Learn more</span>
         </div>
       </div>
 
@@ -42,7 +42,7 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
           <button className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-70" style={{ color: '#384047' }}>
             Log in
           </button>
-          <button className="px-5 py-2.5 rounded-full text-white text-sm font-semibold hover:brightness-110 transition-all" style={{ background: '#FF79AC' }}>
+          <button className="px-5 py-2.5 rounded-full text-white text-sm font-semibold hover:brightness-110 transition-all" style={{ background: '#018058' }}>
             Sign up
           </button>
         </div>
@@ -64,7 +64,7 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#121118' }}>
               Learn faster with your best{' '}
-              <span style={{ color: '#FF79AC' }}>language tutor</span>
+              <span style={{ color: '#018058' }}>language tutor</span>
             </h1>
 
             <p className="text-lg mb-8 leading-relaxed" style={{ color: '#6B7280' }}>
@@ -75,7 +75,7 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
             <button
               onClick={onStartInterview}
               className="group px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:brightness-110 cursor-pointer"
-              style={{ background: '#FF79AC' }}
+              style={{ background: '#018058' }}
             >
               Find your tutor
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
