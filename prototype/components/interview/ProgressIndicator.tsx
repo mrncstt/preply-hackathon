@@ -15,9 +15,11 @@ export function ProgressIndicator({ messages }: { messages: Message[] }) {
         {Array.from({ length: total }).map((_, i) => (
           <div
             key={i}
-            className="h-1.5 w-6 rounded-full transition-all duration-300"
+            className="w-6 rounded-full transition-all duration-500"
             style={{
               background: i < current ? 'var(--preply-green)' : 'var(--border)',
+              height: i < current ? '6px' : '4px',
+              boxShadow: i === current - 1 ? '0 0 8px var(--preply-green)' : 'none',
             }}
           />
         ))}

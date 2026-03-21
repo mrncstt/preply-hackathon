@@ -26,7 +26,7 @@ export function InterviewControls({ isMuted, onToggleMute, onEndInterview }: Int
       </button>
       <button
         onClick={onEndInterview}
-        className="px-6 py-3 rounded-full bg-red-500 text-white font-medium text-sm hover:bg-red-600 transition-colors flex items-center gap-2 cursor-pointer"
+        className="px-6 py-3 rounded-full bg-red-500 text-white font-medium text-sm hover:bg-red-600 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
       >
         <PhoneOff className="w-4 h-4" />
         End Interview

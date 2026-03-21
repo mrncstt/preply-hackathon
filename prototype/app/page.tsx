@@ -96,7 +96,7 @@ export default function Home() {
       {screen === "interview" && <InterviewModal onInterviewEnd={handleInterviewEnd} />}
 
       {screen === "classifying" && (
-        <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+        <div className="min-h-screen flex flex-col items-center justify-center gap-4 animate-fade-in">
           <Loader2 className="w-10 h-10 animate-spin" style={{ color: 'var(--preply-coral)' }} />
           <p className="text-lg font-medium" style={{ color: 'var(--preply-navy)' }}>
             Analyzing your interview...
@@ -106,10 +106,16 @@ export default function Home() {
       )}
 
       {screen === "profile" && profile && (
-        <ProfileCard profile={profile} onViewPlan={handleViewPlan} onStartOver={handleStartOver} />
+        <div className="animate-slide-up">
+          <ProfileCard profile={profile} onViewPlan={handleViewPlan} onStartOver={handleStartOver} />
+        </div>
       )}
 
-      {screen === "bridge" && profile && <LearningBridge profile={profile} onStartOver={handleStartOver} />}
+      {screen === "bridge" && profile && (
+        <div className="animate-slide-up">
+          <LearningBridge profile={profile} onStartOver={handleStartOver} />
+        </div>
+      )}
 
       {classifyError && screen === "profile" && (
         <div className="fixed bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-red-50 text-red-600 text-sm border border-red-200">

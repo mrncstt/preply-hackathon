@@ -10,34 +10,33 @@ export function Hero({ onStartInterview }: HeroProps) {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-4 border-b border-border">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--preply-coral)' }}>
-            <span className="text-white font-bold text-sm">P</span>
+      <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full">
+        <div className="flex items-center gap-8">
+          <span className="font-bold text-2xl tracking-tight" style={{ color: 'var(--preply-navy)' }}>
+            preply<span style={{ color: '#00B300' }}>.</span>
+          </span>
+          <div className="hidden sm:flex items-center gap-6 text-sm font-medium" style={{ color: 'var(--preply-navy)' }}>
+            <span className="cursor-pointer hover:opacity-70">Find tutors</span>
+            <span className="cursor-pointer hover:opacity-70">Group classes</span>
+            <span className="cursor-pointer hover:opacity-70">Become a tutor</span>
           </div>
-          <span className="font-bold text-xl" style={{ color: 'var(--preply-navy)' }}>Preply</span>
         </div>
-        <div className="flex items-center gap-6 text-sm text-muted-foreground">
-          <span className="hidden sm:inline">Find tutors</span>
-          <span className="hidden sm:inline">How it works</span>
-          <button className="px-4 py-2 rounded-lg text-white font-medium" style={{ background: 'var(--preply-navy)' }}>
+        <div className="flex items-center gap-3">
+          <button className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-70" style={{ color: 'var(--preply-navy)' }}>
             Log in
+          </button>
+          <button className="px-4 py-2 rounded-lg text-white text-sm font-medium" style={{ background: '#00B300' }}>
+            Sign up
           </button>
         </div>
       </nav>
 
       {/* Hero */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8"
-          style={{ background: 'rgba(255,107,44,0.1)', color: 'var(--preply-coral)' }}>
-          <Sparkles className="w-4 h-4" />
-          Powered by AI Discovery
-        </div>
-
         <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight max-w-3xl mb-6"
           style={{ color: 'var(--preply-navy)' }}>
           Learn a language through
-          <span className="block" style={{ color: 'var(--preply-coral)' }}>what you love</span>
+          <span className="block" style={{ color: '#00B300' }}>what you love</span>
         </h1>
 
         <p className="text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed">
@@ -47,8 +46,8 @@ export function Hero({ onStartInterview }: HeroProps) {
 
         <button
           onClick={onStartInterview}
-          className="group px-8 py-4 rounded-2xl text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
-          style={{ background: 'var(--preply-coral)' }}
+          className="group px-8 py-4 rounded-xl text-white font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:brightness-110 cursor-pointer"
+          style={{ background: '#00B300' }}
         >
           Find your tutor
           <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
@@ -62,7 +61,7 @@ export function Hero({ onStartInterview }: HeroProps) {
             icon={<MessageCircle className="w-6 h-6" />}
             title="5-min AI Interview"
             description="Tell us about your passions and goals in a natural conversation"
-            color="var(--preply-coral)"
+            color="#00B300"
           />
           <FeatureCard
             icon={<Sparkles className="w-6 h-6" />}

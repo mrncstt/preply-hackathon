@@ -7,23 +7,27 @@ import type { AgentState } from "@/components/voice-agent/types";
 export function InterviewOrb({ state }: { state: AgentState }) {
   const active = state === "listening" || state === "talking" || state === "joining";
   return (
-    <div className="relative flex items-center justify-center w-40 h-40">
+    <div className="relative flex items-center justify-center w-48 h-48">
       {state === "talking" && (
         <>
           <div
+            className="absolute -inset-3 rounded-full animate-ping opacity-10"
+            style={{ background: "var(--preply-green)", animationDuration: "0.7s" }}
+          />
+          <div
             className="absolute inset-0 rounded-full animate-ping opacity-20"
-            style={{ background: "var(--preply-green)", animationDuration: "0.9s" }}
+            style={{ background: "var(--preply-green)", animationDuration: "1.0s" }}
           />
           <div
             className="absolute inset-6 rounded-full animate-ping opacity-15"
-            style={{ background: "var(--preply-green)", animationDuration: "1.2s" }}
+            style={{ background: "var(--preply-green)", animationDuration: "1.4s" }}
           />
         </>
       )}
       {state === "listening" && (
         <div
-          className="absolute inset-0 rounded-full animate-pulse opacity-10"
-          style={{ background: "var(--preply-green)" }}
+          className="absolute inset-2 rounded-full animate-pulse opacity-20"
+          style={{ background: "var(--preply-green)", animationDuration: "2s" }}
         />
       )}
       {state === "joining" && (
@@ -34,7 +38,7 @@ export function InterviewOrb({ state }: { state: AgentState }) {
       )}
       <div
         className={cn(
-          "relative w-28 h-28 rounded-full flex items-center justify-center transition-all duration-500",
+          "relative w-36 h-36 rounded-full flex items-center justify-center transition-all duration-500",
           active ? "opacity-100 scale-100" : "opacity-30 scale-95",
           state === "talking" && "scale-110"
         )}
@@ -52,7 +56,7 @@ export function InterviewOrb({ state }: { state: AgentState }) {
       >
         <Mic
           className={cn(
-            "w-8 h-8 transition-colors duration-300",
+            "w-10 h-10 transition-colors duration-300",
             active ? "text-white" : "text-muted-foreground",
             state === "talking" && "animate-pulse"
           )}

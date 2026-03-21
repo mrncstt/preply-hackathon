@@ -10,7 +10,17 @@ interface LearningBridgeProps {
 
 export function LearningBridge({ profile, onStartOver }: LearningBridgeProps) {
   return (
-    <div className="min-h-screen flex flex-col items-center px-6 py-12">
+    <div className="min-h-screen flex flex-col items-center px-6 py-12" style={{ background: 'linear-gradient(180deg, rgba(255,107,44,0.03) 0%, transparent 40%)' }}>
+      <style>{`
+        @keyframes bridgeCardIn {
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bridgeLineGrow {
+          from { transform: scaleY(0); }
+          to   { transform: scaleY(1); }
+        }
+      `}</style>
       <div className="max-w-2xl w-full">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--preply-navy)' }}>
@@ -26,12 +36,23 @@ export function LearningBridge({ profile, onStartOver }: LearningBridgeProps) {
           {/* Connecting line */}
           <div
             className="absolute left-6 top-8 bottom-8 w-0.5"
-            style={{ background: 'linear-gradient(to bottom, var(--preply-coral), var(--preply-green))' }}
+            style={{
+              background: 'linear-gradient(to bottom, var(--preply-coral), var(--preply-green))',
+              transformOrigin: 'top',
+              animation: 'bridgeLineGrow 0.8s ease-out both',
+            }}
           />
 
           <div className="space-y-6">
             {profile.weekly_plan.map((week, i) => (
-              <div key={i} className="relative pl-14">
+              <div
+                key={i}
+                className="relative pl-14"
+                style={{
+                  animation: 'bridgeCardIn 0.5s ease-out both',
+                  animationDelay: `${i * 150}ms`,
+                }}
+              >
                 {/* Week circle */}
                 <div
                   className="absolute left-3 top-4 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold z-10"
@@ -42,7 +63,7 @@ export function LearningBridge({ profile, onStartOver }: LearningBridgeProps) {
                   {week.week}
                 </div>
 
-                <div className="p-5 rounded-2xl border border-border bg-card hover:shadow-md transition-shadow">
+                <div className="p-5 rounded-2xl border border-border bg-card hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1">
                       <h3 className="font-semibold mb-1" style={{ color: 'var(--preply-navy)' }}>

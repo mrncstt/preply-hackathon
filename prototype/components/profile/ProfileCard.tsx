@@ -12,13 +12,28 @@ interface ProfileCardProps {
 export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardProps) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
-      <div className="max-w-2xl w-full">
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out both;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+      `}</style>
+      <div className="max-w-2xl w-full animate-fade-in-up">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            style={{ background: 'rgba(16,185,129,0.1)', color: 'var(--preply-green)' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 animate-fade-in-up"
+            style={{ background: 'linear-gradient(135deg, rgba(0,179,0,0.15), rgba(0,179,0,0.05))', color: 'var(--preply-green)', border: '1px solid rgba(0,179,0,0.2)' }}>
+            <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--preply-green)' }} />
             Profile Complete
           </div>
-          <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--preply-navy)' }}>
+          <h1 className="text-4xl font-bold mb-3 tracking-tight" style={{ color: 'var(--preply-navy)' }}>
             {profile.learner_name ? `${profile.learner_name}'s` : "Your"} Learning Profile
           </h1>
           <p className="text-muted-foreground">Based on your discovery interview</p>
@@ -33,12 +48,12 @@ export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardPro
 
         <div className="grid gap-4">
           {/* Main insight - Learning Bridge */}
-          <div className="p-6 rounded-2xl border-2 shadow-sm"
-            style={{ borderColor: 'var(--preply-coral)', background: 'rgba(255,107,44,0.03)' }}>
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                style={{ background: 'var(--preply-coral)' }}>
-                <Lightbulb className="w-5 h-5 text-white" />
+          <div className="p-6 rounded-2xl border-2 animate-fade-in-up delay-1"
+            style={{ borderColor: 'var(--preply-coral)', background: 'rgba(255,107,44,0.03)', boxShadow: '0 4px 24px rgba(255,107,44,0.1)' }}>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                style={{ background: 'linear-gradient(135deg, var(--preply-coral), #ff8a65)' }}>
+                <Lightbulb className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h3 className="font-semibold text-sm uppercase tracking-wide mb-1"
@@ -52,32 +67,25 @@ export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardPro
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4">
-            {/* Required Skill */}
+          <div className="grid sm:grid-cols-2 gap-4 animate-fade-in-up delay-2">
             <ProfileSection
               icon={<Target className="w-5 h-5 text-white" />}
               color="var(--preply-navy)"
               label="What You Need"
               value={profile.required_skill}
             />
-
-            {/* Real Interest */}
             <ProfileSection
               icon={<Heart className="w-5 h-5 text-white" />}
               color="var(--preply-green)"
               label="What You Love"
               value={profile.real_interest}
             />
-
-            {/* Level + Style */}
             <ProfileSection
               icon={<Brain className="w-5 h-5 text-white" />}
               color="#6366F1"
               label="Level & Style"
               value={`${profile.current_level} | ${profile.preferred_style}`}
             />
-
-            {/* Time */}
             <ProfileSection
               icon={<Clock className="w-5 h-5 text-white" />}
               color="#8B5CF6"
@@ -88,7 +96,7 @@ export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardPro
 
           {/* Barriers */}
           {profile.barriers.length > 0 && (
-            <div className="p-4 rounded-2xl border border-border bg-card">
+            <div className="p-4 rounded-2xl border border-border bg-card animate-fade-in-up delay-3">
               <div className="flex items-center gap-2 mb-2">
                 <AlertTriangle className="w-4 h-4 text-amber-500" />
                 <span className="text-sm font-medium" style={{ color: 'var(--preply-navy)' }}>
@@ -106,18 +114,19 @@ export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardPro
           )}
 
           {/* Recommendation */}
-          <div className="p-4 rounded-2xl border border-border bg-card">
-            <p className="text-sm leading-relaxed text-muted-foreground italic">
-              &ldquo;{profile.recommendation}&rdquo;
+          <div className="p-5 rounded-2xl border border-border bg-card animate-fade-in-up delay-4 relative overflow-hidden">
+            <div className="absolute top-2 left-4 text-5xl font-serif leading-none opacity-10" style={{ color: 'var(--preply-navy)' }}>&ldquo;</div>
+            <p className="text-sm leading-relaxed text-muted-foreground italic pl-6">
+              {profile.recommendation}
             </p>
           </div>
         </div>
 
-        <div className="text-center mt-8 flex flex-col items-center gap-3">
+        <div className="text-center mt-8 flex flex-col items-center gap-3 animate-fade-in-up delay-5">
           <button
             onClick={onViewPlan}
             className="px-8 py-4 rounded-2xl text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
-            style={{ background: 'var(--preply-coral)' }}
+            style={{ background: 'linear-gradient(135deg, var(--preply-coral), #ff8a65)' }}
           >
             See your learning plan &rarr;
           </button>
@@ -147,9 +156,9 @@ function ProfileSection({
   value: string;
 }) {
   return (
-    <div className="p-4 rounded-2xl border border-border bg-card">
+    <div className="p-4 rounded-2xl border border-border bg-card transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
       <div className="flex items-start gap-3">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: color }}>
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-200" style={{ background: color }}>
           {icon}
         </div>
         <div>

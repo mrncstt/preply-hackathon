@@ -49,7 +49,13 @@ export function InterviewChat({
     <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ background: 'var(--chat-bg)' }}>
       {messages.length === 0 && (
         <div className="flex flex-col items-center justify-center h-full gap-2">
-          <p className="text-xs text-muted-foreground">The coach is about to start...</p>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: 'var(--preply-green)' }} />
+              <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: 'var(--preply-green)' }} />
+            </span>
+            <p className="text-xs text-muted-foreground">The coach is about to start...</p>
+          </div>
         </div>
       )}
       {messages.map((msg) => (
