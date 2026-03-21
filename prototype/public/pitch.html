@@ -18,8 +18,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Figtree', sans-serif;
-      background: var(--dark);
-      color: var(--white);
+      background: var(--white);
+      color: var(--dark);
       overflow: hidden;
       height: 100vh;
       width: 100vw;
@@ -83,7 +83,14 @@
     .badge-white { background: rgba(255,255,255,0.1); color: var(--white); }
     .slide-light { background: var(--white); color: var(--dark); }
     .slide-light p { color: var(--gray); }
-    .slide-dark { background: var(--dark); }
+    .slide-dark { background: var(--white); color: var(--dark); }
+    .slide-dark p { color: var(--gray); }
+    .slide-dark .accent { color: var(--pink); }
+    .slide-dark .badge-white { background: rgba(18,17,24,0.08); color: var(--dark); }
+    .slide-dark .card { background: rgba(18,17,24,0.03); border-color: rgba(18,17,24,0.1); }
+    .slide-dark .card h3 { color: var(--dark); }
+    .slide-dark .card p { color: var(--gray); }
+    .counter { color: var(--gray); }
     .stat {
       font-size: clamp(3rem, 8vw, 7rem);
       font-weight: 900;
@@ -132,6 +139,7 @@
       z-index: 100;
       opacity: 0.5;
     }
+    .logo { color: var(--dark); }
     .logo span { color: var(--pink); }
     #notes-panel {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
@@ -289,8 +297,12 @@
     <div class="slide slide-light">
       <div class="badge badge-pink">The Insight</div>
       <h2>People remember <span class="accent">significantly more</span><br>when learning connects to what they love</h2>
-      <p style="font-size:0.75rem; opacity:0.45; margin-bottom:0.5rem;">Hidi &amp; Renninger, 2006 -- interest drives up to 2x gains in recall and persistence</p>
-      <p>The real question was never <em>"how do we teach?"</em><br>It was <em>"how do we discover what someone cares about?"</em></p>
+      <div style="margin-top:1.5rem; max-width:600px; text-align:left; font-size:0.85rem; opacity:0.6; line-height:1.7;">
+        <p><strong>Hidi &amp; Renninger (2006)</strong>, Review of Educational Research: triggered situational interest is the strongest predictor of sustained learning motivation.</p>
+        <p style="margin-top:0.5rem;"><strong>Hulstijn &amp; Laufer (2001)</strong>: high-involvement tasks produce up to 2x better vocabulary retention.</p>
+        <p style="margin-top:0.5rem;"><strong>Krashen (1982)</strong>, Affective Filter Hypothesis: low anxiety + high motivation = faster language acquisition.</p>
+      </div>
+      <p style="margin-top:1.5rem;">The real question was never <em>"how do we teach?"</em><br>It was <em>"how do we discover what someone cares about?"</em></p>
       <!-- SPEAKER: Reference the research briefly. Shift tone to personal on "how do we discover." ~15s -->
     </div>
 
@@ -357,8 +369,8 @@
           botas.vercel.app &rarr;
         </a>
       </p>
-      <div style="margin-top:2rem; width:min(600px, 80vw); background:#1a1a2e; border-radius:0.75rem; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
-        <div style="display:flex; align-items:center; gap:6px; padding:0.6rem 1rem; background:rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="margin-top:2rem; width:min(600px, 80vw); background:#1a1a2e; border-radius:0.75rem; overflow:hidden; border:1px solid rgba(18,17,24,0.1);">
+        <div style="display:flex; align-items:center; gap:6px; padding:0.6rem 1rem; background:rgba(18,17,24,0.03); border-bottom:1px solid rgba(255,255,255,0.08);">
           <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56;display:inline-block;"></span>
           <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;display:inline-block;"></span>
           <span style="width:10px;height:10px;border-radius:50%;background:#27c93f;display:inline-block;"></span>
@@ -410,7 +422,7 @@
             <span style="opacity:0.6;">Engagement</span>
             <span style="color:var(--pink); font-weight:600;">High</span>
           </div>
-          <div style="height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+          <div style="height:8px; background:rgba(18,17,24,0.08); border-radius:4px; overflow:hidden;">
             <div class="signal-bar-inner" data-target="87" style="background:var(--pink);"></div>
           </div>
         </div>
@@ -419,7 +431,7 @@
             <span style="opacity:0.6;">Confidence</span>
             <span style="color:var(--pink); font-weight:600;">Growing</span>
           </div>
-          <div style="height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+          <div style="height:8px; background:rgba(18,17,24,0.08); border-radius:4px; overflow:hidden;">
             <div class="signal-bar-inner" data-target="62" style="background:var(--pink);"></div>
           </div>
         </div>
@@ -428,7 +440,7 @@
             <span style="opacity:0.6;">Cognitive Load</span>
             <span style="color:#ffbd2e; font-weight:600;">Moderate</span>
           </div>
-          <div style="height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+          <div style="height:8px; background:rgba(18,17,24,0.08); border-radius:4px; overflow:hidden;">
             <div class="signal-bar-inner" data-target="45" style="background:#ffbd2e;"></div>
           </div>
         </div>
@@ -466,23 +478,23 @@
       <div class="badge badge-white">Built in 24h</div>
       <h2>Tech Stack</h2>
       <div style="display:flex; gap:1.5rem; margin-top:1.5rem; flex-wrap:wrap; justify-content:center;">
-        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:0.75rem;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem;">
           <span style="font-size:1.5rem;">&#9662;</span>
           <span style="font-size:0.8rem; font-weight:600; opacity:0.8;">Next.js 16</span>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:0.75rem;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem;">
           <span style="font-size:1.5rem; color:var(--pink);">&#9679;</span>
           <span style="font-size:0.8rem; font-weight:600; opacity:0.8;">Agora ConvoAI</span>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:0.75rem;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem;">
           <span style="font-size:1.5rem; color:#10A37F;">&#9830;</span>
           <span style="font-size:0.8rem; font-weight:600; opacity:0.8;">OpenAI</span>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:0.75rem;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem;">
           <span style="font-size:1.5rem; color:#A78BFA;">&#9829;</span>
           <span style="font-size:0.8rem; font-weight:600; opacity:0.8;">Thymia</span>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:0.75rem;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1rem 1.5rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem;">
           <span style="font-size:1.5rem;">&#9650;</span>
           <span style="font-size:0.8rem; font-weight:600; opacity:0.8;">Vercel</span>
         </div>
