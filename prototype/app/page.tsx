@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { HeroPreply as Hero } from "@/components/landing/HeroPreply";
 import { ProfileCard } from "@/components/profile/ProfileCard";
 import { LearningBridge } from "@/components/bridge/LearningBridge";
 import type { Message, InterviewProfile } from "@/components/voice-agent/types";
 import { Loader2 } from "lucide-react";
+import { detectLocale, translations, type Locale } from "@/lib/i18n";
 
 const InterviewModal = dynamic(
   () => import("@/components/interview/InterviewModal").then((m) => m.InterviewModal),
@@ -26,6 +27,12 @@ export default function Home() {
   const [screen, setScreen] = useState<Screen>("landing");
   const [profile, setProfile] = useState<InterviewProfile | null>(null);
   const [classifyError, setClassifyError] = useState<string | null>(null);
+  const [locale, setLocale] = useState<Locale>("en");
+  const t = translations[locale];
+
+  useEffect(() => {
+    setLocale(detectLocale());
+  }, []);
 
   const handleStartInterview = useCallback(() => {
     setScreen("interview");
@@ -93,7 +100,7 @@ export default function Home() {
     <>
       {screen === "landing" && (
         <div className="animate-fade-in">
-          <Hero onStartInterview={handleStartInterview} />
+          <Hero onStartInterview={handleStartInterview} locale={locale} t={t} />
         </div>
       )}
 
@@ -103,9 +110,9 @@ export default function Home() {
         <div className="min-h-screen flex flex-col items-center justify-center gap-4 animate-fade-in">
           <Loader2 className="w-10 h-10 animate-spin" style={{ color: 'var(--preply-coral)' }} />
           <p className="text-lg font-medium" style={{ color: 'var(--preply-navy)' }}>
-            Analyzing your interview...
+            {t.classify.analyzing}
           </p>
-          <p className="text-sm text-muted-foreground">Building your personalized learning profile</p>
+          <p className="text-sm text-muted-foreground">{t.classify.building}</p>
         </div>
       )}
 
