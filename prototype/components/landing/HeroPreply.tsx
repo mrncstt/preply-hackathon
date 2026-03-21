@@ -114,23 +114,30 @@ export function HeroPreply({ onStartInterview, locale, t }: HeroPreplyProps) {
 
       {/* How it works section */}
       <div style={{ background: '#fff' }}>
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#121117' }}>{t.howItWorks.title}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <h2 className="text-3xl font-bold text-center mb-4" style={{ color: '#121117' }}>{t.howItWorks.title}</h2>
+          <p className="text-center text-base mb-14" style={{ color: '#6B7280' }}>From hello to personalized plan in 90 seconds</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
+            {/* Connecting lines on desktop */}
+            <div className="hidden sm:block absolute top-10 left-[calc(33.33%-1rem)] w-[calc(33.33%+2rem)] h-0.5" style={{ background: 'linear-gradient(90deg, #FF7AAC, #3BB3BD)' }} />
+            <div className="hidden sm:block absolute top-10 left-[calc(66.66%-1rem)] w-[calc(33.33%+2rem)] h-0.5" style={{ background: 'linear-gradient(90deg, #3BB3BD, #018058)' }} />
             <StepCard
               number="1"
+              emoji="&#127908;"
               title={t.howItWorks.step1.title}
               description={t.howItWorks.step1.desc}
               color="#FF7AAC"
             />
             <StepCard
               number="2"
+              emoji="&#129504;"
               title={t.howItWorks.step2.title}
               description={t.howItWorks.step2.desc}
               color="#3BB3BD"
             />
             <StepCard
               number="3"
+              emoji="&#127891;"
               title={t.howItWorks.step3.title}
               description={t.howItWorks.step3.desc}
               color="#018058"
@@ -194,22 +201,25 @@ export function HeroPreply({ onStartInterview, locale, t }: HeroPreplyProps) {
 
 function StepCard({
   number,
+  emoji,
   title,
   description,
   color,
 }: {
   number: string;
+  emoji: string;
   title: string;
   description: string;
   color: string;
 }) {
   return (
-    <div className="text-center">
+    <div className="text-center relative z-10 p-6 rounded-2xl border border-gray-100 bg-white hover:shadow-lg transition-shadow">
       <div
-        className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl"
+        className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 text-white font-bold text-xl relative"
         style={{ background: color }}
       >
-        {number}
+        <span className="text-2xl" dangerouslySetInnerHTML={{ __html: emoji }} />
+        <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-xs font-bold shadow-sm" style={{ color }}>{number}</span>
       </div>
       <h3 className="font-bold text-lg mb-2" style={{ color: '#121117' }}>
         {title}
