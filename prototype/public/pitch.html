@@ -376,7 +376,7 @@
             <span style="color:var(--pink); font-weight:600;">High</span>
           </div>
           <div style="height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
-            <div style="width:87%; height:100%; background:var(--pink); border-radius:4px;"></div>
+            <div class="signal-bar-inner" data-target="87" style="background:var(--pink);"></div>
           </div>
         </div>
         <div style="margin-bottom:1rem;">
@@ -385,7 +385,7 @@
             <span style="color:var(--pink); font-weight:600;">Growing</span>
           </div>
           <div style="height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
-            <div style="width:62%; height:100%; background:var(--pink); border-radius:4px;"></div>
+            <div class="signal-bar-inner" data-target="62" style="background:var(--pink);"></div>
           </div>
         </div>
         <div style="margin-bottom:1rem;">
@@ -394,7 +394,7 @@
             <span style="color:#ffbd2e; font-weight:600;">Moderate</span>
           </div>
           <div style="height:8px; background:rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
-            <div style="width:45%; height:100%; background:#ffbd2e; border-radius:4px;"></div>
+            <div class="signal-bar-inner" data-target="45" style="background:#ffbd2e;"></div>
           </div>
         </div>
       </div>
@@ -546,7 +546,54 @@
     });
     function updateNotes() { notesPanel.textContent = slideNotes[current] || '(no notes)'; }
     const origShow = show;
-    show = function(n) { origShow(n); updateNotes(); };
+    // Count-up animation for stat numbers (slide 2)
+    function animateCountUp(el) {
+      var target = parseInt(el.dataset.countup, 10);
+      if (isNaN(target)) return;
+      var duration = 1200;
+      var start = performance.now();
+      el.textContent = '0%';
+      function tick(now) {
+        var elapsed = now - start;
+        var p = Math.min(elapsed / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + '%';
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Signal bar animation (slide 7)
+    function animateSignalBars(slide) {
+      var bars = slide.querySelectorAll('.signal-bar-inner[data-target]');
+      bars.forEach(function(bar) {
+        bar.style.width = '0%';
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            bar.style.width = bar.dataset.target + '%';
+          });
+        });
+      });
+    }
+
+    function resetSignalBars(slide) {
+      var bars = slide.querySelectorAll('.signal-bar-inner[data-target]');
+      bars.forEach(function(bar) { bar.style.width = '0%'; });
+    }
+
+    function animateSlide(index) {
+      var slide = slides[index];
+      var countEl = slide.querySelector('[data-countup]');
+      if (countEl) animateCountUp(countEl);
+      if (slide.querySelectorAll('.signal-bar-inner[data-target]').length > 0) {
+        animateSignalBars(slide);
+      }
+      slides.forEach(function(s, i) {
+        if (i !== index) resetSignalBars(s);
+      });
+    }
+
+    show = function(n) { origShow(n); updateNotes(); animateSlide(current); };
     document.addEventListener('keydown', e => {
       if (e.key === 'n' || e.key === 'N') notesPanel.classList.toggle('visible');
     });
