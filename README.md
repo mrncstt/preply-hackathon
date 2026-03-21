@@ -55,8 +55,8 @@ OPEN_AI_API_KEY=       # OpenAI
 
 ## Team
 
-**Mariana Costa** - Data Engineer / AI
-**Timur Losev** - DevOps / Platform
+**Mariana Costa** - Data Engineer
+**Timur Losev** - DevOps / AI
 
 ---
 
