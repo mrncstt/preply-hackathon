@@ -5,7 +5,8 @@
 <h1 align="center">Passion-Led Learning Agent</h1>
 
 <p align="center">
-  Voice AI that discovers what learners love and builds personalized learning bridges.
+  <strong>What if Preply knew what you love before lesson 1?</strong><br>
+  A voice AI that replaces static forms with a 90-second conversation, discovers your passions, and builds a personalized learning bridge between what you love and what you need to learn.
 </p>
 
 <p align="center">
@@ -16,13 +17,61 @@
 
 ---
 
+## The problem: before vs. after
+
+| | Before (current Preply) | After (our agent) |
+|---|---|---|
+| **Onboarding** | Fill a form, pick from a list | Talk for 90 seconds about what you love |
+| **Matching** | Filter by price, rating, availability | AI maps your passions to the right tutor |
+| **First lesson** | Tutor starts from zero | Tutor gets a full passion profile before lesson 1 |
+| **Retention** | 73% quit within 3 months | Lessons built around your interests keep you engaged |
+
+---
+
+## Architecture
+
+```
+ User opens botas.vercel.app
+           |
+           v
+  +------------------+
+  |   Next.js App    |
+  |   (Vercel)       |
+  +--------+---------+
+           |
+           v
+  +------------------+       +------------------+
+  |  Agora ConvoAI   | <---> |   OpenAI GPT-5.4 |
+  |  (Voice RTC/RTM) |       |   (LLM + TTS)    |
+  +--------+---------+       +--------+---------+
+           |                          |
+           v                          v
+  +------------------+       +------------------+
+  |  Thymia          |       |  /api/classify   |
+  |  (Cognitive      |       |  (Structured     |
+  |   signals)       |       |   profile JSON)  |
+  +------------------+       +--------+---------+
+                                      |
+                                      v
+                             +------------------+
+                             |  Learning Bridge  |
+                             |  (Personalized    |
+                             |   plan + tutor    |
+                             |   recommendation) |
+                             +------------------+
+```
+
+**Flow:** User clicks "Find your tutor" > 90-second voice interview via Agora ConvoAI > OpenAI classifies the transcript into a structured learner profile > Learning Bridge connects passions to goals > Tutor gets the profile before lesson 1.
+
+---
+
 ## How it works
 
 | Step | What happens |
 |------|-------------|
-| **1. Landing** | Learner arrives and meets the AI Discovery Coach |
+| **1. Landing** | Learner arrives at a Preply-style homepage and clicks "Find your tutor" |
 | **2. Voice interview** | 90-second real-time voice conversation explores interests, goals, and hidden passions |
-| **3. AI classification** | GPT-5.4 analyzes the conversation into a structured learner profile |
+| **3. AI classification** | GPT-5.4 analyzes the transcript into a structured learner profile |
 | **4. Learning bridge** | A personalized plan connects what they *love* to what they *need* to learn |
 
 ---
@@ -39,7 +88,7 @@ Most language learners quit because lessons feel disconnected from their lives. 
 |-----------|------|
 | **Next.js 16** | App Router + Turbopack |
 | **Agora ConvoAI** | Real-time voice AI interview via RTC + RTM |
-| **OpenAI GPT-5.4** | Learner classification and learning plan generation |
+| **OpenAI GPT-5.4** | Learner classification, conversation, and TTS |
 | **Thymia** | Cognitive signal analysis during voice interaction |
 | **Vercel** | Deployment and edge hosting |
 
