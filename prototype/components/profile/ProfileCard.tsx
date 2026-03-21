@@ -36,7 +36,7 @@ export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardPro
           <h1 className="text-4xl font-bold mb-3 tracking-tight" style={{ color: 'var(--preply-navy)' }}>
             {profile.learner_name ? `${profile.learner_name}'s` : "Your"} Learning Profile
           </h1>
-          <p className="text-muted-foreground">Based on your discovery interview</p>
+          <p style={{ color: '#6B7280', fontSize: '1rem' }}>Crafted by AI from your voice conversation</p>
           {profile.target_language && profile.target_language !== "Unknown" && (
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mt-2"
               style={{ background: 'rgba(27,20,100,0.08)', color: 'var(--preply-navy)' }}>
