@@ -50,41 +50,64 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
       </nav>
 
       {/* Hero section - two columns */}
-      <main className="flex-1 flex items-center" style={{ background: '#FFF5F8' }}>
+      <main className="flex-1 flex items-center" style={{ background: '#FF7AAC' }}>
         <div className="max-w-7xl mx-auto px-6 py-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left - text */}
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] mb-6" style={{ color: '#121117', fontFamily: 'Figtree, sans-serif' }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] mb-6" style={{ color: '#fff', fontFamily: 'Figtree, sans-serif' }}>
               Learn faster with the best{' '}
               <span style={{ color: '#121117' }}>language tutor</span>{' '}
               for you
             </h1>
 
-            <p className="text-lg mb-8 leading-relaxed" style={{ color: '#384047' }}>
+            <p className="text-lg mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>
               Take 1-on-1 lessons with our AI Discovery Coach, who learns what you love and builds personalized learning plans around your passions.
             </p>
 
             <button
               onClick={onStartInterview}
-              className="group px-8 py-4 rounded-lg text-white font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:brightness-110 cursor-pointer"
-              style={{ background: '#018058' }}
+              className="group px-8 py-4 rounded-lg font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:brightness-110 cursor-pointer"
+              style={{ background: '#121117', color: '#fff' }}
             >
               Find your tutor
             </button>
 
-            <p className="mt-4 text-sm" style={{ color: '#6B7280' }}>
+            <p className="mt-4 text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
               90-second voice interview. Personalized results.
             </p>
           </div>
 
-          {/* Right - hero image */}
+          {/* Right - stacked hero images */}
           <div className="hidden lg:flex justify-center">
-            <img
-              src="hero-preply.jpg"
-              alt="Students learning with Preply"
-              className="w-full max-w-lg rounded-2xl"
-              style={{ objectFit: 'cover' }}
-            />
+            <div style={{ position: 'relative', width: 496, height: 324 }}>
+              <img
+                src="hero-preply.jpg"
+                alt=""
+                style={{
+                  position: 'absolute', width: 496, height: 324, objectFit: 'cover',
+                  borderRadius: 16, transform: 'translateX(100px) scale(0.64)',
+                  transformOrigin: 'center center', opacity: 0.5,
+                }}
+              />
+              <img
+                src="hero-preply.jpg"
+                alt=""
+                style={{
+                  position: 'absolute', width: 496, height: 324, objectFit: 'cover',
+                  borderRadius: 16, transform: 'translateX(56px) scale(0.8)',
+                  transformOrigin: 'center center', opacity: 0.75,
+                }}
+              />
+              <img
+                src="hero-preply.jpg"
+                alt="Students learning with Preply"
+                style={{
+                  position: 'absolute', width: 496, height: 324, objectFit: 'cover',
+                  borderRadius: 16, transform: 'translateX(0) scale(1)',
+                  transformOrigin: 'center center',
+                }}
+              />
+            </div>
           </div>
         </div>
       </main>
