@@ -35,14 +35,20 @@
       padding: clamp(2rem, 5vw, 6rem);
       text-align: center;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(30px) scale(0.98);
       transition: opacity 0.5s ease, transform 0.5s ease;
       pointer-events: none;
     }
     .slide.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
       pointer-events: auto;
+    }
+    .signal-bar-inner {
+      height: 100%;
+      border-radius: 4px;
+      width: 0%;
+      transition: width 1s ease-out;
     }
     .slide h1 {
       font-size: clamp(2rem, 5vw, 4.5rem);
@@ -57,12 +63,13 @@
       margin-bottom: 1rem;
     }
     .slide p {
-      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
       line-height: 1.6;
       max-width: 700px;
       opacity: 0.7;
     }
     .slide .accent { color: var(--pink); }
+    .slide-light .accent { color: #D4457A; }
     .slide .badge {
       display: inline-block;
       padding: 0.5rem 1.5rem;
@@ -126,8 +133,91 @@
       opacity: 0.5;
     }
     .logo span { color: var(--pink); }
+    #notes-panel {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(0,0,0,0.82); color: #ccc; font-size: 0.8rem;
+      padding: 0.6rem 1.5rem; display: none; backdrop-filter: blur(6px);
+      border-top: 1px solid rgba(255,121,172,0.3);
+    }
+    #notes-panel.visible { display: block; }
+    /* Pulsing lightbulb on slide 1 */
+    .pulse-idea {
+      display: inline-block;
+      font-size: 2rem;
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: pulse-glow 2s ease-in-out infinite;
+      animation-delay: 1.5s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes pulse-glow {
+      0%   { opacity: 0.7; transform: scale(1); }
+      50%  { opacity: 1;   transform: scale(1.2); }
+      100% { opacity: 0.7; transform: scale(1); }
+    }
+    /* Tombstone graveyard */
+    .graveyard {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      justify-content: center;
+      opacity: 0.45;
+    }
+    .tombstone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .tombstone-stone {
+      width: 72px;
+      height: 82px;
+      background: #2a2a3a;
+      border-radius: 36px 36px 4px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .tombstone-stone .rip {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+      margin-bottom: 0.15rem;
+    }
+    .tombstone-stone .rip-text {
+      font-size: 0.35rem;
+      text-align: center;
+      line-height: 1.3;
+      opacity: 0.5;
+    }
+    .tombstone-ground {
+      width: 82px;
+      height: 6px;
+      background: #1a1a24;
+      border-radius: 0 0 3px 3px;
+    }
+    .wifi-disclaimer {
+      position: absolute;
+      bottom: 1.5rem;
+      font-size: 0.65rem;
+      font-style: italic;
+      opacity: 0.25;
+    }
+    .coffee-line {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.6rem;
+      opacity: 0.2;
+      letter-spacing: 0.02em;
+    }
     @media (max-width: 768px) {
       .grid-3 { grid-template-columns: 1fr; }
+      .graveyard { gap: 0.75rem; }
+      .tombstone-stone { width: 58px; height: 68px; }
+      .tombstone-ground { width: 68px; }
     }
   </style>
 </head>
@@ -135,6 +225,7 @@
   <div class="logo">preply<span>.</span></div>
   <div class="progress-bar" id="progress"></div>
   <div class="counter" id="counter"></div>
+  <div id="notes-panel"></div>
 
   <div class="deck" id="deck">
     <!-- Slide 1: Hook -->
@@ -142,23 +233,55 @@
       <div class="badge badge-pink">Preply x Agora Hackathon 2026</div>
       <h1>Right now, Preply asks you to <span class="accent">pick a tutor from a list.</span></h1>
       <p>Imagine instead, you spend 5 minutes talking about why you're obsessed with Argentine tango -- and the platform builds your entire Spanish journey around that obsession.</p>
+      <div class="pulse-idea">&#128161;</div>
       <!-- SPEAKER: Pause after "from a list" -- let it land. Then slow down on "Argentine tango". ~20s -->
     </div>
 
     <!-- Slide 2: Problem -->
     <div class="slide slide-dark">
-      <div class="stat">73%</div>
+      <div class="stat" data-countup="73">0%</div>
       <h2 style="margin-top:1.5rem">of language learners quit<br>within 3 months</h2>
       <p>Not because learning is hard.<br>Because no one asked what they <em>care</em> about.</p>
+      <div class="graveyard">
+        <div class="tombstone">
+          <div class="tombstone-stone">
+            <span class="rip">RIP</span>
+            <span class="rip-text">My Duolingo<br>Streak</span>
+          </div>
+          <div class="tombstone-ground"></div>
+        </div>
+        <div class="tombstone">
+          <div class="tombstone-stone">
+            <span class="rip">RIP</span>
+            <span class="rip-text">Rosetta Stone<br>Free Trial</span>
+          </div>
+          <div class="tombstone-ground"></div>
+        </div>
+        <div class="tombstone">
+          <div class="tombstone-stone">
+            <span class="rip">RIP</span>
+            <span class="rip-text">YouTube<br>Polyglot Phase</span>
+          </div>
+          <div class="tombstone-ground"></div>
+        </div>
+        <div class="tombstone">
+          <div class="tombstone-stone">
+            <span class="rip">RIP</span>
+            <span class="rip-text">Podcast I'll<br>Listen Later</span>
+          </div>
+          <div class="tombstone-ground"></div>
+        </div>
+      </div>
       <!-- SPEAKER: Let "73%" sit for 2 seconds. Deliver "Not because..." with pause before "Because no one asked." ~15s -->
     </div>
 
     <!-- Slide 3: Insight -->
     <div class="slide slide-light">
       <div class="badge badge-pink">The Insight</div>
-      <h2>People remember <span class="accent">2.9x more</span><br>when learning connects to what they love</h2>
+      <h2>People remember <span class="accent">significantly more</span><br>when learning connects to what they love</h2>
+      <p style="font-size:0.75rem; opacity:0.45; margin-bottom:0.5rem;">Hidi &amp; Renninger, 2006 -- interest drives up to 2x gains in recall and persistence</p>
       <p>The real question was never <em>"how do we teach?"</em><br>It was <em>"how do we discover what someone cares about?"</em></p>
-      <!-- SPEAKER: Gesture toward 2.9x. Shift tone to personal on "how do we discover." ~15s -->
+      <!-- SPEAKER: Reference the research briefly. Shift tone to personal on "how do we discover." ~15s -->
     </div>
 
     <!-- Slide 4: Solution -->
@@ -191,8 +314,12 @@
       <div class="badge badge-white">Live Demo</div>
       <h1>Let's try it. <span class="accent">Right now.</span></h1>
       <p style="margin-top:1rem; font-size:1.25rem;">
+        <a href="/" style="color:var(--pink); text-decoration:underline;">
+          Open demo (local) &rarr;
+        </a>
+        &nbsp;|&nbsp;
         <a href="https://botas.vercel.app" target="_blank" style="color:var(--pink); text-decoration:underline;">
-          Open botas.vercel.app &rarr;
+          botas.vercel.app &rarr;
         </a>
       </p>
       <div style="margin-top:2rem; width:min(600px, 80vw); background:#1a1a2e; border-radius:0.75rem; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
@@ -209,6 +336,7 @@
         </div>
       </div>
       <p style="margin-top:1rem; font-size:0.875rem; opacity:0.4;">Click "Find your tutor" to start the voice interview</p>
+      <div class="wifi-disclaimer">Warning: live demos and conference WiFi may not get along</div>
       <!-- SPEAKER: Switch to browser. Click button. Talk to agent for 30-40s. ~90s total demo -->
     </div>
 
@@ -240,6 +368,7 @@
       <div class="badge badge-white">Cognitive Signals</div>
       <h2>We don't just hear you. <span class="accent">We understand you.</span></h2>
       <p>Thymia analyzes cognitive signals during the conversation. No survey could capture this.</p>
+      <p style="font-size:0.75rem; opacity:0.45; margin-top:0.5rem;">Integration pipeline built; full signals available in production version</p>
       <div style="margin-top:2rem; max-width:500px; width:100%; text-align:left;">
         <div style="margin-bottom:1rem;">
           <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:0.4rem;">
@@ -278,21 +407,22 @@
       <h2>Preply's funnel, <span class="accent">supercharged</span></h2>
       <div class="grid-3" style="text-align:center;">
         <div class="card" style="background:linear-gradient(135deg, #fff 0%, #FFF0F5 100%); border:none; border-top:3px solid var(--pink); box-shadow:0 4px 20px rgba(255,121,172,0.12);">
-          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">2x</div>
+          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">&#8593;</div>
           <h3 style="color:var(--dark);">Better matching</h3>
           <p style="color:var(--gray);">Tutors get a cheat sheet on what motivates each student</p>
         </div>
         <div class="card" style="background:linear-gradient(135deg, #fff 0%, #FFF0F5 100%); border:none; border-top:3px solid var(--pink); box-shadow:0 4px 20px rgba(255,121,172,0.12);">
-          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">2.9x</div>
+          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">&#8593;</div>
           <h3 style="color:var(--dark);">Higher retention</h3>
           <p style="color:var(--gray);">Interest-aligned lessons keep students coming back</p>
         </div>
         <div class="card" style="background:linear-gradient(135deg, #fff 0%, #FFF0F5 100%); border:none; border-top:3px solid var(--pink); box-shadow:0 4px 20px rgba(255,121,172,0.12);">
-          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">-40%</div>
+          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">&#8595;</div>
           <h3 style="color:var(--dark);">Lower churn</h3>
           <p style="color:var(--gray);">Personalized first lesson reduces 30-day dropout</p>
         </div>
       </div>
+      <p style="font-size:0.7rem; opacity:0.4; margin-top:1rem; color:var(--gray);">Projected impact based on interest-driven learning research</p>
       <!-- SPEAKER: "Better matching, higher retention, lower churn. That's the business case." ~18s -->
     </div>
 
@@ -356,6 +486,7 @@
           <div style="margin-top:0.5rem; font-size:0.75rem; opacity:0.4;">Scan to try it</div>
         </div>
       </div>
+      <div class="coffee-line">Built with coffee, desperation, and AI</div>
       <!-- SPEAKER: "Scan the QR. Try it yourself. Thank you." ~15s -->
     </div>
   </div>
@@ -406,6 +537,19 @@
         timerEl.textContent = 'Built at hackathon \u2014 ' + h + 'h ' + m + 'm ' + s + 's remaining';
       }, 1000);
     }
+
+    // Presenter notes: press N to toggle
+    const notesPanel = document.getElementById('notes-panel');
+    const slideNotes = Array.from(slides).map(s => {
+      const match = s.innerHTML.match(/<!--\s*SPEAKER:\s*([\s\S]*?)-->/);
+      return match ? match[1].trim() : '';
+    });
+    function updateNotes() { notesPanel.textContent = slideNotes[current] || '(no notes)'; }
+    const origShow = show;
+    show = function(n) { origShow(n); updateNotes(); };
+    document.addEventListener('keydown', e => {
+      if (e.key === 'n' || e.key === 'N') notesPanel.classList.toggle('visible');
+    });
 
     show(0);
   </script>
