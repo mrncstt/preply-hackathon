@@ -128,7 +128,7 @@ export function useAgoraAgent() {
       const res = await fetch("/api/start-agent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt, greeting, locale: typeof window !== "undefined" ? (navigator.language.startsWith("pt") ? "pt" : navigator.language.startsWith("es") ? "es" : "en") : "en" }),
+        body: JSON.stringify({ prompt, greeting }),
       });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));

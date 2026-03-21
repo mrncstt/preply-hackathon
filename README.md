@@ -43,22 +43,20 @@
 
 ## How it works
 
-```
-  Click "Find your tutor"          Voice interview             AI classification           Learning bridge
+```mermaid
+flowchart LR
+    A["Click **Find your tutor**"] --> B["Agora ConvoAI\n90s voice chat"]
+    B --> C["OpenAI GPT-5.4\nProfile + Plan"]
+    B --> D["Thymia\nCognitive signals"]
+    C --> E["Learning Bridge\nPassions + Goals"]
+    E --> F["Tutor match\nPersonalized plan"]
 
-       +----------+            +------------------+         +------------------+       +------------------+
-       |          |            |                  |         |                  |       |                  |
-       |  Preply  |  -------> |   Agora ConvoAI  | ------> |  OpenAI GPT-5.4  | ----> |  Your passions   |
-       |  Landing |            |   90s voice chat |         |  Profile + Plan  |       |      +           |
-       |          |            |                  |         |                  |       |  Your goals      |
-       +----------+            +------------------+         +------------------+       +------------------+
-                                       |                                                       |
-                                       v                                                       v
-                               +------------------+                                   +------------------+
-                               |     Thymia       |                                   |   Tutor match    |
-                               |  Cognitive load  |                                   |  Personalized    |
-                               |  Engagement      |                                   |  weekly plan     |
-                               +------------------+                                   +------------------+
+    style A fill:#FF7AAC,stroke:#D4457A,color:#fff
+    style B fill:#099DFD,stroke:#0077CC,color:#fff
+    style C fill:#10A37F,stroke:#0D8A6A,color:#fff
+    style D fill:#A78BFA,stroke:#7C5FD3,color:#fff
+    style E fill:#FF7AAC,stroke:#D4457A,color:#fff
+    style F fill:#018058,stroke:#016045,color:#fff
 ```
 
 | Step | What happens |
@@ -133,6 +131,6 @@ OPEN_AI_API_KEY=       # OpenAI
 
 <p align="center">
   <img src="prototype/public/botas-logo.svg" alt="botas" width="48" /><br>
-  Built with coffee, desperation, and AI<br>
+  Built with caffeine, hard work, and AI<br>
   <strong>Preply x Agora Hackathon</strong> / Barcelona 2026
 </p>
