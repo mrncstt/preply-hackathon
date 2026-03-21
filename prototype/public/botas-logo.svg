@@ -1,56 +1,139 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140">
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="boot" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#FF79AC"/>
-      <stop offset="100%" style="stop-color:#D4457A"/>
+    <radialGradient id="bodyShade" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#3A3A3C"/>
+      <stop offset="100%" stop-color="#1C1C1E"/>
+    </radialGradient>
+    <radialGradient id="headShade" cx="45%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#3E3E40"/>
+      <stop offset="100%" stop-color="#1C1C1E"/>
+    </radialGradient>
+    <radialGradient id="whiteChest" cx="50%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E8E8ED"/>
+    </radialGradient>
+    <radialGradient id="whiteFace" cx="48%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#EAEAEF"/>
+    </radialGradient>
+    <radialGradient id="eyeL" cx="42%" cy="38%" r="50%">
+      <stop offset="0%" stop-color="#B8D86E"/>
+      <stop offset="60%" stop-color="#8AAF3E"/>
+      <stop offset="100%" stop-color="#6B8C2A"/>
+    </radialGradient>
+    <radialGradient id="eyeR" cx="42%" cy="38%" r="50%">
+      <stop offset="0%" stop-color="#B8D86E"/>
+      <stop offset="60%" stop-color="#8AAF3E"/>
+      <stop offset="100%" stop-color="#6B8C2A"/>
+    </radialGradient>
+    <radialGradient id="noseG" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#FFa0aa"/>
+      <stop offset="100%" stop-color="#E07080"/>
+    </radialGradient>
+    <radialGradient id="earInner" cx="50%" cy="60%" r="55%">
+      <stop offset="0%" stop-color="#FFAABB"/>
+      <stop offset="100%" stop-color="#DD7799"/>
+    </radialGradient>
+    <linearGradient id="bootL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF5C9A"/>
+      <stop offset="50%" stop-color="#FF2D78"/>
+      <stop offset="100%" stop-color="#D91B60"/>
     </linearGradient>
-    <linearGradient id="fur" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#F5F0EB"/>
-      <stop offset="100%" style="stop-color:#E8E0D8"/>
+    <linearGradient id="bootR" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF5C9A"/>
+      <stop offset="50%" stop-color="#FF2D78"/>
+      <stop offset="100%" stop-color="#D91B60"/>
     </linearGradient>
+    <linearGradient id="cuffG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF8AB8"/>
+      <stop offset="100%" stop-color="#FF5C9A"/>
+    </linearGradient>
+    <radialGradient id="bodyHL" cx="38%" cy="25%" r="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
-  <!-- Cat leg (cream/white fur) going into the boot -->
-  <rect x="38" y="0" width="44" height="58" rx="22" fill="url(#fur)" stroke="#C4B8AC" stroke-width="2"/>
+  <!-- Shadow under cat -->
+  <ellipse cx="256" cy="462" rx="120" ry="16" fill="#00000018"/>
 
-  <!-- Small fur tufts visible just at the boot opening -->
-  <ellipse cx="45" cy="56" rx="4" ry="3" fill="url(#fur)" stroke="#C4B8AC" stroke-width="1"/>
-  <ellipse cx="60" cy="55" rx="4" ry="3" fill="url(#fur)" stroke="#C4B8AC" stroke-width="1"/>
-  <ellipse cx="75" cy="56" rx="4" ry="3" fill="url(#fur)" stroke="#C4B8AC" stroke-width="1"/>
+  <!-- Tail (behind body) -->
+  <path d="M155 350 Q108 310 115 248 Q124 195 158 218" fill="none" stroke="url(#bodyShade)" stroke-width="26" stroke-linecap="round"/>
+  <path d="M158 218 Q168 228 163 242" fill="none" stroke="url(#whiteChest)" stroke-width="20" stroke-linecap="round"/>
 
-  <!-- Boot cuff (fluffy top edge) covers the paw -->
-  <ellipse cx="60" cy="60" rx="30" ry="7" fill="#FFE0EB" stroke="#E8A0B8" stroke-width="1"/>
-  <ellipse cx="48" cy="59" rx="5" ry="4" fill="white" opacity="0.5"/>
-  <ellipse cx="72" cy="59" rx="5" ry="4" fill="white" opacity="0.5"/>
+  <!-- Body -->
+  <path d="M152 380 Q148 280 180 240 Q220 200 256 195 Q292 200 332 240 Q364 280 360 380 Q358 440 340 455 L172 455 Q154 440 152 380Z" fill="url(#bodyShade)"/>
+  <path d="M152 380 Q148 280 180 240 Q220 200 256 195 Q292 200 332 240 Q364 280 360 380 Q358 440 340 455 L172 455 Q154 440 152 380Z" fill="url(#bodyHL)"/>
 
-  <!-- Boot shaft -->
-  <path d="M32 58 L32 100 Q32 104 36 104 L84 104 Q88 104 88 100 L88 58 Z" fill="url(#boot)" stroke="#C4507A" stroke-width="1.5"/>
+  <!-- White chest bib -->
+  <path d="M205 250 Q210 215 256 210 Q302 215 307 250 Q315 340 305 420 L300 455 L212 455 L207 420 Q197 340 205 250Z" fill="url(#whiteChest)"/>
 
-  <!-- Boot foot -->
-  <path d="M28 100 L88 100 L97 108 Q100 114 96 120 L92 124 Q88 127 82 127 L22 127 Q16 127 14 122 L13 118 Q12 114 16 110 Z" fill="url(#boot)" stroke="#C4507A" stroke-width="1.5"/>
+  <!-- Head -->
+  <ellipse cx="256" cy="165" rx="95" ry="85" fill="url(#headShade)"/>
 
+  <!-- Left ear - rounder -->
+  <path d="M182 128 Q168 72 162 58 Q156 48 164 48 Q180 48 200 72 Q222 100 225 115Z" fill="url(#headShade)"/>
+  <path d="M188 122 Q176 78 172 66 Q170 60 176 60 Q188 60 204 80 Q218 100 220 112Z" fill="url(#earInner)"/>
 
-  <!-- Boot strap -->
-  <rect x="34" y="78" width="52" height="5" rx="2.5" fill="#E8608A" stroke="#C4507A" stroke-width="0.5"/>
-  <!-- Golden buckle -->
-  <rect x="53" y="74" width="14" height="14" rx="3" fill="none" stroke="#F0C040" stroke-width="2.5"/>
-  <rect x="59" y="78" width="3" height="5" rx="1" fill="#F0C040"/>
+  <!-- Right ear - rounder -->
+  <path d="M330 128 Q344 72 350 58 Q356 48 348 48 Q332 48 312 72 Q290 100 287 115Z" fill="url(#headShade)"/>
+  <path d="M324 122 Q336 78 340 66 Q342 60 336 60 Q324 60 308 80 Q294 100 292 112Z" fill="url(#earInner)"/>
 
-  <!-- Boot shine highlights -->
-  <ellipse cx="46" cy="72" rx="5" ry="14" fill="white" opacity="0.15" transform="rotate(-3 46 72)"/>
-  <ellipse cx="42" cy="112" rx="4" ry="7" fill="white" opacity="0.12" transform="rotate(15 42 112)"/>
+  <!-- White face patch -->
+  <path d="M218 175 Q222 140 256 148 Q290 140 294 175 Q292 232 256 242 Q220 232 218 175Z" fill="url(#whiteFace)"/>
 
-  <!-- Toe crease line -->
-  <path d="M52 113 Q58 109 64 113" stroke="#C4507A" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Black nose bridge marking -->
+  <path d="M248 152 Q256 143 264 152 Q260 188 256 198 Q252 188 248 152Z" fill="url(#headShade)"/>
 
-  <!-- Sparkles -->
-  <g transform="translate(102, 55)" fill="#F0C040" opacity="0.9">
-    <path d="M0,-5 L1.5,-1.5 L5,0 L1.5,1.5 L0,5 L-1.5,1.5 L-5,0 L-1.5,-1.5 Z" transform="scale(0.7)"/>
+  <!-- Left eye -->
+  <ellipse cx="230" cy="175" rx="22" ry="23" fill="#FAFAFA"/>
+  <ellipse cx="230" cy="175" rx="17" ry="18" fill="url(#eyeL)"/>
+  <ellipse cx="230" cy="175" rx="8" ry="14" fill="#1C1C1E"/>
+  <circle cx="224" cy="168" r="5" fill="#fff" opacity="0.85"/>
+  <circle cx="236" cy="180" r="2.5" fill="#fff" opacity="0.5"/>
+
+  <!-- Right eye -->
+  <ellipse cx="282" cy="175" rx="22" ry="23" fill="#FAFAFA"/>
+  <ellipse cx="282" cy="175" rx="17" ry="18" fill="url(#eyeR)"/>
+  <ellipse cx="282" cy="175" rx="8" ry="14" fill="#1C1C1E"/>
+  <circle cx="276" cy="168" r="5" fill="#fff" opacity="0.85"/>
+  <circle cx="288" cy="180" r="2.5" fill="#fff" opacity="0.5"/>
+
+  <!-- Nose -->
+  <ellipse cx="256" cy="205" rx="7" ry="5.5" fill="url(#noseG)"/>
+  <ellipse cx="254" cy="203" rx="3" ry="2" fill="#FFccdd" opacity="0.5"/>
+
+  <!-- Mouth -->
+  <path d="M256 210 Q248 220 240 218" fill="none" stroke="#8E8E93" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M256 210 Q264 220 272 218" fill="none" stroke="#8E8E93" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Whiskers -->
+  <g opacity="0.45" stroke="#AEAEB2" stroke-width="1.2" stroke-linecap="round">
+    <line x1="215" y1="198" x2="148" y2="188"/>
+    <line x1="215" y1="206" x2="145" y2="210"/>
+    <line x1="215" y1="214" x2="150" y2="232"/>
+    <line x1="297" y1="198" x2="364" y2="188"/>
+    <line x1="297" y1="206" x2="367" y2="210"/>
+    <line x1="297" y1="214" x2="362" y2="232"/>
   </g>
-  <g transform="translate(108, 68)" fill="#F0C040" opacity="0.5">
-    <path d="M0,-3 L1,-1 L3,0 L1,1 L0,3 L-1,1 L-3,0 L-1,-1 Z" transform="scale(0.5)"/>
-  </g>
-  <g transform="translate(14, 40)" fill="#F0C040" opacity="0.6">
-    <path d="M0,-4 L1.2,-1.2 L4,0 L1.2,1.2 L0,4 L-1.2,1.2 L-4,0 L-1.2,-1.2 Z" transform="scale(0.5)"/>
-  </g>
+
+  <!-- Front legs -->
+  <path d="M195 395 Q192 370 198 355 Q204 340 216 340 Q228 340 232 355 Q238 370 235 395Z" fill="url(#bodyShade)"/>
+  <path d="M277 395 Q274 370 280 355 Q286 340 296 340 Q308 340 314 355 Q320 370 317 395Z" fill="url(#bodyShade)"/>
+
+  <!-- Left boot -->
+  <path d="M188 395 Q188 382 215 382 Q242 382 242 395 L244 438 Q244 458 230 458 L200 458 Q184 458 184 438Z" fill="url(#bootL)"/>
+  <path d="M186 395 Q186 385 215 385 Q244 385 244 395 Q244 402 215 402 Q186 402 186 395Z" fill="url(#cuffG)"/>
+  <path d="M182 450 Q182 458 200 460 L230 460 Q248 458 248 450 Q248 444 230 446 L200 446 Q182 444 182 450Z" fill="#B81555"/>
+  <path d="M198 400 Q198 395 210 395 Q218 395 218 400 L218 430 Q218 432 210 432 L198 432 Q198 430 198 400Z" fill="#ffffff" opacity="0.1"/>
+  <rect x="206" y="418" width="14" height="10" rx="3" fill="none" stroke="#FFD700" stroke-width="1.8"/>
+  <line x1="213" y1="418" x2="213" y2="428" stroke="#FFD700" stroke-width="1.2"/>
+
+  <!-- Right boot -->
+  <path d="M270 395 Q270 382 297 382 Q324 382 324 395 L326 438 Q326 458 312 458 L282 458 Q266 458 266 438Z" fill="url(#bootR)"/>
+  <path d="M268 395 Q268 385 297 385 Q326 385 326 395 Q326 402 297 402 Q268 402 268 395Z" fill="url(#cuffG)"/>
+  <path d="M264 450 Q264 458 282 460 L312 460 Q330 458 330 450 Q330 444 312 446 L282 446 Q264 444 264 450Z" fill="#B81555"/>
+  <path d="M280 400 Q280 395 292 395 Q300 395 300 400 L300 430 Q300 432 292 432 L280 432 Q280 430 280 400Z" fill="#ffffff" opacity="0.1"/>
+  <rect x="288" y="418" width="14" height="10" rx="3" fill="none" stroke="#FFD700" stroke-width="1.8"/>
+  <line x1="295" y1="418" x2="295" y2="428" stroke="#FFD700" stroke-width="1.2"/>
 </svg>
