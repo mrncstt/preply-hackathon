@@ -91,7 +91,11 @@ export default function Home() {
 
   return (
     <>
-      {screen === "landing" && <Hero onStartInterview={handleStartInterview} />}
+      {screen === "landing" && (
+        <div className="animate-fade-in">
+          <Hero onStartInterview={handleStartInterview} />
+        </div>
+      )}
 
       {screen === "interview" && <InterviewModal onInterviewEnd={handleInterviewEnd} />}
 
