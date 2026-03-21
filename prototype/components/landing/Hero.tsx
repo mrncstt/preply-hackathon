@@ -58,7 +58,7 @@ export function Hero({ onStartInterview }: HeroProps) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mt-20">
           <FeatureCard
             icon={<MessageCircle className="w-6 h-6" />}
-            title="5-min AI Interview"
+            title="90s AI Interview"
             description="Tell us about your passions and goals in a natural conversation"
             color="#FF79AC"
           />

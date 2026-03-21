@@ -11,7 +11,7 @@
 | Step | What happens |
 |------|-------------|
 | **1. Landing** | Learner arrives and meets the AI Discovery Coach |
-| **2. Voice Interview** | 5-minute real-time voice conversation explores interests, goals, and hidden passions |
+| **2. Voice Interview** | 90-second real-time voice conversation explores interests, goals, and hidden passions |
 | **3. AI Classification** | GPT-5.4 analyzes the conversation into a structured learner profile |
 | **4. Learning Bridge** | A personalized 4-week plan connects what they *love* to what they *need* to learn |
 
