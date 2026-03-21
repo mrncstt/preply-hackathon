@@ -4,25 +4,48 @@
       <stop offset="0%" style="stop-color:#1a1125"/>
       <stop offset="100%" style="stop-color:#121118"/>
     </linearGradient>
+    <linearGradient id="boot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF79AC"/>
+      <stop offset="100%" style="stop-color:#D4457A"/>
+    </linearGradient>
   </defs>
-  <!-- Background -->
+  <!-- Background rounded square -->
   <rect width="120" height="120" rx="26" fill="url(#bg)"/>
-  <!-- Main pad (big bean) -->
-  <ellipse cx="60" cy="72" rx="22" ry="18" fill="white"/>
-  <!-- Toe beans -->
-  <ellipse cx="38" cy="48" rx="10" ry="11" fill="white" transform="rotate(-15 38 48)"/>
-  <ellipse cx="60" cy="42" rx="9" ry="11" fill="white"/>
-  <ellipse cx="82" cy="48" rx="10" ry="11" fill="white" transform="rotate(15 82 48)"/>
-  <!-- Pink inner pads -->
-  <ellipse cx="60" cy="74" rx="14" ry="11" fill="#FF79AC" opacity="0.85"/>
-  <ellipse cx="40" cy="49" rx="6" ry="7" fill="#FF79AC" opacity="0.75" transform="rotate(-15 40 49)"/>
-  <ellipse cx="60" cy="44" rx="5.5" ry="7" fill="#FF79AC" opacity="0.75"/>
-  <ellipse cx="80" cy="49" rx="6" ry="7" fill="#FF79AC" opacity="0.75" transform="rotate(15 80 49)"/>
-  <!-- Tiny boot on the right toe -->
-  <path d="M88 52 L88 58 L95 58 C97 58, 98 56, 98 54 L98 52 C98 50, 96 49, 94 49 L90 49 C89 49, 88 50, 88 52 Z" fill="#FF79AC" stroke="white" stroke-width="1.5"/>
-  <rect x="87" y="56" width="12" height="2.5" rx="1" fill="#D4457A"/>
-  <!-- Sparkle -->
-  <g transform="translate(96, 38)" fill="#FFD700" opacity="0.7">
-    <path d="M0,-4 L1.2,-1.2 L4,0 L1.2,1.2 L0,4 L-1.2,1.2 L-4,0 L-1.2,-1.2 Z" transform="scale(0.7)"/>
+
+  <!-- Left toe (bare, white paw) -->
+  <ellipse cx="32" cy="38" rx="11" ry="13" fill="white" transform="rotate(-12 32 38)"/>
+  <ellipse cx="34" cy="39" rx="7" ry="8" fill="#FF79AC" opacity="0.7" transform="rotate(-12 34 39)"/>
+
+  <!-- Center toe (bare, white paw) -->
+  <ellipse cx="56" cy="32" rx="10" ry="13" fill="white"/>
+  <ellipse cx="56" cy="34" rx="6.5" ry="8" fill="#FF79AC" opacity="0.7"/>
+
+  <!-- Main pad (big white bean) -->
+  <ellipse cx="50" cy="68" rx="24" ry="20" fill="white"/>
+  <ellipse cx="50" cy="70" rx="16" ry="13" fill="#FF79AC" opacity="0.7"/>
+
+  <!-- RIGHT TOE: This one wears a boot! -->
+  <!-- Boot shaft (tall part) -->
+  <path d="M72 25 C72 22, 92 22, 92 25 L92 52 L72 52 Z" fill="url(#boot)" rx="4"/>
+  <!-- Boot top cuff -->
+  <rect x="70" y="23" width="24" height="5" rx="2.5" fill="#FFB3D0"/>
+  <!-- Boot foot (wider bottom) -->
+  <path d="M68 52 L96 52 L100 60 C101 63, 99 66, 96 66 L65 66 C62 66, 60 63, 61 60 Z" fill="url(#boot)"/>
+  <!-- Boot sole -->
+  <rect x="59" y="64" width="43" height="5" rx="2.5" fill="#121118"/>
+  <!-- Boot heel -->
+  <rect x="59" y="64" width="8" height="8" rx="2" fill="#121118"/>
+  <!-- Boot buckle/strap -->
+  <rect x="74" y="40" width="16" height="4" rx="2" fill="#FFB3D0" opacity="0.8"/>
+  <rect x="79" y="38" width="6" height="8" rx="1.5" fill="none" stroke="#FFB3D0" stroke-width="1.5"/>
+  <!-- Boot shine -->
+  <ellipse cx="78" cy="34" rx="3" ry="8" fill="white" opacity="0.15" transform="rotate(-5 78 34)"/>
+
+  <!-- Sparkle near the boot -->
+  <g transform="translate(102, 18)" fill="#FFD700" opacity="0.8">
+    <path d="M0,-5 L1.5,-1.5 L5,0 L1.5,1.5 L0,5 L-1.5,1.5 L-5,0 L-1.5,-1.5 Z" transform="scale(0.7)"/>
+  </g>
+  <g transform="translate(108, 28)" fill="#FFD700" opacity="0.5">
+    <path d="M0,-3 L1,-1 L3,0 L1,1 L0,3 L-1,1 L-3,0 L-1,-1 Z" transform="scale(0.5)"/>
   </g>
 </svg>
