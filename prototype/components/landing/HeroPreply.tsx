@@ -60,7 +60,7 @@ export function HeroPreply({ onStartInterview, locale, t }: HeroPreplyProps) {
               {' '}{t.hero.h1_3}
             </h1>
 
-            <p className="text-lg mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>
+            <p className="text-lg mb-8 leading-relaxed" style={{ color: '#121117' }}>
               {t.hero.subtitle}
             </p>
 
@@ -72,7 +72,7 @@ export function HeroPreply({ onStartInterview, locale, t }: HeroPreplyProps) {
               {t.hero.cta}
             </button>
 
-            <p className="mt-4 text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            <p className="mt-4 text-sm font-medium" style={{ color: '#121117', opacity: 0.7 }}>
               {t.hero.ctaSub}
             </p>
           </div>
