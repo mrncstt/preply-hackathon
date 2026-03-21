@@ -42,6 +42,12 @@ export function InterviewModal({ onInterviewEnd }: InterviewModalProps) {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    const cleanup = () => handleDisconnect();
+    window.addEventListener('beforeunload', cleanup);
+    return () => window.removeEventListener('beforeunload', cleanup);
+  }, [handleDisconnect]);
+
   const handleEndInterview = () => {
     if (isEnding) return;
     setIsEnding(true);
