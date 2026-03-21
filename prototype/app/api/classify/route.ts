@@ -49,5 +49,15 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json({ error: "Invalid JSON from classifier" }, { status: 502 });
   }
+
+  // Store profile for future analysis (visible in Vercel > Logs)
+  console.log(JSON.stringify({
+    event: "learner_profile_created",
+    timestamp: new Date().toISOString(),
+    profile,
+    transcript_length: transcript.length,
+    transcript_preview: transcript.slice(0, 3),
+  }));
+
   return NextResponse.json({ profile });
 }
