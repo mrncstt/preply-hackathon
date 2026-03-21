@@ -1,19 +1,22 @@
 "use client";
 
 import { Globe } from "lucide-react";
+import type { Translations, Locale } from "@/lib/i18n";
 
 interface HeroPreplyProps {
   onStartInterview: () => void;
+  locale: Locale;
+  t: Translations;
 }
 
-export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
+export function HeroPreply({ onStartInterview, locale, t }: HeroPreplyProps) {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: '#FF7AAC' }}>
       {/* Top banner - Proven Progress */}
       <div style={{ background: '#FF7AAC', color: '#121117' }}>
         <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-center gap-2 text-sm">
-          <span style={{ color: '#121117', fontWeight: 700 }}>Proven progress</span>
-          <span style={{ opacity: 0.6 }}>with 1-on-1 tutoring. See how it works</span>
+          <span style={{ color: '#121117', fontWeight: 700 }}>{t.banner.proven}</span>
+          <span style={{ opacity: 0.6 }}>{t.banner.sub}</span>
         </div>
       </div>
 
@@ -26,10 +29,10 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
             </svg>
           </a>
           <div className="hidden md:flex items-center gap-4 text-sm font-semibold" style={{ color: '#121117' }}>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>Find tutors</a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>For business</a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>Become a tutor</a>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>Proven Progress</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>{t.nav.findTutors}</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>{t.nav.forBusiness}</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>{t.nav.becomeTutor}</a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>{t.nav.provenProgress}</a>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -38,10 +41,10 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
             <span>EN</span>
           </div>
           <button className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-70" style={{ color: '#121117' }}>
-            Log in
+            {t.nav.logIn}
           </button>
           <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="px-5 py-2.5 rounded-lg text-sm font-semibold hover:brightness-110 transition-all no-underline" style={{ background: '#121117', color: '#fff' }}>
-            Sign up
+            {t.nav.signUp}
           </a>
         </div>
       </nav>
@@ -52,13 +55,13 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
           {/* Left - text */}
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] mb-6" style={{ color: '#121117', fontFamily: 'Figtree, sans-serif' }}>
-              Learn faster<br className="hidden lg:block" />
-              {' '}with your best<br className="hidden lg:block" />
-              {' '}language tutor.
+              {t.hero.h1_1}<br className="hidden lg:block" />
+              {' '}{t.hero.h1_2}<br className="hidden lg:block" />
+              {' '}{t.hero.h1_3}
             </h1>
 
             <p className="text-lg mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>
-              Take 1-on-1 lessons with our AI Discovery Coach, who learns what you love and builds personalized learning plans around your passions.
+              {t.hero.subtitle}
             </p>
 
             <button
@@ -66,11 +69,11 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
               className="group px-8 py-4 rounded-lg font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:brightness-110 cursor-pointer"
               style={{ background: '#121117', color: '#fff' }}
             >
-              Find your tutor
+              {t.hero.cta}
             </button>
 
             <p className="mt-4 text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              90-second voice interview. Personalized results.
+              {t.hero.ctaSub}
             </p>
           </div>
 
@@ -112,24 +115,24 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
       {/* How it works section */}
       <div style={{ background: '#fff' }}>
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#121117' }}>How it works</h2>
+          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#121117' }}>{t.howItWorks.title}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <StepCard
               number="1"
-              title="Tell us about you"
-              description="Our AI Discovery Coach asks about your passions, goals, and learning style in a natural 90-second voice conversation."
+              title={t.howItWorks.step1.title}
+              description={t.howItWorks.step1.desc}
               color="#FF7AAC"
             />
             <StepCard
               number="2"
-              title="Get your learning profile"
-              description="We map your interests to create a unique learning bridge connecting what you love to what you need to learn."
+              title={t.howItWorks.step2.title}
+              description={t.howItWorks.step2.desc}
               color="#3BB3BD"
             />
             <StepCard
               number="3"
-              title="Start learning"
-              description="Get paired with a tutor who shares your passions and a personalized plan built around your interests."
+              title={t.howItWorks.step3.title}
+              description={t.howItWorks.step3.desc}
               color="#018058"
             />
           </div>
@@ -142,22 +145,22 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
           <div className="flex flex-wrap items-center justify-center gap-8 text-center">
             <div>
               <div className="text-3xl font-bold" style={{ color: '#121117' }}>32,000+</div>
-              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>Expert tutors</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>{t.trust.tutors}</div>
             </div>
             <div style={{ width: 1, height: 40, background: '#DDD' }} />
             <div>
               <div className="text-3xl font-bold" style={{ color: '#121117' }}>300,000+</div>
-              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>5-star reviews</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>{t.trust.reviews}</div>
             </div>
             <div style={{ width: 1, height: 40, background: '#DDD' }} />
             <div>
               <div className="text-3xl font-bold" style={{ color: '#121117' }}>120+</div>
-              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>Subjects taught</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>{t.trust.subjects}</div>
             </div>
             <div style={{ width: 1, height: 40, background: '#DDD' }} />
             <div>
               <div className="text-3xl font-bold" style={{ color: '#121117' }}>200+</div>
-              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>Tutor nationalities</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>{t.trust.nationalities}</div>
             </div>
           </div>
         </div>
@@ -181,7 +184,7 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
             </div>
           </div>
           <div className="mt-6 pt-6 text-xs text-center" style={{ borderTop: '1px solid #2a2a2a' }}>
-            Hackathon prototype. Built at Preply x Agora Hackathon, Barcelona 2026.
+            {t.footer.hackathon}
           </div>
         </div>
       </footer>
