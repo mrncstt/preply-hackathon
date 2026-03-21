@@ -14,8 +14,8 @@
 
 <p align="center">
   <a href="https://botas.vercel.app"><img src="https://img.shields.io/badge/Live_Demo-FF7AAC?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" /></a>
-  <a href="https://botas.vercel.app/pitch.html"><img src="https://img.shields.io/badge/Pitch_Deck-121118?style=for-the-badge&logo=slides&logoColor=white" alt="Pitch Deck" /></a>
-  <a href="https://botas.vercel.app/pitch-30s.html"><img src="https://img.shields.io/badge/30s_Pitch-018058?style=for-the-badge&logo=slides&logoColor=white" alt="30s Pitch" /></a>
+  <a href="https://botas.vercel.app/long-pitch.html"><img src="https://img.shields.io/badge/Long_Pitch-121118?style=for-the-badge&logo=slides&logoColor=white" alt="Pitch Deck" /></a>
+  <a href="https://botas.vercel.app/short-pitch.html"><img src="https://img.shields.io/badge/Short_Pitch-018058?style=for-the-badge&logo=slides&logoColor=white" alt="30s Pitch" /></a>
 </p>
 
 <p align="center">
