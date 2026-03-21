@@ -3,7 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Preply brand palette */
+/* Preply brand palette (2026 rebrand) */
 :root {
   --background:         #ffffff;
   --foreground:         #384047;
@@ -15,15 +15,15 @@
   --muted-foreground:   #6B7280;
   --border:             #E5E7EB;
   --input:              #E5E7EB;
-  --ring:               #00B300;
+  --ring:               #FF79AC;
 
-  --primary:            #00B300;
+  --primary:            #FF79AC;
   --primary-foreground: #ffffff;
 
   --secondary:          #F5F5F7;
   --secondary-foreground: #384047;
 
-  --accent:             #FF6B2C;
+  --accent:             #FF79AC;
   --accent-foreground:  #ffffff;
 
   --destructive:        #EF4444;
@@ -43,17 +43,20 @@
   --status-label-active:   #384047;
   --status-label-idle:     #9CA3AF;
 
-  --agent-orb:          #00B300;
-  --agent-orb-glow:     rgba(0,179,0,0.3);
+  --agent-orb:          #FF79AC;
+  --agent-orb-glow:     rgba(255,121,172,0.3);
 
-  --preply-navy:        #1B1464;
-  --preply-coral:       #FF6B2C;
-  --preply-green:       #00B300;
+  --preply-dark:        #121118;
+  --preply-pink:        #FF79AC;
+  --preply-green:       #22C55E;
   --preply-light:       #F5F5F7;
+  /* Legacy aliases */
+  --preply-navy:        #121118;
+  --preply-coral:       #FF79AC;
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-sans: 'Figtree', 'Inter', system-ui, sans-serif;
   --font-mono: 'Geist Mono', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);

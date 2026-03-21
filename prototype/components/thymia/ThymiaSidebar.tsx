@@ -48,7 +48,7 @@ export function ThymiaSidebar({ isActive }: ThymiaSidebarProps) {
   return (
     <div className="w-64 border-l border-border p-4 flex flex-col gap-4 bg-card">
       <div className="flex items-center gap-2">
-        <div className="w-6 h-6 rounded flex items-center justify-center" style={{ background: '#E6F9E6' }}>
+        <div className="w-6 h-6 rounded flex items-center justify-center" style={{ background: 'rgba(255,121,172,0.1)' }}>
           <Activity className="w-3.5 h-3.5" style={{ color: 'var(--preply-green)' }} />
         </div>
         <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--preply-navy)' }}>

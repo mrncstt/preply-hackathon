@@ -29,7 +29,7 @@ export function ProfileCard({ profile, onViewPlan, onStartOver }: ProfileCardPro
       <div className="max-w-2xl w-full animate-fade-in-up">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 animate-fade-in-up"
-            style={{ background: 'linear-gradient(135deg, rgba(0,179,0,0.15), rgba(0,179,0,0.05))', color: 'var(--preply-green)', border: '1px solid rgba(0,179,0,0.2)' }}>
+            style={{ background: 'linear-gradient(135deg, rgba(255,121,172,0.15), rgba(255,121,172,0.05))', color: 'var(--preply-green)', border: '1px solid rgba(255,121,172,0.2)' }}>
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--preply-green)' }} />
             Profile Complete
           </div>

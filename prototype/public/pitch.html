@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passion-Led Learning Agent - Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #1B1464;
+      --green: #00B300;
+      --coral: #FF6B2C;
+      --white: #FFFFFF;
+      --light-gray: #F5F5F7;
+      --text-dark: #1B1464;
+      --text-muted: #6B7280;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Slide container ── */
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5vmin 8vmin;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateX(40px);
+      background: var(--white);
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .slide.exit-left {
+      opacity: 0;
+      visibility: visible;
+      transform: translateX(-40px);
+    }
+
+    /* ── Slide 1: Title ── */
+    .slide--title {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .slide--title .badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border: 2px solid var(--coral);
+      border-radius: 999px;
+      font-size: clamp(0.75rem, 1.2vw, 1rem);
+      font-weight: 600;
+      color: var(--coral);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .slide--title h1 {
+      font-size: clamp(2rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      max-width: 14ch;
+    }
+
+    .slide--title h1 .highlight {
+      color: var(--green);
+    }
+
+    .slide--title .subtitle {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 36ch;
+    }
+
+    .slide--title .team {
+      margin-top: 1rem;
+      font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Slide 2: Problem ── */
+    .slide--problem {
+      background: var(--white);
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .slide--problem .label {
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--coral);
+    }
+
+    .slide--problem h2 {
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      max-width: 20ch;
+    }
+
+    .slide--problem .body {
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 48ch;
+      line-height: 1.6;
+    }
+
+    /* ── Slide 3: Solution ── */
+    .slide--solution {
+      background: var(--light-gray);
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .slide--solution .label {
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green);
+    }
+
+    .slide--solution h2 {
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      max-width: 20ch;
+    }
+
+    .slide--solution .body {
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 48ch;
+      line-height: 1.6;
+    }
+
+    /* ── Progress bar ── */
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background: var(--coral);
+      transition: width 0.4s ease;
+      z-index: 100;
+    }
+
+    /* ── Slide counter ── */
+    .counter {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.5);
+      z-index: 100;
+      mix-blend-mode: difference;
+    }
+
+    /* ── Navigation hints ── */
+    .nav-hint {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.35);
+      z-index: 100;
+      mix-blend-mode: difference;
+      transition: opacity 2s ease;
+    }
+
+    .nav-hint.hidden {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck" id="deck">
+
+    <!-- Slide 1: Title -->
+    <div class="slide slide--title active" data-index="0">
+      <span class="badge">Preply x Agora Hackathon 2026</span>
+      <h1>Passion-Led <span class="highlight">Learning</span> Agent</h1>
+      <p class="subtitle">An AI-powered conversation partner that adapts to what you love</p>
+      <p class="team">Barcelona -- March 20-21, 2026</p>
+    </div>
+
+    <!-- Slide 2: Problem -->
+    <div class="slide slide--problem" data-index="1">
+      <span class="label">The Problem</span>
+      <h2>Placeholder problem statement</h2>
+      <p class="body">Replace this text with the core problem your product addresses. Keep it concise and compelling.</p>
+    </div>
+
+    <!-- Slide 3: Solution -->
+    <div class="slide slide--solution" data-index="2">
+      <span class="label">Our Solution</span>
+      <h2>Placeholder solution headline</h2>
+      <p class="body">Replace this text with a clear description of how your product solves the problem above.</p>
+    </div>
+
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress" id="progress"></div>
+
+  <!-- Slide counter -->
+  <div class="counter" id="counter">1 / 3</div>
+
+  <!-- Navigation hint -->
+  <div class="nav-hint" id="navHint">Arrow keys or click to navigate</div>
+
+  <script>
+    (function () {
+      const deck = document.getElementById('deck');
+      const slides = Array.from(deck.querySelectorAll('.slide'));
+      const progress = document.getElementById('progress');
+      const counter = document.getElementById('counter');
+      const navHint = document.getElementById('navHint');
+      const total = slides.length;
+      let current = 0;
+
+      function goTo(index) {
+        if (index < 0 || index >= total || index === current) return;
+
+        const direction = index > current ? 1 : -1;
+
+        // Remove active/exit classes from all slides
+        slides.forEach(s => s.classList.remove('active', 'exit-left'));
+
+        // Outgoing slide
+        if (direction === 1) {
+          slides[current].classList.add('exit-left');
+        }
+
+        // Incoming slide
+        if (direction === -1) {
+          slides[index].style.transform = 'translateX(-40px)';
+          // Force reflow
+          void slides[index].offsetWidth;
+          slides[index].style.transform = '';
+        }
+
+        current = index;
+        slides[current].classList.add('active');
+
+        // Update progress
+        const pct = ((current + 1) / total) * 100;
+        progress.style.width = pct + '%';
+
+        // Update counter
+        counter.textContent = (current + 1) + ' / ' + total;
+
+        // Hide nav hint after first navigation
+        navHint.classList.add('hidden');
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function (e) {
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'ArrowDown':
+          case ' ':
+            e.preventDefault();
+            next();
+            break;
+          case 'ArrowLeft':
+          case 'ArrowUp':
+            e.preventDefault();
+            prev();
+            break;
+          case 'Home':
+            e.preventDefault();
+            goTo(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            goTo(total - 1);
+            break;
+        }
+      });
+
+      // Click navigation (left third = back, right two-thirds = forward)
+      deck.addEventListener('click', function (e) {
+        const x = e.clientX / window.innerWidth;
+        if (x < 0.33) {
+          prev();
+        } else {
+          next();
+        }
+      });
+
+      // Touch swipe support
+      let touchStartX = 0;
+      deck.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+
+      deck.addEventListener('touchend', function (e) {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) {
+          dx < 0 ? next() : prev();
+        }
+      }, { passive: true });
+
+      // Initialize progress bar
+      progress.style.width = ((current + 1) / total) * 100 + '%';
+    })();
+  </script>
+
+</body>
+</html>
