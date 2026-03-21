@@ -93,7 +93,7 @@ export function LearningBridge({ profile, onStartOver }: LearningBridgeProps) {
             and shares your passion for {profile.real_interest}.
           </p>
           <a
-            href="https://preply.com/en/online/english-tutors"
+            href={`https://preply.com/en/online/${profile.target_language.toLowerCase()}-tutors`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer inline-flex items-center gap-2"
