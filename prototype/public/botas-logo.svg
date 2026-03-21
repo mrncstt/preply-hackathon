@@ -4,50 +4,59 @@
       <stop offset="0%" style="stop-color:#FF79AC"/>
       <stop offset="100%" style="stop-color:#D4457A"/>
     </linearGradient>
+    <linearGradient id="fur" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F0EB"/>
+      <stop offset="100%" style="stop-color:#E8E0D8"/>
+    </linearGradient>
   </defs>
 
-  <!-- Cat leg (white fur) coming from top -->
-  <rect x="38" y="0" width="44" height="65" rx="22" fill="white"/>
-  <!-- Fur texture lines -->
-  <path d="M45 10 Q48 15 45 20" stroke="#eee" stroke-width="1" fill="none"/>
-  <path d="M75 12 Q72 17 75 22" stroke="#eee" stroke-width="1" fill="none"/>
-  <path d="M50 25 Q53 30 50 35" stroke="#eee" stroke-width="1" fill="none"/>
+  <!-- Cat leg (cream/white fur) with visible outline -->
+  <rect x="36" y="0" width="48" height="62" rx="24" fill="url(#fur)" stroke="#C4B8AC" stroke-width="2"/>
 
-  <!-- Boot cuff (top of boot, where fur meets leather) -->
-  <ellipse cx="60" cy="58" rx="28" ry="8" fill="#FFB3D0"/>
-  <ellipse cx="60" cy="56" rx="26" ry="6" fill="url(#boot)"/>
+  <!-- Cat toe beans visible at bottom of leg (before boot covers them) -->
+  <!-- Three toes poking out above the boot cuff -->
+  <ellipse cx="46" cy="52" rx="8" ry="6" fill="url(#fur)" stroke="#C4B8AC" stroke-width="1.5"/>
+  <ellipse cx="60" cy="50" rx="8" ry="6" fill="url(#fur)" stroke="#C4B8AC" stroke-width="1.5"/>
+  <ellipse cx="74" cy="52" rx="8" ry="6" fill="url(#fur)" stroke="#C4B8AC" stroke-width="1.5"/>
+
+  <!-- Pink paw pads visible on the toes -->
+  <ellipse cx="46" cy="53" rx="4.5" ry="3.5" fill="#FFB3C8"/>
+  <ellipse cx="60" cy="51" rx="4.5" ry="3.5" fill="#FFB3C8"/>
+  <ellipse cx="74" cy="53" rx="4.5" ry="3.5" fill="#FFB3C8"/>
+
+  <!-- Boot cuff (fluffy top edge) -->
+  <ellipse cx="60" cy="60" rx="30" ry="7" fill="#FFE0EB" stroke="#E8A0B8" stroke-width="1"/>
+  <ellipse cx="48" cy="59" rx="5" ry="4" fill="white" opacity="0.5"/>
+  <ellipse cx="72" cy="59" rx="5" ry="4" fill="white" opacity="0.5"/>
 
   <!-- Boot shaft -->
-  <path d="M34 56 L34 100 Q34 105 39 105 L81 105 Q86 105 86 100 L86 56 Z" fill="url(#boot)"/>
+  <path d="M32 58 L32 100 Q32 104 36 104 L84 104 Q88 104 88 100 L88 58 Z" fill="url(#boot)" stroke="#C4507A" stroke-width="1.5"/>
 
-  <!-- Boot foot (wider, goes forward) -->
-  <path d="M30 100 L86 100 L95 108 Q98 115 94 120 L90 125 Q86 128 80 128 L25 128 Q18 128 16 122 L15 118 Q14 114 18 110 Z" fill="url(#boot)"/>
+  <!-- Boot foot -->
+  <path d="M28 100 L88 100 L97 108 Q100 114 96 120 L92 124 Q88 127 82 127 L22 127 Q16 127 14 122 L13 118 Q12 114 16 110 Z" fill="url(#boot)" stroke="#C4507A" stroke-width="1.5"/>
 
-  <!-- Boot sole -->
-  <path d="M15 125 Q14 130 18 133 L80 133 Q90 133 94 128 L94 125 Z" fill="#121118"/>
-  <!-- Heel -->
-  <rect x="14" y="125" width="14" height="10" rx="3" fill="#121118"/>
 
-  <!-- Boot strap/buckle -->
-  <rect x="36" y="78" width="48" height="5" rx="2.5" fill="#FFB3D0" opacity="0.9"/>
-  <!-- Buckle -->
-  <rect x="54" y="74" width="12" height="13" rx="3" fill="none" stroke="#FFD700" stroke-width="2.5"/>
-  <rect x="59" y="78" width="2" height="5" rx="1" fill="#FFD700"/>
+  <!-- Boot strap -->
+  <rect x="34" y="78" width="52" height="5" rx="2.5" fill="#E8608A" stroke="#C4507A" stroke-width="0.5"/>
+  <!-- Golden buckle -->
+  <rect x="53" y="74" width="14" height="14" rx="3" fill="none" stroke="#F0C040" stroke-width="2.5"/>
+  <rect x="59" y="78" width="3" height="5" rx="1" fill="#F0C040"/>
 
-  <!-- Boot shine -->
-  <ellipse cx="48" cy="72" rx="5" ry="15" fill="white" opacity="0.12" transform="rotate(-3 48 72)"/>
-  <ellipse cx="45" cy="110" rx="4" ry="8" fill="white" opacity="0.1" transform="rotate(15 45 110)"/>
+  <!-- Boot shine highlights -->
+  <ellipse cx="46" cy="72" rx="5" ry="14" fill="white" opacity="0.15" transform="rotate(-3 46 72)"/>
+  <ellipse cx="42" cy="112" rx="4" ry="7" fill="white" opacity="0.12" transform="rotate(15 42 112)"/>
 
-  <!-- Toe crease -->
-  <path d="M55 112 Q60 108 65 112" stroke="#D4457A" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <!-- Toe crease line -->
+  <path d="M52 113 Q58 109 64 113" stroke="#C4507A" stroke-width="1.2" fill="none" opacity="0.3"/>
 
-  <!-- Cat toes peeking out slightly at the top (fur puffs) -->
-  <ellipse cx="45" cy="48" rx="6" ry="4" fill="white" opacity="0.6"/>
-  <ellipse cx="60" cy="46" rx="6" ry="4" fill="white" opacity="0.6"/>
-  <ellipse cx="75" cy="48" rx="6" ry="4" fill="white" opacity="0.6"/>
-
-  <!-- Sparkle -->
-  <g transform="translate(100, 65)" fill="#FFD700" opacity="0.8">
-    <path d="M0,-6 L2,-2 L6,0 L2,2 L0,6 L-2,2 L-6,0 L-2,-2 Z" transform="scale(0.6)"/>
+  <!-- Sparkles -->
+  <g transform="translate(102, 55)" fill="#F0C040" opacity="0.9">
+    <path d="M0,-5 L1.5,-1.5 L5,0 L1.5,1.5 L0,5 L-1.5,1.5 L-5,0 L-1.5,-1.5 Z" transform="scale(0.7)"/>
+  </g>
+  <g transform="translate(108, 68)" fill="#F0C040" opacity="0.5">
+    <path d="M0,-3 L1,-1 L3,0 L1,1 L0,3 L-1,1 L-3,0 L-1,-1 Z" transform="scale(0.5)"/>
+  </g>
+  <g transform="translate(14, 40)" fill="#F0C040" opacity="0.6">
+    <path d="M0,-4 L1.2,-1.2 L4,0 L1.2,1.2 L0,4 L-1.2,1.2 L-4,0 L-1.2,-1.2 Z" transform="scale(0.5)"/>
   </g>
 </svg>
