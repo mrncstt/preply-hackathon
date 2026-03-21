@@ -154,7 +154,7 @@ export async function POST(req: NextRequest) {
       asr: { vendor: "ares", language: "en-US" },
       tts: ttsConfig,
       parameters: {
-        enable_dump: true,
+        enable_dump: false,
         transcript: { enable: true, protocol_version: "v2", enable_words: false },
       },
       turn_detection: { config: { end_of_speech: { mode: "semantic" } } },

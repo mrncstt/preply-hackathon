@@ -87,7 +87,7 @@ export function ThymiaSidebar({ isActive }: ThymiaSidebarProps) {
       {isActive && (
         <div className="mt-auto pt-3 border-t border-border">
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Real-time cognitive and linguistic signals analyzed by Thymia AI
+            Simulated cognitive signals for demo purposes
           </p>
         </div>
       )}
