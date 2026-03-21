@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe, BookOpen, Users, GraduationCap, ChevronDown, Star } from "lucide-react";
+import { Globe, ChevronDown } from "lucide-react";
 
 interface HeroPreplyProps {
   onStartInterview: () => void;
@@ -9,26 +9,27 @@ interface HeroPreplyProps {
 export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Top banner */}
-      <div style={{ background: '#F5F5F7', borderBottom: '1px solid #E5E5E5' }}>
-        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-center gap-2 text-xs" style={{ color: '#384047' }}>
-          <span>Proven progress with 1-on-1 tutoring</span>
-          <span style={{ color: '#018058', fontWeight: 600 }}>Learn more</span>
+      {/* Top banner - Proven Progress */}
+      <div style={{ background: '#121117', color: '#fff' }}>
+        <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-center gap-2 text-sm">
+          <span style={{ color: '#FF7AAC', fontWeight: 700 }}>Proven progress</span>
+          <span style={{ opacity: 0.7 }}>with 1-on-1 tutoring. See how it works</span>
         </div>
       </div>
 
       {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto w-full">
+      <nav className="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto w-full" style={{ borderBottom: '1px solid #E8E8E8' }}>
         <div className="flex items-center gap-8">
-          <span className="font-bold text-2xl tracking-tight" style={{ color: '#121118' }}>
-            preply<span style={{ color: '#FF79AC' }}>.</span>
-          </span>
+          <div className="flex items-center gap-2">
+            <img src="preply-logo.svg" alt="Preply" style={{ width: 28, height: 28 }} />
+            <span className="font-bold text-xl tracking-tight" style={{ color: '#121117' }}>Preply</span>
+          </div>
           <div className="hidden md:flex items-center gap-5 text-sm font-medium" style={{ color: '#384047' }}>
             <span className="cursor-pointer hover:opacity-70 flex items-center gap-1">
               Find tutors <ChevronDown className="w-3.5 h-3.5" />
             </span>
             <span className="cursor-pointer hover:opacity-70 flex items-center gap-1">
-              Group classes <ChevronDown className="w-3.5 h-3.5" />
+              How Preply works <ChevronDown className="w-3.5 h-3.5" />
             </span>
             <span className="cursor-pointer hover:opacity-70">For business</span>
             <span className="cursor-pointer hover:opacity-70">Become a tutor</span>
@@ -42,141 +43,120 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
           <button className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-70" style={{ color: '#384047' }}>
             Log in
           </button>
-          <button className="px-5 py-2.5 rounded-full text-white text-sm font-semibold hover:brightness-110 transition-all" style={{ background: '#018058' }}>
+          <button className="px-5 py-2.5 rounded-lg text-white text-sm font-semibold hover:brightness-110 transition-all" style={{ background: '#018058' }}>
             Sign up
           </button>
         </div>
       </nav>
 
       {/* Hero section - two columns */}
-      <main className="flex-1 flex items-center">
-        <div className="max-w-7xl mx-auto px-6 py-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <main className="flex-1 flex items-center" style={{ background: '#FFF5F8' }}>
+        <div className="max-w-7xl mx-auto px-6 py-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left - text */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex -space-x-1">
-                {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <span className="text-sm font-medium" style={{ color: '#384047' }}>Trusted by 1M+ learners</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#121118' }}>
-              Learn faster with your best{' '}
-              <span style={{ color: '#018058' }}>language tutor</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] mb-6" style={{ color: '#121117', fontFamily: 'Figtree, sans-serif' }}>
+              Learn faster with the best{' '}
+              <span style={{ color: '#121117' }}>language tutor</span>{' '}
+              for you
             </h1>
 
-            <p className="text-lg mb-8 leading-relaxed" style={{ color: '#6B7280' }}>
-              Our AI Discovery Coach learns what you are passionate about, then matches you
-              with a tutor who builds lessons around your interests.
+            <p className="text-lg mb-8 leading-relaxed" style={{ color: '#384047' }}>
+              Take 1-on-1 lessons with our AI Discovery Coach, who learns what you love and builds personalized learning plans around your passions.
             </p>
 
             <button
               onClick={onStartInterview}
-              className="group px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:brightness-110 cursor-pointer"
+              className="group px-8 py-4 rounded-lg text-white font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:brightness-110 cursor-pointer"
               style={{ background: '#018058' }}
             >
               Find your tutor
-              <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
-                &rarr;
-              </span>
             </button>
 
-            <div className="flex items-center gap-6 mt-6 text-sm" style={{ color: '#6B7280' }}>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full" style={{ background: '#22C55E' }} />
-                AI-powered matching
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full" style={{ background: '#22C55E' }} />
-                90-second interview
-              </span>
-            </div>
+            <p className="mt-4 text-sm" style={{ color: '#6B7280' }}>
+              90-second voice interview. Personalized results.
+            </p>
           </div>
 
-          {/* Right - visual */}
+          {/* Right - hero image */}
           <div className="hidden lg:flex justify-center">
-            <div className="relative">
-              {/* Main card */}
-              <div className="w-96 rounded-3xl overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(135deg, #FFF0F5 0%, #F5F0FF 100%)' }}>
-                <div className="p-8 text-center">
-                  <img src="botas-logo.svg" alt="botas" className="w-32 h-32 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2" style={{ color: '#121118' }}>AI Discovery Coach</h3>
-                  <p className="text-sm mb-6" style={{ color: '#6B7280' }}>Tell me about your passions and I will build your perfect learning plan</p>
-                  <div className="flex items-center justify-center gap-3">
-                    <div className="w-3 h-3 rounded-full animate-pulse" style={{ background: '#FF79AC' }} />
-                    <span className="text-sm font-medium" style={{ color: '#FF79AC' }}>Ready to listen</span>
-                  </div>
-                </div>
-                <div className="px-8 pb-8">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-xl" style={{ background: 'rgba(255,121,172,0.08)' }}>
-                      <span className="text-lg">&#127928;</span>
-                      <span className="text-sm font-medium" style={{ color: '#384047' }}>Jazz guitar enthusiast</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl" style={{ background: 'rgba(255,121,172,0.08)' }}>
-                      <span className="text-lg">&#9917;</span>
-                      <span className="text-sm font-medium" style={{ color: '#384047' }}>Football tactics fan</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-xl" style={{ background: 'rgba(255,121,172,0.08)' }}>
-                      <span className="text-lg">&#127891;</span>
-                      <span className="text-sm font-medium" style={{ color: '#384047' }}>Learning Spanish B2</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 px-4 py-2 rounded-full shadow-lg text-sm font-semibold text-white" style={{ background: '#FF79AC' }}>
-                Personalized
-              </div>
-            </div>
+            <img
+              src="hero-preply.jpg"
+              alt="Students learning with Preply"
+              className="w-full max-w-lg rounded-2xl"
+              style={{ objectFit: 'cover' }}
+            />
           </div>
         </div>
       </main>
 
-      {/* Feature cards */}
-      <div style={{ background: '#F9FAFB', borderTop: '1px solid #F0F0F0' }}>
+      {/* How it works section */}
+      <div style={{ background: '#fff' }}>
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <FeatureCard
-              icon={<BookOpen className="w-6 h-6" />}
-              title="90s AI interview"
-              description="Tell us about your passions and goals in a natural voice conversation"
-              color="#FF79AC"
+          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#121117' }}>How it works</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <StepCard
+              number="1"
+              title="Tell us about you"
+              description="Our AI Discovery Coach asks about your passions, goals, and learning style in a natural 90-second voice conversation."
+              color="#FF7AAC"
             />
-            <FeatureCard
-              icon={<Users className="w-6 h-6" />}
-              title="Smart profile"
-              description="We map your interests to create a unique learning bridge"
-              color="#FF79AC"
+            <StepCard
+              number="2"
+              title="Get your learning profile"
+              description="We map your interests to create a unique learning bridge connecting what you love to what you need to learn."
+              color="#3BB3BD"
             />
-            <FeatureCard
-              icon={<GraduationCap className="w-6 h-6" />}
-              title="Perfect match"
-              description="Get paired with a tutor who shares your passions"
-              color="#121118"
+            <StepCard
+              number="3"
+              title="Start learning"
+              description="Get paired with a tutor who shares your passions and a personalized plan built around your interests."
+              color="#018058"
             />
           </div>
         </div>
       </div>
 
+      {/* Trust section */}
+      <div style={{ background: '#F7F7F8', borderTop: '1px solid #EFEFEF' }}>
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex flex-wrap items-center justify-center gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold" style={{ color: '#121117' }}>32,000+</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>Expert tutors</div>
+            </div>
+            <div style={{ width: 1, height: 40, background: '#DDD' }} />
+            <div>
+              <div className="text-3xl font-bold" style={{ color: '#121117' }}>300,000+</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>5-star reviews</div>
+            </div>
+            <div style={{ width: 1, height: 40, background: '#DDD' }} />
+            <div>
+              <div className="text-3xl font-bold" style={{ color: '#121117' }}>120+</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>Subjects taught</div>
+            </div>
+            <div style={{ width: 1, height: 40, background: '#DDD' }} />
+            <div>
+              <div className="text-3xl font-bold" style={{ color: '#121117' }}>200+</div>
+              <div className="text-sm mt-1" style={{ color: '#6B7280' }}>Tutor nationalities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
-      <footer style={{ background: '#121118', color: '#9CA3AF' }}>
+      <footer style={{ background: '#121117', color: '#9CA3AF' }}>
         <div className="max-w-7xl mx-auto px-6 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-6">
-              <span className="font-bold text-lg text-white">
-                preply<span style={{ color: '#FF79AC' }}>.</span>
-              </span>
-              <span className="text-sm">Passion-led language learning</span>
+            <div className="flex items-center gap-3">
+              <img src="preply-logo.svg" alt="Preply" style={{ width: 24, height: 24, filter: 'brightness(2)' }} />
+              <span className="font-bold text-lg text-white">Preply</span>
             </div>
             <div className="flex items-center gap-6 text-sm">
-              <span className="cursor-pointer hover:text-white transition-colors">About</span>
-              <span className="cursor-pointer hover:text-white transition-colors">For tutors</span>
+              <span className="cursor-pointer hover:text-white transition-colors">About us</span>
+              <span className="cursor-pointer hover:text-white transition-colors">For business</span>
+              <span className="cursor-pointer hover:text-white transition-colors">Become a tutor</span>
               <span className="cursor-pointer hover:text-white transition-colors">Blog</span>
-              <span className="cursor-pointer hover:text-white transition-colors">Help</span>
+              <span className="cursor-pointer hover:text-white transition-colors">Help center</span>
             </div>
           </div>
           <div className="mt-6 pt-6 text-xs text-center" style={{ borderTop: '1px solid #2a2a2a' }}>
@@ -188,26 +168,26 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
   );
 }
 
-function FeatureCard({
-  icon,
+function StepCard({
+  number,
   title,
   description,
   color,
 }: {
-  icon: React.ReactNode;
+  number: string;
   title: string;
   description: string;
   color: string;
 }) {
   return (
-    <div className="p-8 rounded-2xl bg-white border border-gray-100 text-left hover:shadow-md transition-shadow">
+    <div className="text-center">
       <div
-        className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 text-white"
+        className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl"
         style={{ background: color }}
       >
-        {icon}
+        {number}
       </div>
-      <h3 className="font-semibold text-base mb-2" style={{ color: '#121118' }}>
+      <h3 className="font-bold text-lg mb-2" style={{ color: '#121117' }}>
         {title}
       </h3>
       <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{description}</p>
