@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passion-Led Learning Agent - Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #121118;
+      --pink: #FF79AC;
+      --white: #ffffff;
+      --gray: #384047;
+      --light: #F5F5F7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+    .deck { position: relative; width: 100%; height: 100%; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(2rem, 5vw, 6rem);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .signal-bar-inner {
+      height: 100%;
+      border-radius: 4px;
+      width: 0%;
+      transition: width 1s ease-out;
+    }
+    .slide h1 {
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .slide h2 {
+      font-size: clamp(1.5rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .slide p {
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      line-height: 1.6;
+      max-width: 700px;
+      opacity: 0.85;
+      color: #384047;
+    }
+    .slide .accent { color: var(--pink); }
+    .slide-light .accent { color: #D4457A; }
+    .slide .badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+    .badge-pink { background: rgba(255,121,172,0.15); color: var(--pink); }
+    .badge-white { background: rgba(255,255,255,0.1); color: var(--white); }
+    .slide-light { background: var(--white); color: var(--dark); }
+    .slide-light p { color: var(--gray); }
+    .slide-dark { background: var(--white); color: var(--dark); }
+    .slide-dark p { color: var(--gray); }
+    .slide-dark .accent { color: var(--pink); }
+    .slide-dark .badge-white { background: rgba(18,17,24,0.08); color: var(--dark); }
+    .slide-dark .card { background: rgba(18,17,24,0.03); border-color: rgba(18,17,24,0.1); }
+    .slide-dark .card h3 { color: var(--dark); }
+    .slide-dark .card p { color: var(--gray); }
+    .counter { color: var(--gray); }
+    .stat {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      color: var(--pink);
+      line-height: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+      max-width: 900px;
+      text-align: left;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    .card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.875rem; opacity: 0.6; }
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--pink);
+      transition: width 0.4s ease;
+      z-index: 100;
+    }
+    .counter {
+      position: fixed;
+      bottom: 1rem;
+      right: 1.5rem;
+      font-size: 0.75rem;
+      opacity: 0.3;
+      z-index: 100;
+    }
+    .logo {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      z-index: 100;
+      opacity: 0.5;
+    }
+    .logo { color: var(--dark); }
+    .logo span { color: var(--pink); }
+    #notes-panel {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(0,0,0,0.82); color: #ccc; font-size: 0.8rem;
+      padding: 0.6rem 1.5rem; display: none; backdrop-filter: blur(6px);
+      border-top: 1px solid rgba(255,121,172,0.3);
+    }
+    #notes-panel.visible { display: block; }
+    /* Pulsing lightbulb on slide 1 */
+    .pulse-idea {
+      display: inline-block;
+      font-size: 2rem;
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: pulse-glow 2s ease-in-out infinite;
+      animation-delay: 1.5s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes pulse-glow {
+      0%   { opacity: 0.7; transform: scale(1); }
+      50%  { opacity: 1;   transform: scale(1.2); }
+      100% { opacity: 0.7; transform: scale(1); }
+    }
+    /* Tombstone graveyard */
+    .graveyard {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      justify-content: center;
+      opacity: 0.45;
+    }
+    .tombstone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .tombstone-stone {
+      width: 140px;
+      height: 160px;
+      background: #2a2a3a;
+      border-radius: 50px 50px 6px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .tombstone-stone .rip {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      opacity: 1;
+      margin-bottom: 0.3rem;
+      color: #f0f0f0;
+    }
+    .tombstone-stone .rip-text {
+      font-size: 0.75rem;
+      text-align: center;
+      line-height: 1.4;
+      opacity: 1;
+      color: #d0d0d0;
+    }
+    .tombstone-ground {
+      width: 155px;
+      height: 10px;
+      background: #1a1a24;
+      border-radius: 0 0 4px 4px;
+    }
+    .wifi-disclaimer {
+      position: absolute;
+      bottom: 1.5rem;
+      font-size: 0.65rem;
+      font-style: italic;
+      opacity: 0.25;
+    }
+    .coffee-line {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.6rem;
+      opacity: 0.2;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 768px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .graveyard { gap: 0.75rem; }
+      .tombstone-stone { width: 110px; height: 130px; }
+      .tombstone-ground { width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">preply<span>.</span></div>
+  <div class="progress-bar" id="progress"></div>
+  <div class="counter" id="counter"></div>
+  <div id="notes-panel"></div>
+
+  <div class="deck" id="deck">
+    <!-- Slide 1: Hook -->
+    <div class="slide slide-dark active">
+      <div style="display:flex; gap:2rem; align-items:center; margin-bottom:1.5rem; opacity:0.6; font-size:0.85rem; font-weight:600;">
+        <span>preply<span style="color:var(--pink)">.</span></span>
+        <span style="opacity:0.3;">x</span>
+        <span>Agora</span>
+        <span style="opacity:0.3;">+</span>
+        <span>OpenAI</span>
+        <span style="opacity:0.3;">+</span>
+        <span>Thymia</span>
+      </div>
+      <div class="badge badge-pink">Hackathon Barcelona 2026</div>
+      <h1>Right now, Preply asks you to <span class="accent">pick a tutor from a list.</span></h1>
+      <p>Imagine instead: you spend 90 seconds talking about why you're obsessed with Argentine tango, and the platform builds your entire Spanish journey around that obsession.</p>
+      <div class="pulse-idea">&#128161;</div>
+      <!-- SPEAKER: Pause after "from a list", let it land. Then slow down on "Argentine tango". ~20s -->
+    </div>
+
+    <!-- Slide 2: Problem -->
+    <div class="slide slide-dark">
+      <div class="stat" data-countup="73">0%</div>
+      <h2 style="margin-top:1.5rem">of learners quit in 3 months</h2>
+      <p>Not because learning is hard.<br>Because no one <span class="accent"><em>really understood</em></span> what they <em>care</em> about.</p>
+      <p style="font-size:0.85rem; opacity:0.5; margin-top:0.75rem; color:#555;">Source: Preply 2024, Hidi &amp; Renninger (2006)</p>
+      <div class="graveyard">
+        <div class="tombstone">
+          <div class="tombstone-stone">
+            <span class="rip">RIP</span>
+            <span class="rip-text">My language<br>app streak</span>
+          </div>
+          <div class="tombstone-ground"></div>
+        </div>
+        <div class="tombstone">
+          <div class="tombstone-stone">
+            <span class="rip">RIP</span>
+            <span class="rip-text">Online course<br>I never finished</span>
+          </div>
+          <div class="tombstone-ground"></div>
+        </div>
+        <div class="tombstone">
+          <div class="tombstone-stone">
+            <span class="rip">RIP</span>
+            <span class="rip-text">YouTube<br>polyglot phase</span>
+          </div>
+          <div class="tombstone-ground"></div>
+        </div>
+      </div>
+      <!-- SPEAKER: Let "73%" sit for 2 seconds. Deliver "Not because..." with pause before "Because no one asked." ~15s -->
+    </div>
+
+    <!-- Slide 3: Insight -->
+    <div class="slide slide-light">
+      <div class="badge badge-pink">The insight</div>
+      <h2>People remember <span class="accent">significantly more</span><br>when learning connects to what they love</h2>
+      <div style="margin-top:1.5rem; max-width:600px; text-align:left; font-size:0.75rem; opacity:0.5; color:#555; line-height:1.4;">
+        <p>Hidi &amp; Renninger (2006), Review of Educational Research: triggered situational interest is the strongest predictor of sustained learning motivation.</p>
+        <p style="margin-top:0.3rem;">Hulstijn &amp; Laufer (2001): high-involvement tasks produce up to 2x better vocabulary retention.</p>
+        <p style="margin-top:0.3rem;">Krashen (1982), Affective Filter Hypothesis: low anxiety + high motivation = faster language acquisition.</p>
+      </div>
+      <p style="margin-top:1.5rem;">The real question was never <em>"how do we teach?"</em><br>It was <em>"how do we discover what someone cares about?"</em></p>
+      <!-- SPEAKER: Reference the research briefly. Shift tone to personal on "how do we discover." ~15s -->
+    </div>
+
+    <!-- Slide 4: Solution -->
+    <div class="slide slide-dark">
+      <div class="badge badge-pink">The solution</div>
+      <h1>AI <span class="accent">Discovery Coach</span></h1>
+      <p>A voice-first AI agent that interviews learners in 90 seconds to map their passions, needs, and learning style. It detects your language and responds naturally.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">&#127908;</div>
+          <h3>Voice</h3>
+          <p>Real-time conversation powered by Agora ConvoAI</p>
+        </div>
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">&#129504;</div>
+          <h3>Brain</h3>
+          <p>Interest classification by OpenAI, structured profile output</p>
+        </div>
+        <div class="card">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">&#128147;</div>
+          <h3>Feel</h3>
+          <p>Cognitive signals by Thymia detect engagement and confidence</p>
+        </div>
+      </div>
+      <!-- SPEAKER: Point at each card as you name the tech. ~18s -->
+    </div>
+
+    <!-- Slide 5: Why Now -->
+    <div class="slide slide-dark">
+      <div class="badge badge-pink">Why now?</div>
+      <h2>This was <span class="accent">impossible</span> 12 months ago</h2>
+      <div style="display:flex; gap:2rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center; max-width:900px;">
+        <div class="card" style="flex:1; min-width:220px; text-align:center;">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">&#128483;</div>
+          <h3>Real-time Voice AI</h3>
+          <p>Agora ConvoAI enables sub-300ms conversational agents</p>
+        </div>
+        <div class="card" style="flex:1; min-width:220px; text-align:center;">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">&#128178;</div>
+          <h3>Dirt-cheap Inference</h3>
+          <p>GPT-5.4 at $0.15/1M tokens makes per-student AI viable</p>
+        </div>
+        <div class="card" style="flex:1; min-width:220px; text-align:center;">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">&#127911;</div>
+          <h3>Voice-native Users</h3>
+          <p>Siri, Alexa, ChatGPT Voice trained a generation to talk to software</p>
+        </div>
+      </div>
+      <p style="margin-top:2rem; font-size:0.95rem; opacity:0.5;">Three trends converging right now. Miss this window and someone else builds it.</p>
+      <!-- SPEAKER: Point at each card. End with urgency: "Miss this window..." ~15s -->
+    </div>
+
+    <!-- Slide 6: Demo -->
+    <div class="slide slide-dark">
+      <div class="badge badge-white">Live demo</div>
+      <h1>Let's try it. <span class="accent">Right now.</span></h1>
+      <p style="margin-top:1rem; font-size:1.25rem;">
+        <a href="/" style="color:var(--pink); text-decoration:underline;">
+          Open demo (local) &rarr;
+        </a>
+        &nbsp;|&nbsp;
+        <a href="https://botas.vercel.app" target="_blank" style="color:var(--pink); text-decoration:underline;">
+          botas.vercel.app &rarr;
+        </a>
+      </p>
+      <div style="margin-top:2rem; width:min(600px, 80vw); background:#1a1a2e; border-radius:0.75rem; overflow:hidden; border:1px solid rgba(18,17,24,0.1);">
+        <div style="display:flex; align-items:center; gap:6px; padding:0.6rem 1rem; background:rgba(18,17,24,0.03); border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56;display:inline-block;"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;display:inline-block;"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#27c93f;display:inline-block;"></span>
+          <span style="flex:1;text-align:center;font-size:0.7rem;opacity:0.4;">botas.vercel.app</span>
+        </div>
+        <div style="padding:2rem; text-align:center;">
+          <div style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">Learn a language through what you love</div>
+          <div style="font-size:0.8rem; opacity:0.5; margin-bottom:1rem;">AI Discovery Coach</div>
+          <div style="display:inline-block; padding:0.5rem 1.5rem; background:var(--pink); border-radius:100px; font-size:0.8rem; font-weight:600;">Find your tutor</div>
+        </div>
+      </div>
+      <p style="margin-top:1rem; font-size:0.875rem; opacity:0.4;">Click "Find your tutor" to start the voice interview</p>
+      <!-- SPEAKER: Switch to browser. Click button. Talk to agent for 30-40s. ~90s total demo -->
+    </div>
+
+    <!-- Slide 6: Output -->
+    <div class="slide slide-light">
+      <div class="badge badge-pink">The output</div>
+      <h2>From conversation to curriculum in <span class="accent">90 seconds</span></h2>
+      <p>The interview produces a Learning Bridge: your passions on one side, your goals on the other, with a personalized plan.</p>
+      <div style="margin-top:2rem; display:flex; align-items:center; gap:0; max-width:700px; width:100%;">
+        <div style="flex:1; background:var(--dark); color:var(--white); border-radius:1rem 0 0 1rem; padding:1.25rem; text-align:left;">
+          <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.5; margin-bottom:0.5rem;">Your passions</div>
+          <div style="font-size:0.85rem; font-weight:600; margin-bottom:0.25rem;">&#127928; Jazz guitar</div>
+          <div style="font-size:0.85rem; font-weight:600;">&#9917; Football tactics</div>
+        </div>
+        <div style="width:80px; background:var(--pink); color:white; display:flex; align-items:center; justify-content:center; padding:1.25rem 0; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Bridge</div>
+        <div style="flex:1; background:var(--dark); color:var(--white); border-radius:0 1rem 1rem 0; padding:1.25rem; text-align:left;">
+          <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.5; margin-bottom:0.5rem;">Your goals</div>
+          <div style="font-size:0.85rem; font-weight:600; margin-bottom:0.25rem;">&#127891; B2 Spanish</div>
+          <div style="font-size:0.85rem; font-weight:600;">&#128188; Business meetings</div>
+        </div>
+      </div>
+      <div style="margin-top:2rem; max-width:700px; width:100%; text-align:center;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:0.75rem; opacity:0.6; font-size:0.85rem;">
+          <span>Profile card</span>
+          <span style="color:var(--pink);">&rarr;</span>
+          <span>"Finding tutors who will <em>motivate, support, inspire</em> you..."</span>
+          <span style="color:var(--pink);">&rarr;</span>
+          <span>Matched tutors on Preply</span>
+        </div>
+      </div>
+      <!-- SPEAKER: "From the bridge, we show a loading animation and then matched tutors ready to book on Preply." ~18s -->
+    </div>
+
+    <!-- Slide 7: Thymia -->
+    <div class="slide slide-dark">
+      <div class="badge badge-white">Cognitive signals</div>
+      <h2>We don't just hear you. <span class="accent">We understand you.</span></h2>
+      <p>In production, Thymia will analyze cognitive signals during the conversation, detecting what no survey can.</p>
+      <p style="font-size:0.85rem; opacity:0.6; margin-top:0.5rem;">Example: engagement spikes when she talks about music, but cognitive load jumps on grammar.</p>
+      <div style="margin-top:2rem; max-width:500px; width:100%; text-align:left;">
+        <div style="margin-bottom:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:0.4rem;">
+            <span style="opacity:0.6;">Engagement</span>
+            <span style="color:var(--pink); font-weight:600;">High</span>
+          </div>
+          <div style="height:8px; background:rgba(18,17,24,0.08); border-radius:4px; overflow:hidden;">
+            <div class="signal-bar-inner" data-target="87" style="background:var(--pink);"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:0.4rem;">
+            <span style="opacity:0.6;">Confidence</span>
+            <span style="color:var(--pink); font-weight:600;">Growing</span>
+          </div>
+          <div style="height:8px; background:rgba(18,17,24,0.08); border-radius:4px; overflow:hidden;">
+            <div class="signal-bar-inner" data-target="62" style="background:var(--pink);"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:0.4rem;">
+            <span style="opacity:0.6;">Cognitive Load</span>
+            <span style="color:#ffbd2e; font-weight:600;">Moderate</span>
+          </div>
+          <div style="height:8px; background:rgba(18,17,24,0.08); border-radius:4px; overflow:hidden;">
+            <div class="signal-bar-inner" data-target="45" style="background:#ffbd2e;"></div>
+          </div>
+        </div>
+      </div>
+      <!-- SPEAKER: "Engagement spikes when she talks about music, cognitive load jumps on grammar." ~15s -->
+    </div>
+
+    <!-- Slide 8: Business -->
+    <div class="slide slide-light">
+      <div class="badge badge-pink">Impact</div>
+      <h2>Preply's funnel, <span class="accent">supercharged</span></h2>
+      <div class="grid-3" style="text-align:center;">
+        <div class="card" style="background:linear-gradient(135deg, #fff 0%, #FFF0F5 100%); border:none; border-top:3px solid var(--pink); box-shadow:0 4px 20px rgba(255,121,172,0.12);">
+          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">&#8593;</div>
+          <h3 style="color:var(--dark);">Better matching</h3>
+          <p style="color:var(--gray);">Tutor receives a passion profile before lesson 1, so the first session is never a blank slate</p>
+        </div>
+        <div class="card" style="background:linear-gradient(135deg, #fff 0%, #FFF0F5 100%); border:none; border-top:3px solid var(--pink); box-shadow:0 4px 20px rgba(255,121,172,0.12);">
+          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">&#8593;</div>
+          <h3 style="color:var(--dark);">Higher retention</h3>
+          <p style="color:var(--gray);">Ed-tech research shows interest-aligned content increases session frequency</p>
+        </div>
+        <div class="card" style="background:linear-gradient(135deg, #fff 0%, #FFF0F5 100%); border:none; border-top:3px solid var(--pink); box-shadow:0 4px 20px rgba(255,121,172,0.12);">
+          <div style="font-size:2rem; font-weight:900; color:var(--pink); margin-bottom:0.25rem;">&#8595;</div>
+          <h3 style="color:var(--dark);">Lower churn</h3>
+          <p style="color:var(--gray);">Personalized first lesson solves the "why did I book this?" problem</p>
+        </div>
+      </div>
+      <div style="font-size:0.75rem; opacity:0.5; margin-top:1.5rem; color:#555; max-width:700px; line-height:1.5; text-align:left;">
+        <p>Sources: Hidi &amp; Renninger (2006), Hulstijn &amp; Laufer (2001), Deci &amp; Ryan (2000) Self-Determination Theory, Krashen (1982) Affective Filter Hypothesis, Lally et al. (2010) on habit formation in learning contexts.</p>
+      </div>
+      <!-- SPEAKER: "Better matching, higher retention, lower churn. That's the business case." ~18s -->
+    </div>
+
+    <!-- Slide 9: Tech & Team -->
+    <div class="slide slide-dark">
+      <div class="badge badge-white">Built in 24h</div>
+      <h2>How we built it</h2>
+      <div style="display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap; justify-content:center; max-width:800px;">
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; color:var(--pink); margin-bottom:0.25rem;">Agora ConvoAI</div>
+          <div style="font-size:0.75rem; opacity:0.5;">Real-time voice interview</div>
+        </div>
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; color:#10A37F; margin-bottom:0.25rem;">OpenAI</div>
+          <div style="font-size:0.75rem; opacity:0.5;">GPT-5.4 for classification</div>
+        </div>
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; color:#A78BFA; margin-bottom:0.25rem;">Thymia</div>
+          <div style="font-size:0.75rem; opacity:0.5;">Cognitive signal analysis</div>
+        </div>
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:rgba(18,17,24,0.03); border:1px solid rgba(18,17,24,0.1); border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.25rem;">Next.js 16 + Vercel</div>
+          <div style="font-size:0.75rem; opacity:0.5;">App + deployment</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:2rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;">
+        <img src="botas-logo.svg" alt="botas" style="width:100px; height:100px;">
+        <div style="text-align:left;">
+          <div style="font-weight:700; font-size:1.1rem;">Mariana Costa <span style="font-weight:400; opacity:0.5; font-size:0.9rem;">Data</span></div>
+          <div style="font-weight:700; font-size:1.1rem; margin-top:0.4rem;">Timur Losev <span style="font-weight:400; opacity:0.5; font-size:0.9rem;">DevOps / AI</span></div>
+        </div>
+      </div>
+      <!-- SPEAKER: "We used Next.js, Agora ConvoAI, OpenAI, Thymia, deployed on Vercel." ~15s -->
+    </div>
+
+    <!-- Slide 10: Close -->
+    <div class="slide slide-dark" style="justify-content:center; padding-top:8vh;">
+      <h1 style="margin-top:4rem;">Stop teaching languages.<br><span class="accent">Start discovering learners.</span></h1>
+      <p style="margin-top:2rem; font-style:italic; opacity:0.5;">"Every learner has a passion. Every passion is a lesson."</p>
+      <div style="display:flex; gap:3rem; align-items:center; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;">
+        <div style="text-align:center;">
+          <a href="https://botas.vercel.app" target="_blank" style="display:inline-block; padding:1rem 2.5rem; background:var(--pink); color:white; border-radius:100px; font-weight:600; text-decoration:none; font-size:1.125rem;">
+            Try the demo
+          </a>
+          <div style="margin-top:1rem; font-size:0.8rem; opacity:0.4;" id="hackathon-timer"></div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:120px; height:120px; background:white; border-radius:0.75rem; display:flex; align-items:center; justify-content:center; margin:0 auto;">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&data=https://botas.vercel.app" alt="QR Code" style="width:108px; height:108px; border-radius:0.5rem;">
+          </div>
+          <div style="margin-top:0.5rem; font-size:0.75rem; opacity:0.4;">Scan to try it</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:2rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;">
+        <img src="botas-logo.svg" alt="botas" style="width:80px; height:80px;">
+        <div style="text-align:left;">
+          <div style="font-weight:700; font-size:1rem;">Mariana Costa <span style="font-weight:400; opacity:0.5; font-size:0.85rem;">Data</span></div>
+          <div style="font-weight:700; font-size:1rem; margin-top:0.3rem;">Timur Losev <span style="font-weight:400; opacity:0.5; font-size:0.85rem;">DevOps / AI</span></div>
+        </div>
+      </div>
+      <div style="font-size:0.95rem; opacity:0.5; color:#444; margin-top:1.5rem;">Built in 24h in Barcelona</div>
+      <!-- SPEAKER: "Scan the QR. Try it yourself. Thank you." ~15s -->
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progress = document.getElementById('progress');
+    const counter = document.getElementById('counter');
+    let current = 0;
+
+    function show(n) {
+      current = Math.max(0, Math.min(n, slides.length - 1));
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      progress.style.width = ((current + 1) / slides.length * 100) + '%';
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); show(current + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); show(current - 1); }
+      if (e.key === 'Home') { e.preventDefault(); show(0); }
+      if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+    });
+
+    document.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      const x = e.clientX / window.innerWidth;
+      x < 0.3 ? show(current - 1) : show(current + 1);
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    document.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+    });
+
+    // Hackathon timer
+    const timerEl = document.getElementById('hackathon-timer');
+    if (timerEl) {
+      const hackEnd = new Date('2026-03-21T18:00:00Z');
+      setInterval(() => {
+        const diff = hackEnd - new Date();
+        if (diff <= 0) { timerEl.textContent = 'Hackathon complete'; return; }
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        timerEl.textContent = 'Built at hackathon \u2014 ' + h + 'h ' + m + 'm ' + s + 's remaining';
+      }, 1000);
+    }
+
+    // Presenter notes: press N to toggle
+    const notesPanel = document.getElementById('notes-panel');
+    const slideNotes = Array.from(slides).map(s => {
+      const match = s.innerHTML.match(/<!--\s*SPEAKER:\s*([\s\S]*?)-->/);
+      return match ? match[1].trim() : '';
+    });
+    function updateNotes() { notesPanel.textContent = slideNotes[current] || '(no notes)'; }
+    const origShow = show;
+    // Count-up animation for stat numbers (slide 2)
+    function animateCountUp(el) {
+      var target = parseInt(el.dataset.countup, 10);
+      if (isNaN(target)) return;
+      var duration = 1200;
+      var start = performance.now();
+      el.textContent = '0%';
+      function tick(now) {
+        var elapsed = now - start;
+        var p = Math.min(elapsed / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + '%';
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Signal bar animation (slide 7)
+    function animateSignalBars(slide) {
+      var bars = slide.querySelectorAll('.signal-bar-inner[data-target]');
+      bars.forEach(function(bar) {
+        bar.style.width = '0%';
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            bar.style.width = bar.dataset.target + '%';
+          });
+        });
+      });
+    }
+
+    function resetSignalBars(slide) {
+      var bars = slide.querySelectorAll('.signal-bar-inner[data-target]');
+      bars.forEach(function(bar) { bar.style.width = '0%'; });
+    }
+
+    function animateSlide(index) {
+      var slide = slides[index];
+      var countEl = slide.querySelector('[data-countup]');
+      if (countEl) animateCountUp(countEl);
+      if (slide.querySelectorAll('.signal-bar-inner[data-target]').length > 0) {
+        animateSignalBars(slide);
+      }
+      slides.forEach(function(s, i) {
+        if (i !== index) resetSignalBars(s);
+      });
+    }
+
+    show = function(n) { origShow(n); updateNotes(); animateSlide(current); };
+    document.addEventListener('keydown', e => {
+      if (e.key === 'n' || e.key === 'N') notesPanel.classList.toggle('visible');
+    });
+
+    show(0);
+  </script>
+</body>
+</html>

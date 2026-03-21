@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passion-Led Learning Agent - Hackathon Submission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #121118;
+      --pink: #FF79AC;
+      --white: #ffffff;
+      --gray: #384047;
+      --light: #F5F5F7;
+      --green: #018058;
+      --blue: #099DFD;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+    .deck { position: relative; width: 100%; height: 100%; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(2rem, 5vw, 6rem);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      background: var(--white);
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .slide h1 {
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .slide h2 {
+      font-size: clamp(1.5rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .slide p {
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      line-height: 1.6;
+      max-width: 750px;
+      opacity: 0.85;
+      color: #384047;
+    }
+    .accent { color: var(--pink); }
+    .badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+      background: rgba(255,121,172,0.15);
+      color: var(--pink);
+    }
+    .stat {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      color: var(--pink);
+      line-height: 1;
+    }
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--pink);
+      transition: width 0.4s ease;
+      z-index: 100;
+    }
+    .counter {
+      position: fixed;
+      bottom: 1rem;
+      right: 1.5rem;
+      font-size: 0.75rem;
+      opacity: 0.3;
+      color: var(--gray);
+      z-index: 100;
+    }
+    .github-link {
+      position: fixed;
+      bottom: 0.6rem;
+      right: 5.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      opacity: 1;
+      z-index: 100;
+      text-decoration: none;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    .github-link:hover { opacity: 0.7; }
+    .github-link svg { width: 22px; height: 22px; fill: currentColor; }
+    .api-keys-joke {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 1rem;
+      opacity: 0.6;
+      z-index: 100;
+      text-decoration: none;
+      color: var(--dark);
+      transition: opacity 0.3s;
+      cursor: pointer;
+      font-style: italic;
+      font-weight: 500;
+    }
+    .api-keys-joke:hover { opacity: 1; }
+    .logo {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      z-index: 100;
+      opacity: 0.5;
+      color: var(--dark);
+    }
+    .logo span { color: var(--pink); }
+    .graveyard {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+      opacity: 0.45;
+    }
+    .tombstone { display: flex; flex-direction: column; align-items: center; }
+    .tombstone-stone {
+      width: 140px; height: 160px;
+      background: #2a2a3a;
+      border-radius: 50px 50px 6px 6px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 0.6rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .tombstone-stone .rip { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.1em; opacity: 1; margin-bottom: 0.3rem; color: #f0f0f0; }
+    .tombstone-stone .rip-text { font-size: 0.75rem; text-align: center; line-height: 1.4; opacity: 1; color: #d0d0d0; }
+    .tombstone-ground { width: 155px; height: 10px; background: #1a1a24; border-radius: 0 0 4px 4px; }
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: white;
+    }
+    .flow-arrow {
+      font-size: 1.2rem;
+      color: var(--pink);
+      font-weight: 700;
+    }
+    .chat-bubble {
+      max-width: 500px;
+      padding: 1rem 1.25rem;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      text-align: left;
+      margin-bottom: 0.5rem;
+    }
+    .chat-agent {
+      background: var(--dark);
+      color: white;
+      border-bottom-left-radius: 0.25rem;
+      align-self: flex-start;
+    }
+    .chat-user {
+      background: rgba(255,121,172,0.12);
+      color: var(--dark);
+      border-bottom-right-radius: 0.25rem;
+      align-self: flex-end;
+    }
+    @media (max-width: 768px) {
+      .graveyard { gap: 0.75rem; }
+      .tombstone-stone { width: 110px; height: 130px; }
+      .tombstone-ground { width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">preply<span>.</span></div>
+  <a class="api-keys-joke" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">&#128064; want to steal our API keys? click here</a>
+  <div class="progress-bar" id="progress"></div>
+  <div class="counter" id="counter"></div>
+  <a class="github-link" href="https://github.com/mrncstt/preply-hackathon" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    Source code
+  </a>
+
+  <div class="deck" id="deck">
+
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+      <div style="display:flex; gap:2rem; align-items:center; margin-bottom:1.5rem; opacity:0.6; font-size:0.85rem; font-weight:600;">
+        <span>preply<span style="color:var(--pink)">.</span></span>
+        <span style="opacity:0.3;">x</span>
+        <span>Agora</span>
+        <span style="opacity:0.3;">+</span>
+        <span>OpenAI</span>
+        <span style="opacity:0.3;">+</span>
+        <span>Thymia</span>
+      </div>
+      <div class="badge">Hackathon Barcelona 2026</div>
+      <h1>Passion-Led<br><span class="accent">Learning Agent</span></h1>
+      <p>What if Preply knew what you love before lesson 1?</p>
+      <div style="margin-top:2rem; display:flex; gap:2rem; align-items:center; flex-wrap:wrap; justify-content:center;">
+        <a href="https://botas.vercel.app" target="_blank" style="display:inline-block; padding:0.75rem 2rem; background:var(--pink); color:white; border-radius:100px; font-weight:600; text-decoration:none; font-size:1rem;">
+          Live Demo
+        </a>
+        <div style="width:80px; height:80px; background:white; border-radius:0.5rem; display:flex; align-items:center; justify-content:center; border:1px solid #eee;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=68x68&data=https://botas.vercel.app/submission-pitch.html" alt="QR" style="width:68px; height:68px; border-radius:0.25rem;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Problem (1 min) -->
+    <div class="slide">
+      <div class="badge">The problem</div>
+      <div class="stat" data-countup="73">0%</div>
+      <h2 style="margin-top:1rem;">of learners quit in 3 months</h2>
+      <p style="max-width:100%; width:100%; font-size:clamp(1.2rem, 2.2vw, 1.6rem);">Not because learning is hard.<br>Because no one <span class="accent"><em>really understood</em></span> what they <em>care</em> about.</p>
+      <div class="graveyard">
+        <div class="tombstone">
+          <div class="tombstone-stone"><span class="rip">RIP</span><span class="rip-text">My language<br>app streak</span></div>
+          <div class="tombstone-ground"></div>
+        </div>
+        <div class="tombstone">
+          <div class="tombstone-stone"><span class="rip">RIP</span><span class="rip-text">Online course<br>I never finished</span></div>
+          <div class="tombstone-ground"></div>
+        </div>
+        <div class="tombstone">
+          <div class="tombstone-stone"><span class="rip">RIP</span><span class="rip-text">YouTube<br>polyglot phase</span></div>
+          <div class="tombstone-ground"></div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; opacity:0.5; margin-top:0.75rem; color:#555;">Source: Preply 2024, Hidi &amp; Renninger (2006)</p>
+    </div>
+
+    <!-- Slide 3: Current vs New -->
+    <div class="slide">
+      <div class="badge">Before vs. after</div>
+      <h2>Guessing vs. <span class="accent">understanding</span></h2>
+      <div style="margin-top:2rem; display:grid; grid-template-columns:1fr auto 1fr; gap:1rem; max-width:800px; width:100%; align-items:stretch;">
+        <div style="background:#f8f8f8; border-radius:1rem; padding:1.5rem; text-align:left; border:2px solid #e5e5e5;">
+          <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.5; margin-bottom:1rem;">Today on Preply</div>
+          <div style="font-size:0.9rem; margin-bottom:0.5rem; color:var(--gray);">&#10060; Fill a form</div>
+          <div style="font-size:0.9rem; margin-bottom:0.5rem; color:var(--gray);">&#10060; Pick from a list</div>
+          <div style="font-size:0.9rem; margin-bottom:0.5rem; color:var(--gray);">&#10060; Tutor starts from zero</div>
+          <div style="font-size:0.9rem; color:var(--gray);">&#10060; Generic first lesson</div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--pink); font-weight:800;">&rarr;</div>
+        <div style="background:var(--dark); border-radius:1rem; padding:1.5rem; text-align:left; color:white; border:2px solid var(--pink);">
+          <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.5; margin-bottom:1rem;">With our agent</div>
+          <div style="font-size:0.9rem; margin-bottom:0.5rem;">&#9989; Around 90 seconds voice conversation</div>
+          <div style="font-size:0.9rem; margin-bottom:0.5rem;">&#9989; AI discovers your passions</div>
+          <div style="font-size:0.9rem; margin-bottom:0.5rem;">&#9989; Tutor gets full profile</div>
+          <div style="font-size:0.9rem;">&#9989; Lessons built around you</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Solution (1 min) -->
+    <div class="slide">
+      <div class="badge">The solution</div>
+      <h1>AI <span class="accent">Discovery Coach</span></h1>
+      <p>An around 90-second multilingual voice interview that discovers your passions and matches you with the right tutor.</p>
+      <div style="margin-top:2rem; display:flex; align-items:center; gap:0; max-width:700px; width:100%;">
+        <div style="flex:1; background:var(--dark); color:var(--white); border-radius:1rem 0 0 1rem; padding:1.25rem; text-align:left;">
+          <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.5; margin-bottom:0.5rem;">Your passions</div>
+          <div style="font-size:0.85rem; font-weight:600; margin-bottom:0.25rem;">&#127928; Jazz guitar</div>
+          <div style="font-size:0.85rem; font-weight:600;">&#9917; Football tactics</div>
+        </div>
+        <div style="width:80px; background:var(--pink); color:white; display:flex; align-items:center; justify-content:center; padding:1.25rem 0; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Bridge</div>
+        <div style="flex:1; background:var(--dark); color:var(--white); border-radius:0 1rem 1rem 0; padding:1.25rem; text-align:left;">
+          <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.5; margin-bottom:0.5rem;">Your goals</div>
+          <div style="font-size:0.85rem; font-weight:600; margin-bottom:0.25rem;">&#127891; B2 Spanish</div>
+          <div style="font-size:0.85rem; font-weight:600;">&#128188; Business meetings</div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem; display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:center; font-size:0.9rem; opacity:0.6;">
+        <span>&#127908; Agora ConvoAI</span>
+        <span>&#129504; OpenAI GPT-5.4</span>
+        <span>&#128147; Thymia Signals</span>
+      </div>
+    </div>
+
+    <!-- Slide 5: Demo Flow (3 min) -->
+    <div class="slide">
+      <div class="badge">Live demo</div>
+      <h2>The full journey in <span class="accent">around 90 seconds</span></h2>
+      <div style="margin-top:1.5rem; display:flex; align-items:flex-start; justify-content:center; gap:0; max-width:1100px; width:100%;">
+        <!-- Left column: steps 1-4 -->
+        <div style="flex:1; display:flex; flex-direction:column; align-items:flex-end; gap:0; padding-right:2rem;">
+          <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.6rem;">
+            <span style="font-size:0.8rem; color:var(--gray); text-align:right; width:140px;">Preply-style homepage</span>
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--pink); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#127968;</div>
+          </div>
+          <div style="width:2px; height:16px; background:#e5e5e5; margin-right:21px;"></div>
+          <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.6rem;">
+            <span style="font-size:0.8rem; color:var(--gray); text-align:right; width:140px;">~90 seconds voice interview</span>
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--blue); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#127908;</div>
+          </div>
+          <div style="width:2px; height:16px; background:#e5e5e5; margin-right:21px;"></div>
+          <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.6rem;">
+            <span style="font-size:0.8rem; color:var(--gray); text-align:right; width:140px;">Custom LLM server</span>
+            <div style="width:44px; height:44px; border-radius:50%; background:#10A37F; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#129504;</div>
+          </div>
+          <div style="width:2px; height:16px; background:#e5e5e5; margin-right:21px;"></div>
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-size:0.8rem; color:var(--gray); text-align:right; width:140px;">Persistent memory</span>
+            <div style="width:44px; height:44px; border-radius:50%; background:#E67E22; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#128218;</div>
+          </div>
+        </div>
+        <!-- Center: big arrow down -->
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1rem; min-height:260px;">
+          <div style="width:3px; height:100%; background:linear-gradient(to bottom, var(--pink), var(--green)); border-radius:2px;"></div>
+        </div>
+        <!-- Right column: steps 5-7 -->
+        <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start; gap:0; padding-left:2rem; padding-top:0.5rem;">
+          <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.6rem;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--dark); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#128161;</div>
+            <span style="font-size:0.8rem; color:var(--gray); width:160px;">Passions + Goals bridge</span>
+          </div>
+          <div style="width:2px; height:16px; background:#e5e5e5; margin-left:21px;"></div>
+          <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.6rem;">
+            <div style="width:44px; height:44px; border-radius:50%; background:#6366F1; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#10024;</div>
+            <span style="font-size:0.8rem; color:var(--gray); width:160px;">Animated tutor matching</span>
+          </div>
+          <div style="width:2px; height:16px; background:#e5e5e5; margin-left:21px;"></div>
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#127891;</div>
+            <span style="font-size:0.8rem; color:var(--gray); width:160px;">Book on Preply</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem; text-align:center;">
+        <a href="https://botas.vercel.app" target="_blank" style="display:inline-block; padding:0.875rem 2.25rem; background:var(--pink); color:white; border-radius:100px; font-weight:600; text-decoration:none; font-size:1.05rem;">
+          Start live demo &rarr;
+        </a>
+        <p style="margin-top:0.5rem; font-size:0.75rem; opacity:0.4;">Click "Find your tutor" to begin</p>
+      </div>
+    </div>
+
+    <!-- Slide 6: Example Conversation -->
+    <div class="slide">
+      <div class="badge">Example output</div>
+      <h2>From conversation to <span class="accent">curriculum</span></h2>
+      <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.4rem; max-width:550px; width:100%;">
+        <div class="chat-bubble chat-agent">
+          <span style="font-size:0.7rem; opacity:0.5;">Discovery Coach</span><br>
+          Hey! In around 90 seconds I'll build a plan that fits your life. What language are you going for?
+        </div>
+        <div class="chat-bubble chat-user">I want to learn Spanish. I'm moving to Barcelona.</div>
+        <div class="chat-bubble chat-agent">
+          <span style="font-size:0.7rem; opacity:0.5;">Discovery Coach</span><br>
+          What are you passionate about outside work?
+        </div>
+        <div class="chat-bubble chat-user">I love cooking Italian food and watching football.</div>
+        <div class="chat-bubble chat-agent">
+          <span style="font-size:0.7rem; opacity:0.5;">Discovery Coach</span><br>
+          Love it! Cooking and football are goldmines for immersive Spanish. Let me build something around that.
+        </div>
+      </div>
+      <div style="margin-top:1.5rem; padding:1rem 1.5rem; background:var(--dark); color:white; border-radius:0.75rem; max-width:550px; width:100%; text-align:left; border-left:4px solid var(--pink);">
+        <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--pink); margin-bottom:0.5rem;">Learning bridge result</div>
+        <div style="font-size:0.95rem; font-weight:600;">"Master Spanish vocabulary through cooking recipe videos and football match commentary in Spanish"</div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Tech Stack -->
+    <div class="slide">
+      <div class="badge">Built in 24h</div>
+      <h2>How we built it</h2>
+      <div style="display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap; justify-content:center; max-width:800px;">
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:#f8f8f8; border:1px solid #eee; border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; color:var(--blue); margin-bottom:0.25rem;">Agora ConvoAI</div>
+          <div style="font-size:0.75rem; opacity:0.5;">Real-time voice interview</div>
+        </div>
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:#f8f8f8; border:1px solid #eee; border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; color:#10A37F; margin-bottom:0.25rem;">OpenAI GPT-5.4</div>
+          <div style="font-size:0.75rem; opacity:0.5;">LLM + TTS + classification</div>
+        </div>
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:#f8f8f8; border:1px solid #eee; border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; color:#A78BFA; margin-bottom:0.25rem;">Thymia</div>
+          <div style="font-size:0.75rem; opacity:0.5;">Cognitive signal analysis</div>
+        </div>
+        <div style="flex:1; min-width:140px; padding:1.25rem; background:#f8f8f8; border:1px solid #eee; border-radius:0.75rem; text-align:center;">
+          <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.25rem;">Next.js 16 + Vercel</div>
+          <div style="font-size:0.75rem; opacity:0.5;">App + deployment</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:2rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;">
+        <img src="botas-logo.svg" alt="botas" style="width:80px; height:80px;">
+        <div style="text-align:left;">
+          <div style="font-weight:700; font-size:1.1rem;">Mariana Costa <span style="font-weight:400; opacity:0.5; font-size:0.9rem;">Data</span></div>
+          <div style="font-weight:700; font-size:1.1rem; margin-top:0.4rem;">Timur Losev <span style="font-weight:400; opacity:0.5; font-size:0.9rem;">DevOps / AI</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Close -->
+    <div class="slide" style="justify-content:center; padding-top:8vh;">
+      <h1 style="margin-top:4rem;">Stop teaching languages.<br><span class="accent">Start discovering learners.</span></h1>
+      <p style="margin-top:1.5rem; font-style:italic; opacity:0.5;">"Every learner has a passion. Every passion is a lesson."</p>
+      <div style="display:flex; gap:3rem; align-items:center; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;">
+        <div style="text-align:center;">
+          <a href="https://botas.vercel.app" target="_blank" style="display:inline-block; padding:1rem 2.5rem; background:var(--pink); color:white; border-radius:100px; font-weight:600; text-decoration:none; font-size:1.125rem;">
+            Try the demo
+          </a>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:120px; height:120px; background:white; border-radius:0.75rem; display:flex; align-items:center; justify-content:center; margin:0 auto; border:1px solid #eee;">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&data=https://botas.vercel.app" alt="QR Code" style="width:108px; height:108px; border-radius:0.5rem;">
+          </div>
+          <div style="margin-top:0.5rem; font-size:0.75rem; opacity:0.4;">botas.vercel.app</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:2rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center;">
+        <img src="botas-logo.svg" alt="botas" style="width:80px; height:80px;">
+        <div style="text-align:left;">
+          <div style="font-weight:700; font-size:1rem;">Mariana Costa <span style="font-weight:400; opacity:0.5; font-size:0.85rem;">Data</span></div>
+          <div style="font-weight:700; font-size:1rem; margin-top:0.3rem;">Timur Losev <span style="font-weight:400; opacity:0.5; font-size:0.85rem;">DevOps / AI</span></div>
+        </div>
+      </div>
+      <div style="font-size:0.95rem; opacity:0.5; color:#444; margin-top:1.5rem;">Built in 24h in Barcelona</div>
+    </div>
+
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progress = document.getElementById('progress');
+    const counter = document.getElementById('counter');
+    let current = 0;
+
+    function show(n) {
+      current = Math.max(0, Math.min(n, slides.length - 1));
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      progress.style.width = ((current + 1) / slides.length * 100) + '%';
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+      animateSlide(current);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); show(current + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); show(current - 1); }
+      if (e.key === 'Home') { e.preventDefault(); show(0); }
+      if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+    });
+
+    document.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      const x = e.clientX / window.innerWidth;
+      x < 0.3 ? show(current - 1) : show(current + 1);
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    document.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+    });
+
+    function animateCountUp(el) {
+      var target = parseInt(el.dataset.countup, 10);
+      if (isNaN(target)) return;
+      var duration = 1200;
+      var start = performance.now();
+      el.textContent = '0%';
+      function tick(now) {
+        var elapsed = now - start;
+        var p = Math.min(elapsed / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + '%';
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function animateSlide(index) {
+      var slide = slides[index];
+      var countEl = slide.querySelector('[data-countup]');
+      if (countEl) animateCountUp(countEl);
+    }
+
+    show(0);
+  </script>
+</body>
+</html>
