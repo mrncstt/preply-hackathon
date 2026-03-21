@@ -119,9 +119,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: `Missing environment variables: ${missing.join(", ")}` }, { status: 500 });
   }
 
+  const { INTERVIEWER_SYSTEM_PROMPT, INTERVIEWER_GREETING } = await import("@/lib/prompts");
   const body = await req.json().catch(() => ({}));
-  const prompt = body.prompt || "You are a friendly voice assistant.";
-  const greeting = body.greeting || "Hi there! How can I help you today?";
+  const prompt = INTERVIEWER_SYSTEM_PROMPT;
+  const greeting = INTERVIEWER_GREETING;
 
   const channel = generateChannelName(10);
   const agentRtmUid = `${AGENT_UID}-${channel}`;
