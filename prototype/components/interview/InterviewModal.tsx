@@ -59,7 +59,7 @@ export function InterviewModal({ onInterviewEnd }: InterviewModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col animate-fade-in" style={{ background: 'var(--background)' }}>
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-card/80 backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--preply-green)' }}>
             <span className="text-white font-bold text-sm">AI</span>
@@ -75,7 +75,7 @@ export function InterviewModal({ onInterviewEnd }: InterviewModalProps) {
                   <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: 'var(--preply-green)' }} />
                 </span>
               )}
-              {isConnected ? formatTime(elapsed) : "Connecting..."}
+              {isConnected ? <><span className="font-medium text-emerald-600">Live</span> · {formatTime(elapsed)}</> : "Connecting..."}
             </p>
           </div>
         </div>

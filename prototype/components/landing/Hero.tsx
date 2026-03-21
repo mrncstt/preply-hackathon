@@ -10,7 +10,7 @@ export function Hero({ onStartInterview }: HeroProps) {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full">
+      <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full border-b border-gray-200">
         <div className="flex items-center gap-8">
           <span className="font-bold text-2xl tracking-tight" style={{ color: 'var(--preply-navy)' }}>
             preply<span style={{ color: '#00B300' }}>.</span>
@@ -39,7 +39,7 @@ export function Hero({ onStartInterview }: HeroProps) {
           <span className="block" style={{ color: '#00B300' }}>what you love</span>
         </h1>
 
-        <p className="text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed">
+        <p className="text-base text-muted-foreground max-w-xl mb-10 leading-relaxed">
           Our AI Discovery Coach learns what you are passionate about, then builds a
           personalized learning bridge between your interests and your language goals.
         </p>
@@ -93,9 +93,9 @@ function FeatureCard({
   color: string;
 }) {
   return (
-    <div className="p-6 rounded-2xl border border-border bg-card text-left hover:shadow-md transition-shadow">
+    <div className="p-8 rounded-2xl border border-border bg-card text-left hover:shadow-md transition-shadow">
       <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white"
+        className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 text-white"
         style={{ background: color }}
       >
         {icon}
