@@ -11,7 +11,6 @@ Voice-based lesson retention with spaced repetition (SM-2 algorithm). Solves the
 
 | Name | Role | LinkedIn | GitHub |
 |------|------|----------|--------|
-| Ben Weekes | Architect (Agora staff) | [benjamin-weekes](https://linkedin.com/in/benjamin-weekes/) | [benagora](https://github.com/benagora) |
 | Joaquin Terrasa (espetro) | Full-Stack Engineer, MaibornWolff | [quinoterrasa](https://linkedin.com/in/quinoterrasa) | [espetro](https://github.com/espetro) |
 | Aryan Verma | Software Engineer, TomTom | [aryanv175](https://linkedin.com/in/aryanv175/) | [aryanv175](https://github.com/aryanv175) |
 
