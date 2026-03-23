@@ -12,7 +12,8 @@ Voice-based lesson retention with spaced repetition (SM-2 algorithm). Solves the
 | Name | Role | LinkedIn | GitHub |
 |------|------|----------|--------|
 | Ben Weekes | Architect (Agora staff) | [benjamin-weekes](https://linkedin.com/in/benjamin-weekes/) | [benagora](https://github.com/benagora) |
-| espetro | Developer | - | [espetro](https://github.com/espetro) |
+| Joaquin Terrasa (espetro) | Full-Stack Engineer, MaibornWolff | [quinoterrasa](https://linkedin.com/in/quinoterrasa) | [espetro](https://github.com/espetro) |
+| Aryan Verma | Software Engineer, TomTom | [aryanv175](https://linkedin.com/in/aryanv175/) | [aryanv175](https://github.com/aryanv175) |
 
 **Demo:** [hackathon-2026-03-20-web.vercel.app](https://hackathon-2026-03-20-web.vercel.app/)
 **Tech:** Next.js, Agora, Anam Avatar, OpenAI Realtime, Thymia Helios, Whisper, Supabase
@@ -56,7 +57,7 @@ Multiplayer environment where players have to speak to win. Social gaming meets 
 
 ---
 
-### 5. Sirius Hacking - Lyric Practice
+### 5. Sirius Hacking - Lyric Practice (1st Place)
 
 Music-based language learning. Spotify integration, AI artist conversations, vocabulary extraction from lyrics.
 
@@ -94,8 +95,11 @@ Every lesson auto-analyzed into targeted exercises and AI voice practice built f
 
 | Name | Role | LinkedIn | GitHub |
 |------|------|----------|--------|
+| Vasyl Stanislavchuk | Sr Software Engineer, Medallion | [vasyabigi](https://linkedin.com/in/vasyabigi/) | [vasyl-stanislavchuk](https://github.com/vasyl-stanislavchuk) |
+| Andrii Pasternak | Software Developer / AI-ML Engineer | [andrii-pasternak](https://linkedin.com/in/andrii-pasternak-907a9b130/) | [AndriiPasternak31](https://github.com/AndriiPasternak31) |
 
 **Demo:** [loopyourlesson.com](https://loopyourlesson.com/)
+**Repo:** [hackathon-2026-03-20-agora-preply/pull/1](https://github.com/AgoraIO-Conversational-AI/hackathon-2026-03-20-agora-preply/pull/1)
 
 ---
 
@@ -112,12 +116,13 @@ Turn every Preply lesson into 4 AI-generated roleplays. Practice by voice with a
 
 ---
 
-### 10. The Frans - SpectroLang
+### 10. The Frans - SpectroLang (3rd Place)
 
 Pronunciation helper. Records speech, scores word by word, gives instant AI coaching.
 
 | Name | Role | LinkedIn | GitHub |
 |------|------|----------|--------|
+| Fran Margarit | DevOps Engineer, Aizon | [fran-margarit](https://linkedin.com/in/fran-margarit/) | [franmargarit](https://github.com/franmargarit) |
 
 **Tech:** Azure Speech, Parselmouth, librosa, OpenAI, AWS Polly
 **Demo:** [amplifyapp](https://staging.d39bb3813d53v1.amplifyapp.com/)
@@ -180,6 +185,10 @@ Upload worksheet + lesson feedback, AI generates personalized avatar speaking ex
 
 | Name | Role | LinkedIn | GitHub |
 |------|------|----------|--------|
+| Summer Devlin | NLP/AI Research, Barcelona Supercomputing Center | [summer-devlin](https://linkedin.com/in/summer-devlin-167388181) | [summerdevlin46](https://github.com/summerdevlin46) |
+| Andres Gonzalez Gongora | ML Engineer, Barcelona Supercomputing Center | [andres-gonzalez-gongora](https://linkedin.com/in/andres-gonzalez-gongora-4b428613b) | [Zappandy](https://github.com/Zappandy) |
+| Gleb Sokolovski | Co-Founder, Uni-Chat; MSc AI Edinburgh | [gleb-sokolovski](https://linkedin.com/in/gleb-sokolovski/) | [sokol-gleb2](https://github.com/sokol-gleb2) |
+| Matias Beraldo | Developer | - | [matt-rmfy](https://github.com/matt-rmfy) |
 
 ---
 
@@ -252,9 +261,8 @@ AI-powered real-time vocabulary practice. Self-described as "The Random Brazucas
 
 | Name | Role | LinkedIn | GitHub |
 |------|------|----------|--------|
-| Summer Devlin | NLP/AI Research, Barcelona Supercomputing Center | [summer-devlin](https://linkedin.com/in/summer-devlin-5454b7154/) | [summerdevlin46](https://github.com/summerdevlin46) |
-| Jessie Delgadillo Newman | Data Scientist, Reveni | [jessie-delgadillo](https://es.linkedin.com/in/jessie-delgadillo-data-scientist) | [jonathan9879](https://github.com/jonathan9879) |
-| Mykhaylo Olefirenko | Developer | [mykhaylo-olefirenko](https://linkedin.com/in/mykhaylo-olefirenko) | [micheleoletti](https://github.com/micheleoletti) |
+| Jessie Delgadillo Newman | Data Scientist | [jessie-delgadillo](https://linkedin.com/in/jessie-lee-delgadillo-newman-258648104/) | [jonathan9879](https://github.com/jonathan9879) |
+| Mykhaylo Olefirenko | Full-stack Software Developer | [mykhaylo-olefirenko](https://linkedin.com/in/mykhaylo-olefirenko) | [micheleoletti](https://github.com/micheleoletti) |
 | Vova Tarasov | DevOps (Magento/Docker) | - | [vova-tarasov](https://github.com/vova-tarasov) |
 
 ---
