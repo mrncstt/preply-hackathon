@@ -30,6 +30,7 @@ export function HeroPreply({ onStartInterview }: HeroPreplyProps) {
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>For business</a>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>Become a tutor</a>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#121117' }}>Proven Progress</a>
+            <a href="/smartcat" className="cursor-pointer hover:opacity-70 no-underline" style={{ color: '#53d8fb', fontWeight: 700 }}>SmartCat</a>
           </div>
         </div>
         <div className="flex items-center gap-3">
