@@ -27,10 +27,9 @@ const TOOL_NAMES: Record<string, string> = {
   get_top_senders: "Топ отправителей",
 };
 
-// In production (Vercel), use rewrite proxy /smartcat-api/
-// In development, use direct URL
+// NEXT_PUBLIC_ prefix makes it available in browser
 const SMARTCAT_API =
-  process.env.NEXT_PUBLIC_SMARTCAT_API || "/smartcat-api";
+  process.env.NEXT_PUBLIC_SMARTCAT_API || "http://localhost:8000";
 
 export default function SmartCatPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([
