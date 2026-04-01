@@ -31,15 +31,33 @@ const TOOL_NAMES: Record<string, string> = {
 const SMARTCAT_API =
   process.env.NEXT_PUBLIC_SMARTCAT_API || "http://localhost:8000";
 
+const SAMPLE_QUESTIONS = [
+  "Когда Enron подал заявление о банкротстве по Chapter 11?",
+  "Кто отправил письмо о бонусах перед банкротством и какая сумма упоминалась?",
+  "Кто такой Jeff Dasovich и какова была его роль?",
+  "Когда PG&E подала заявление о банкротстве?",
+  "Кто были самые частые отправители писем в Enron?",
+  "Кто такая Sara Shackleton и в каком отделе она работала?",
+  "За что отвечала Tana Jones судя по её переписке?",
+  "Кто были ключевые люди в обсуждении Калифорнийского энергетического кризиса?",
+  "Что произошло в Enron в октябре 2001 года?",
+  "Найди письма об уничтожении документов Arthur Andersen",
+  "Когда Ken Lay отправил последнее корпоративное письмо?",
+  "Какие основные юридические вопросы обсуждались в переписке Enron?",
+  "Найди обсуждения контрактов ISDA и торговых соглашений",
+  "Какие стратегии торговли природным газом обсуждались?",
+  "Какие предупреждающие знаки существовали перед крахом Enron?",
+  "Какая связь между Калифорнийским энергетическим кризисом и торговлей Enron?",
+  "Были ли письма, указывающие на сокрытие информации сотрудниками?",
+  "Кто были ключевые лица, принимающие решения в последние месяцы?",
+];
+
 export default function SmartCatPage() {
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: "welcome",
-      role: "assistant",
-      text: "Привет! Я SmartCat, ассистент по поиску email. Спрашивай что угодно о корпусе Enron — я умею искать письма, находить людей, сделки и анализировать переписку.",
-      steps: [],
-    },
-  ]);
+  const [sampleQuestion] = useState(
+    () => SAMPLE_QUESTIONS[Math.floor(Math.random() * SAMPLE_QUESTIONS.length)]
+  );
+
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [status, setStatus] = useState("Готов");
@@ -290,6 +308,77 @@ export default function SmartCatPage() {
           gap: 12,
         }}
       >
+        {/* Welcome screen */}
+        {messages.length === 0 && (
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 20,
+              opacity: 0.9,
+            }}
+          >
+            <div style={{ fontSize: 48 }}>&#128049;</div>
+            <h2
+              style={{
+                fontSize: 28,
+                fontWeight: 700,
+                background: "linear-gradient(135deg, #53d8fb, #a78bfa)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                margin: 0,
+              }}
+            >
+              SmartCat
+            </h2>
+            <p
+              style={{
+                color: "#9ca3af",
+                fontSize: 14,
+                textAlign: "center",
+                maxWidth: 420,
+                lineHeight: 1.6,
+              }}
+            >
+              AI-ассистент для поиска и анализа email-переписки.
+              <br />
+              245K писем Enron, гибридный поиск, 31K QA-пар.
+            </p>
+            <div
+              style={{
+                marginTop: 8,
+                padding: "12px 20px",
+                background: "#1f2937",
+                borderRadius: 12,
+                border: "1px solid #374151",
+                maxWidth: 460,
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setInput(sampleQuestion);
+                inputRef.current?.focus();
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "#53d8fb",
+                  marginBottom: 6,
+                  fontWeight: 600,
+                }}
+              >
+                Попробуй спросить:
+              </div>
+              <div style={{ fontSize: 14, color: "#e0e0e0" }}>
+                {sampleQuestion}
+              </div>
+            </div>
+          </div>
+        )}
+
         {messages.map((msg) => (
           <div
             key={msg.id}
